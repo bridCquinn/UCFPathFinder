@@ -19,3 +19,8 @@
     background-color: #757369;
     color: white;
 }
+
+#logout
+{
+  float:right;
+}

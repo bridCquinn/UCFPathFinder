@@ -20,3 +20,13 @@ function openPage(pageName, elmnt, color) {
     elmnt.style.backgroundColor = color;
     elmnt.style.color = 'white';
 }
+
+function doLogout(){
+	userId = 0;
+	firstName = "";
+	lastName = "";
+
+  hideOrShow( "tabs", false);
+  hideOrShow( "accessUIDiv", false);
+  hideOrShow( "loginPage", true);
+}
