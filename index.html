@@ -16,23 +16,28 @@
 	<script src="js/login.js"></script>
 	<script src="js/register.js"></script>
   <script src="js/sharedFunctions.js"></script>
+  <script src="js/main.js"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link href="css/login.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
 
 </head>
 
 <body>
   <!-- Navigation bar -->
   <!-- Login/Register -->
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-    <a class="nav-link" href="#">UCF Pathfinder</a>
-    </li>
-  </ul>
-  </nav>
+    <div class="topnav">
+      <a class="nav-link" href="#">UCF Pathfinder</a>
+
+      <!-- these tabs are hidden until successful login -->
+      <div class ="toolbar" style="display:none; visibility:hidden;" id="tabs">
+        <a class="tablink" href="#home" onclick="openPage('Home', this, '#757369')">Schedule</a>
+        <a class="tablink" href="#news" onclick="openPage('News', this, '#757369')">Map</a>
+        <a class="tablink" href="#contact" onclick="openPage('Contact', this, '#757369')">Profile</a>
+      </div>
+    </div>
 
   <!-- keeping the card responsive -->
   <div class="scaleable-wrapper" id="scaleable-wrapper">
@@ -120,11 +125,35 @@
             </div>
           </div>
         </div>
+
+    <!-- beginning of the webapp home -->
+    <div class="home" id="accessUIDiv" style="display:none; visibility:hidden;">
+      <!-- converting nav bar into tabs -->
+      <div id="Home" class="tabcontent">
+        <h3>Home</h3>
+        <p>Home is where the heart is..</p>
       </div>
+
+      <div id="News" class="tabcontent">
+        <h3>News</h3>
+        <p>Some news this fine day!</p>
+      </div>
+
+      <div id="Contact" class="tabcontent">
+        <h3>Contact</h3>
+        <p>Get in touch, or swing by for a cup of coffee.</p>
+      </div>
+
+      <!-- schedule tab -->
+
+      <!-- Map tab -->
+
+      <!-- profile tab -->
     </div>
+
+
   </div>
   </div> <!-- end of scaling-->
-
 
 
 </body>
