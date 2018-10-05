@@ -1,3 +1,12 @@
+// this is the main.js file
+// it deals with the js in the toolbar
+// this includes:
+//   - LogOut
+//   - tabs
+//   - the changing of pages
+//     ->the majority of content on each page will
+//       have a seperate js file
+
 function openPage(pageName, elmnt, color) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
