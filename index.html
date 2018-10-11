@@ -35,8 +35,8 @@
       <!-- these tabs are hidden until successful login -->
       <div class ="toolbar" style="display:none; visibility:hidden;" id="tabs">
         <a class="tablink" href="#schedule" onclick="openPage('schedule', this, '#757369')">Schedule</a>
-        <a class="tablink" href="#news" onclick="openPage('News', this, '#757369')">Map</a>
-        <a class="tablink" href="#contact" onclick="openPage('Contact', this, '#757369')">Profile</a>
+        <a class="tablink" href="#maps" onclick="openPage('Map', this, '#757369')">Map</a>
+        <a class="tablink" href="#profile" onclick="openPage('Profile', this, '#757369')">Profile</a>
 
         <a href="#" id="logout" onclick="doLogout()">LogOut</a>
       </div>
@@ -129,6 +129,10 @@
           </div>
         </div>
 
+
+
+          </div>
+          </div> <!-- end of scaling-->
     <!-- beginning of the webapp home -->
     <div class="main" id="accessUIDiv" style="display:none; visibility:hidden;">
 
@@ -147,22 +151,24 @@
           </div>
         </div>
 
-        <a href="#" class="card" style="width: 18rem; height: 15rem;">
+        <div class="card" style="width: 18rem; height: 15rem;">
           <div class="card-body">
-            <img src="images/Plus_Sign.png">
+            Help!
           </div>
-        </a>
+        </div>
+    </div>
 
+
+
+
+      <div id="Map" class="tabcontent">
+        <h3>Maps</h3>
+        <p>Google Maps and search page.</p>
       </div>
 
-      <div id="News" class="tabcontent">
-        <h3>News</h3>
-        <p>Some news this fine day!</p>
-      </div>
-
-      <div id="Contact" class="tabcontent">
-        <h3>Contact</h3>
-        <p>Get in touch, or swing by for a cup of coffee.</p>
+      <div id="Profile" class="tabcontent">
+        <h3>Profile</h3>
+        <p>Profile will have general info.</p>
       </div>
 
       <!-- schedule tab -->
@@ -172,9 +178,6 @@
       <!-- profile tab -->
     </div>
 
-
-  </div>
-  </div> <!-- end of scaling-->
 
 
 </body>

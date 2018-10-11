@@ -3,6 +3,7 @@ function toRegPage()
   // hides loginPage and shows register
   hideOrShow( "registerPage", true);
   hideOrShow( "loginPage", false);
+
 }
 
 function doLogin()
@@ -71,6 +72,9 @@ function doLogin()
 	  hideOrShow( "tabs", true);
 		hideOrShow( "accessUIDiv", true);
 		hideOrShow( "loginPage", false);
+    hideOrShow("Map", false);
+    hideOrShow("Profile", false);
+
 
 	// }
 	// catch(err)
