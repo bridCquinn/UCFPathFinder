@@ -171,10 +171,14 @@
           <h1>
             <span onclick="document.getElementById('newSch').style.display='none'" class="close" title="Close Modal">&times;</span>
              Schedule Builder
-          </h1>
-
+             <hr>
         <div class="row">
           <div class="col-6">
+
+            <div class="row">
+              <div class="col-6"><input class="form-control mr-sm-2" type="text" id="term" name="term" placeholder="Term"></div>
+              <div class="col-6"><input class="form-control mr-sm-2" type="number" id="year" name="year" placeholder="Year"></div>
+            </div><br>
 
             <div class="accordion" id="accordionExample">
               <div class="card">
@@ -222,16 +226,15 @@
               </div>
 
             </div><!-- end of accordion-->
-
+            <br>
             <button class="buttons" onclick="makeSchedule()">Submit</button>
           </div> <!--end of col-6 for class list-->
 
           <div class="col-6">
             <form id="builder">
-              <div class="row">
-                <div class="col-6"><input class="form-control mr-sm-2" type="text" id="term" name="term" placeholder="Term"></div>
-                <div class="col-6"><input class="form-control mr-sm-2" type="number" id="year" name="year" placeholder="Year"></div>
-              </div><br>
+              Class Details
+              <br>
+              <br>
               <div class="row">
                 <div class="col-4"><input class="form-control mr-sm-2" type="text" id="code" name="classCode" placeholder="Class Code"></div>
                 <div class="col-8"><input class="form-control mr-sm-2" type="text" id="name" name="className" placeholder="Class Name"></div>
@@ -244,9 +247,10 @@
               <div class="col-12"><input class="form-control mr-sm-2" type="text" id="note" name="notes" placeholder="Notes"></div><br>
 
             </form>
-            <button class="buttons">Add Class</button>
+            <button class="buttons" onclick="addClass()">Add Class</button>
           </div>
         </div> <!-- end of row-->
+        </h1>
 
         </div>
       </div>

@@ -1,6 +1,9 @@
 /* this is used for only the schedule page */
 
 /* deals with the cards used to display classes */
+hr{
+  border-color:#f4c542;
+}
 
 .card-class{
   width: 33%;
@@ -19,4 +22,5 @@
     margin-bottom: 2%;
     margin-left: 2%;
     margin-right: 2%;
+    margin-top: 2%;
 }
