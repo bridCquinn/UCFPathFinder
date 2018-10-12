@@ -1,12 +1,9 @@
 <?php
-/*
-	Register:
-INSERT INTO USERS (firstName, lastName, login, password) VALUES ('<firstName>', '<lastName>', '<login/email>', '<hashed password>');
-*/
+
 	$inData = getRequestInfo();
 	
 	
-	$conn = new mysqli("localhost", "root", "orlando", "contactBook");
+	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
 	
 	if ($conn->connect_error) 
 	{
@@ -14,23 +11,13 @@ INSERT INTO USERS (firstName, lastName, login, password) VALUES ('<firstName>', 
 	} 
 	else
 	{
-		/*Need to check duplicate users?*/
-		/*firstName, lastName, and login are weakpoints that could be be SQL injected assumming password is hashed*/
-		/*$sql = "INSERT INTO users (firstName, lastName, login, password) VALUES ('".$inData["firstName"]."', '".$inData["lastName"]."', '".$inData["login"]."', '".$inData["password"]."');";*/
-		$sql = "INSERT INTO users (firstName, lastName, login, password) VALUES (?, ?, ?, ?)";
+		$sql = "CALL addUser ('<firstName>', '<lastName>', '<username>', '<password>', '<email>');";
 		if($stmt = $conn->prepare($sql))
 		{
 			/*creates the prepared statement*/
-			$stmt->bind_param('ssss', $inData["firstName"], $inData["lastName"], $inData["login"], $inData["password"]);/*Binds params to markers*/
+			$stmt->bind_param('ssss', $inData["firstName"], $inData["lastName"], $inData["username"], $inData["password", $indata["email"]);/*Binds params to markers*/
 			
 			$stmt->execute();
-			/*$result	= $stmt->get_result();
-			
-			
-			if( $result != TRUE )
-			{
-				returnWithError( $conn->error );
-			}*/
 		}
 		else
 		{
