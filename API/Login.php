@@ -35,9 +35,10 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				$lastName = $row["lastName"];
 				$userID = $row["userID"];
 				
+				/*
 				$sql2 = "UPDATE users SET dateLastLoggedIn = NOW() WHERE userID = $userID";
 				$conn->query($sql2);
-				
+				*/
 				
 			
 				returnWithInfo($firstName, $lastName, $userID);
