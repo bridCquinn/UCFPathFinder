@@ -2,14 +2,24 @@
 
 /* deals with the cards used to display classes */
 
-/* .card-class{
+.card-class{
   width: 33%;
   margin-right: 2%;
   margin-left: 2%;
   float: left;
-} */
-/* .tabcontent{
+}
+ /* .tabcontent{
   background-color: black;
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
 } */
+
+.row {
+    position: relative;
+    margin-bottom: 2%;
+    margin-left: 2%;
+}
+
+.card {
+
+}

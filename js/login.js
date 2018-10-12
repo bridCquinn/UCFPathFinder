@@ -74,6 +74,7 @@ function doLogin()
 		hideOrShow( "loginPage", false);
     hideOrShow("Map", false);
     hideOrShow("Profile", false);
+    hideOrShow("scaleable-wrapper", false);
 
 
 	// }

@@ -43,7 +43,7 @@ html {
   flex-wrap: wrap;
 }
 
-.card {
+.card-1 {
   margin: 1rem;
   background: white;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
