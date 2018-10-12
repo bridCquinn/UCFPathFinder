@@ -180,7 +180,7 @@
               <div class="card">
                 <div class="card-header" id="headingOne">
                   <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="toggle('collapseOne')">
                       Code - ClassName1
                     </button>
                   </h5>
@@ -202,7 +202,7 @@
               <div class="card">
                 <div class="card-header" id="headingTwo">
                   <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" onclick="toggle('collapseTwo')">
                       Code - ClassName2
                     </button>
                   </h5>
@@ -221,13 +221,29 @@
                 </div>
               </div>
 
-
             </div><!-- end of accordion-->
 
+            <button class="buttons" onclick="makeSchedule()">Submit</button>
           </div> <!--end of col-6 for class list-->
 
           <div class="col-6">
-            insert
+            <form id="builder">
+              <div class="row">
+                <div class="col-6"><input class="form-control mr-sm-2" type="text" id="term" name="term" placeholder="Term"></div>
+                <div class="col-6"><input class="form-control mr-sm-2" type="number" id="year" name="year" placeholder="Year"></div>
+              </div><br>
+              <div class="row">
+                <div class="col-4"><input class="form-control mr-sm-2" type="text" id="code" name="classCode" placeholder="Class Code"></div>
+                <div class="col-8"><input class="form-control mr-sm-2" type="text" id="name" name="className" placeholder="Class Name"></div>
+              </div><br>
+              <div class="row">
+                <div class="col-6">StartTime:<input class="form-control mr-sm-2" type="time" id="start" name="start"></div>
+                <div class="col-6">EndTime:<input class="form-control mr-sm-2" type="time" id="end" name="end"></div>
+              </div><br>
+              <div class="col-12"><input class="form-control mr-sm-2" type="text" id="address" name="address" placeholder="Building"></div><br>
+              <div class="col-12"><input class="form-control mr-sm-2" type="text" id="note" name="notes" placeholder="Notes"></div><br>
+
+            </form>
             <button class="buttons">Add Class</button>
           </div>
         </div> <!-- end of row-->
