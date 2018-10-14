@@ -1,4 +1,4 @@
-var urlBase = 'http://ucfpathfinder.com/';
+var urlBase = 'http://ucfpathfinder.com/API';
 var extension = "php";
 
 var userId = 0;

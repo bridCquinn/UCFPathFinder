@@ -11,6 +11,7 @@ function register()
 	var regFirstName = document.getElementById("reg_firstname").value;
 	var regLastName = document.getElementById("reg_lastname").value;
 	var regUsername = document.getElementById("reg_username").value;
+	var regEmail = document.getElementById("reg_email").value;
 	var regtempPassword = document.getElementById("reg_password").value;
 	var regPasswordConfirm = document.getElementById("reg_password_confirm").value;
 	document.getElementById("registerResult").innerHTML = "";
@@ -64,8 +65,8 @@ function register()
 
 		regPassword =  md5(regtempPassword);
 
-	var jsonPayload = '{"firstName" : "' + regFirstName + '", "lastName" : "' + regLastName + '", "login" : "' + regUsername
-	+ '", "password" : "' + regPassword +'"}';
+	var jsonPayload = '{"firstName" : "' + regFirstName + '", "lastName" : "' + regLastName + '", "username" : "' + regUsername
+	+ '", "password" : "' + regPassword + '", "email" : "' + regEmail +'"}';
 	var url = urlBase + '/Register.' + extension;
 
 	var xhr = new XMLHttpRequest();
