@@ -15,7 +15,7 @@
 		if($stmt = $conn->prepare($sql))
 		{
 			/*creates the prepared statement*/
-			$stmt->bind_param('sssss', $inData["firstName"], $inData["lastName"], $inData["username"], $inData["password"], $indata["email"]);
+			$stmt->bind_param('sssss', $inData["firstName"], $inData["lastName"], $inData["username"], $inData["password"], $inData["email"]);
 			/*Binds params to markers*/
 			
 			$stmt->execute();
