@@ -11,7 +11,7 @@
 	} 
 	else
 	{
-		$sql = "CALL addUser (?, ?, ?, ?, ?);";
+		$sql = "CALL addUser (?, ?, ?, ?, ?)";
 		if($stmt = $conn->prepare($sql))
 		{
 			/*creates the prepared statement*/
@@ -33,7 +33,6 @@
 		
 		$conn->close();
 	}
-	'<email>'
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
