@@ -67,8 +67,8 @@ function doLogin()
 		document.getElementById("loginName").value = loginName.defaultValue;
 		document.getElementById("loginPassword").value =loginPassword.defaultValue;
 
-		document.getElementById("loggedInDiv").style.display = "inline";
-		document.getElementById("loggedInDiv").style.visibility = "visible";
+		// document.getElementById("loggedInDiv").style.display = "inline";
+		// document.getElementById("loggedInDiv").style.visibility = "visible";
 
     hideOrShow( "tabs", true);
 		hideOrShow( "accessUIDiv", true);

@@ -10,6 +10,12 @@ function Course(){
 
 var scheduleList = [];
 
+// this is used to add to the physical collapsable list
+function addtoList(course){
+
+}
+
+// adds class to the schedulelist and is triggered by the addClass button
 function addClass(){
   var course = new Course();
 
@@ -25,6 +31,7 @@ function addClass(){
   // alert(scheduleList[0].className + "," + course.classCode+ "," +course.startTime+ "," +course.endTime+ "," +course.building+ "," +course.notes);
 
   // need to make sure the list is updates properly
+  addtoList(course);
   // the scroll bar needs to be put in
 }
 
@@ -39,4 +46,10 @@ function toggle(elementId){
     } else {
         x.style.visibility = "visible";
     }
+}
+
+function makeSchedule() {
+  document.getElementById("makeSchRes").innerHTML = "";
+
+  var jsonPayload = '{"userID" : "'+userId'", }'
 }
