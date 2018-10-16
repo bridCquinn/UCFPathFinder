@@ -48,8 +48,8 @@ function toggle(elementId){
     }
 }
 
-function makeSchedule() {
-  document.getElementById("makeSchRes").innerHTML = "";
-
-  var jsonPayload = '{"userID" : "'+userId'", }'
-}
+// function makeSchedule() {
+//   document.getElementById("makeSchRes").innerHTML = "";
+//
+//   // var jsonPayload = '{"userID" : "'+userId'", }'
+// }
