@@ -38,4 +38,5 @@ function doLogout(){
   hideOrShow( "tabs", false);
   hideOrShow( "accessUIDiv", false);
   hideOrShow( "loginPage", true);
+  hideOrShow("scaleable-wrapper", true);
 }
