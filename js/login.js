@@ -62,7 +62,7 @@ function doLogin()
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
 
-		document.getElementById("userName").innerHTML = firstName + " " + lastName;
+		//document.getElementById("userName").innerHTML = firstName + " " + lastName;
 
 		document.getElementById("loginName").value = loginName.defaultValue;
 		document.getElementById("loginPassword").value =loginPassword.defaultValue;
