@@ -1,10 +1,12 @@
 
 function Course(){
+  this.building = "";
   this.className = "";
-  this.classCode = "";
   this.startTime = "";
   this.endTime = "";
-  this.building = "";
+  this.classCode = "";
+  this.term = "";
+  this.year = "";
   this.notes = "";
 };
 
@@ -12,6 +14,21 @@ var scheduleList = [];
 
 // this is used to add to the physical collapsable list
 function addtoList(course){
+  var li = document.createElement("li");
+  var t = document.createTextNode(course.classCode + " " + course.className);
+  li.appendChild(t);
+  document.getElementById("myUL").appendChild(li);
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  li.id = course.classCode;
+  li.setAttribute('onclick', "toggle(course)");
+  span.appendChild(txt);
+
+  var div = document.createElement("div");
+  div.id = ("div" + li.id);
+  div.style.display = "none";
+  div.style.visibility = "hidden";
+
 
 }
 
@@ -19,8 +36,8 @@ function addtoList(course){
 function addClass(){
   var course = new Course();
 
-  course.className = document.getElementById("code").value;
-  course.classCode = document.getElementById("name").value;
+  course.className = document.getElementById("name").value;
+  course.classCode = document.getElementById("code").value;
   course.startTime = document.getElementById("start").value;
   course.endTime = document.getElementById("end").value;
   course.building = document.getElementById("address").value;
@@ -28,13 +45,11 @@ function addClass(){
 
   scheduleList.push(course);
 
-  // alert(scheduleList[0].className + "," + course.classCode+ "," +course.startTime+ "," +course.endTime+ "," +course.building+ "," +course.notes);
-
-  // need to make sure the list is updates properly
   addtoList(course);
-  // the scroll bar needs to be put in
 }
 
+// is activated when newSchedule is pressed
+// brings up the newsch modal
 function newSchedule() {
   document.getElementById('newSch').style.display = 'block';
 }
@@ -48,8 +63,43 @@ function toggle(elementId){
     }
 }
 
-// function makeSchedule() {
-//   document.getElementById("makeSchRes").innerHTML = "";
-//
-//   // var jsonPayload = '{"userID" : "'+userId'", }'
-// }
+// used to create a completely new schedule and submits that final
+// classes to the API
+function makeSchedule() {
+  term = document.getElementById("term").value;
+  year = document.getElementById("year").value;
+
+  for(i = 0; i < schedulelist.length; i++)
+  {
+    scheduleList[i].year = year;
+    scheduleList[i].term = term;
+  }
+
+  document.getElementById("makeSchResult").innerHTML = "";
+
+  var jsonPayload = '{"userID" : "'+userId+'", "schedule" : "'+scheduleList+'"}';
+
+  var url = urlBase + '/makeSchedule.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				;
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("makeSchResult").innerHTML = err.message;
+	}
+
+  document.getElementById('newSch').style.display = 'none';
+}
