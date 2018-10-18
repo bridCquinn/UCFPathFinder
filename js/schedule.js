@@ -15,7 +15,7 @@ var scheduleList = [];
 // this is used to add to the physical collapsable list
 function addtoList(course){
   var li = document.createElement("li");
-  var t = document.createTextNode(course.classCode + " " + course.className);
+  var t = document.createTextNode(course.classCode + " - " + course.className);
   li.appendChild(t);
   document.getElementById("myUL").appendChild(li);
   var span = document.createElement("SPAN");
@@ -29,7 +29,12 @@ function addtoList(course){
   div.style.display = "none";
   div.style.visibility = "hidden";
 
-
+  document.getElementById("name").value = name.defaultValue;
+  document.getElementById("code").value = code.defaultValue;
+  document.getElementById("start").value = start.defaultValue;
+  document.getElementById("end").value = end.defaultValue;
+  document.getElementById("address").value = address.defaultValue;
+  document.getElementById("note").value = note.defaultValue;
 }
 
 // adds class to the schedulelist and is triggered by the addClass button
