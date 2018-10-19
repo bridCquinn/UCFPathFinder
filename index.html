@@ -243,8 +243,8 @@
                 </div>
               </div>
             </li>
-          </div><!-- end of accordion-->
-            </ul>
+          </div> </ul><!-- end of accordion-->
+           
             <br>
             <button class="buttons" onclick="makeSchedule()">Submit</button>
             <span id="makeSchResult"></span>
@@ -269,6 +269,7 @@
             </form>
             <button class="buttons" onclick="addClass()">Add Class</button>
           </div>
+		  
         </div> <!-- end of row-->
         </h1>
 
@@ -276,37 +277,58 @@
       </div>
 
     </div> <!--end of modal-->
-
+	</div> <!--end of schedule tab -->
+	
       <div id="Map" class="tabcontent">
 
 	       <!-- Map content + search function -->
-		<div class="row" id="mapUIDiv" style="display:none; visibility:hidden;">
-
-			<div class="card left">
-				<h1>Search</h1>
-				<div class="container">
-					<input class="form-control" id="myInput" type="text" placeholder="Search location..">
-					<div id="myDIV">
-
+		<div class="row">
+			<div class="col-sm-1"> </div>
+			
+			<div class="col-sm-10">
+		
+				<div class="card">
+				
+					<h1>Map</h1>
+					
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="container">
+						
+								<input class="form-control" id="myInput" type="text" placeholder="Search location..">
+							
+								</br>
+						
+							</div>
+						</div>
+						
+						<div class="col-sm-8">
+							<div class="container center" style="background-color:gray">
+					
+										</br>
+										</br>
+										<p> Google Map Goes Here </p>
+										</br>
+										</br>
+								
+							</div>
+						</div>
+						
 					</div>
-					</br>
+					
 				</div>
 			</div>
-
-			<div class="card">
-				<h1> UCF </h1>
-				<div class="container">
-					<div id="falsenamesoitdoesntdoanything" class="card-body" style="width: 30rem; height: 30rem;">
-
-					</div>
-				</div>
-			</div>
-
+			
+			<div class="col-sm-1"> </div>
+		
 		</div>
-
-        <h3>News</h3>
-        <p>Some news this fine day!</p>
-      </div>
+			<div>
+				<h3>News</h3>
+				<p>Some news this fine day!</p>
+			</div>
+			
+		</div>
+		
 
       <div id="Profile" class="tabcontent">
         <h3>Profile</h3>
@@ -314,7 +336,8 @@
       </div>
 
     </div>
-
+	
 
 
 </body>
+</html>
