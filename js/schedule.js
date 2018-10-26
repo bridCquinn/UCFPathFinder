@@ -108,3 +108,39 @@ function makeSchedule() {
 
   document.getElementById('newSch').style.display = 'none';
 }
+
+// delete the entire schedule
+function deleteSchedule()
+{
+  if(confirm("Confirm Delete"))
+  {
+    ;
+  }
+  else {
+    return;
+  }
+
+  var jsonPayload = '{"userId": "'+ userId +'","contactId"}';
+  var url = urlBase + '/DeleteSchedule.' + extension;
+
+  var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+	 	{
+	 		if (this.readyState == 4 && this.status == 200)
+			{
+				;
+				//document.getElementById("deleteContactResult").innerHTML = "Contact has been deleted!";
+			}
+	 	};
+	 	xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("DeleteSchedule").innerHTML = err.message;
+	}
+
+}

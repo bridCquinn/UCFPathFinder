@@ -147,7 +147,8 @@
         <h3>Term Year</h3>
 
         <button class=buttons onclick="newSchedule()">New Schedule</button>
-
+        <button class="buttons" onclick="deleteSchedule()">Delete</button>
+        <span id="delSchResult"></span>
         <!-- <div class="card" style="width: 18rem;height: 15rem;">
           <div class="card-body">
             <h5 class="card-title">Class Name</h5>
@@ -188,7 +189,7 @@
               <div class="force-overflow">
                 <div class="accordion" id="accordionExample">
                   <ul class="list-group" id="myUL" style="list-style-type:none">
-                    
+
                   </ul>
                 </div>
               </div>
@@ -243,11 +244,12 @@
                 </div>
               </div>
             </li>
-          </div><!-- end of accordion-->
-            </ul>
+          </div>
+            </ul> -->
             <br>
             <button class="buttons" onclick="makeSchedule()">Submit</button>
             <span id="makeSchResult"></span>
+
           </div> <!--end of col-6 for class list-->
 
           <div class="col-6">
