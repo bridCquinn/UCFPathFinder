@@ -8,6 +8,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Dosis', sans-serif;
   line-height: 1.6;
+  overflow-y: auto;
 }
 
 .very-specific-design {
@@ -50,6 +51,8 @@ html {
   border-radius: 12px;
   overflow: hidden;
   transition: all .2s linear;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 h1 {
