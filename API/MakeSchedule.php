@@ -12,6 +12,15 @@
 */
 
 	$inData = getRequestInfo();
+	$temp = 15;
+	$temp1 = 1;
+	$temp2 = "test";
+	$temp3 = "12:00:00";
+	$temp4 = "13:15:00";
+	$temp5 = "test1234";
+	$temp6 = "fall";
+	$temp7 = 2018;
+	$temp8 = "test test test";
 //    	$userID = $inData["userID"];
 //    	$array  = $inData["schedule"];
 
@@ -39,7 +48,7 @@
        	    if($stmt = $conn->prepare($sql))
             {
 		    
-		   $stmt->bind_param('iisssssis', 15, 15, "a","a","a","a","a",15,"a");
+		   $stmt->bind_param('iisssssis', $temp,$temp1,$temp2,$temp3,$temp4,$temp5,$temp6,$temp7,$temp8 );
 
             	    $stmt->execute();
             	    $result = $stmt->get_result();
