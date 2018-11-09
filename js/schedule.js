@@ -74,7 +74,7 @@ function makeSchedule() {
   term = document.getElementById("term").value;
   year = document.getElementById("year").value;
 
-  for(i = 0; i < schedulelist.length; i++)
+  for(i = 0; i < scheduleList.length; i++)
   {
     scheduleList[i].year = year;
     scheduleList[i].term = term;
