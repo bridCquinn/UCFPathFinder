@@ -2,7 +2,7 @@ function dophpTest()
 {
 
 	alert();
-var jsonPayload = '{" "}';
+var jsonPayload = '{" " : ""}';
 	var url = urlBase + '/MakeSchedule.' + extension;
 
 	var xhr = new XMLHttpRequest();
