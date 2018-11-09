@@ -1,5 +1,6 @@
 function dophpTest{
 
+	alert();
 var jsonPayload = '{" "}';
 	var url = urlBase + '/MakeSchedule.' + extension;
 
