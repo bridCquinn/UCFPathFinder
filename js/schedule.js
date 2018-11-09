@@ -84,7 +84,7 @@ function makeSchedule() {
 
   var jsonPayload = '{"userID" : "'+userId+'", "schedule" : "'+scheduleList+'"}';
 
-  var url = urlBase + '/makeSchedule.' + extension;
+  var url = urlBase + '/MakeSchedule.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
