@@ -1,5 +1,20 @@
 <?php
+/*
+    JSON package expected
+    { 
+      "userID"   :  <<userID>>
+      "schedule" :  <<Array of classes>>
+    }
+    
+    Array Format :  Every 8 indices is a class 
+    Indices      :  buildingID, className, startTime, endTime, classCode,
+                    term, year, notes
+*/
+
 	$inData = getRequestInfo();
+    	$userID = $inData["userID"];
+    	$array  = $inData["schedule"];
+    	$length = count($array);
 	
 	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
 	if ($conn->connect_error) 
@@ -8,27 +23,30 @@
 	} 
 	else
 	{  
-	    $sql = "CALL addClass (?, ?, ?, ?, ?, ?, ?, ?,  ?);";
+        // CALL addClass (<userID>, <buildingID>, '<className>',
+        // <startTime>, <endTime>, '<classCode>', '<term>', <year>,
+        //  '<notes>');
+	    $sql = "CALL addClass (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	    $stmt = 0;
 		
-        if($stmt = $conn->prepare($sql))
-        {
-            	$stmt->bind_param('iisssssis', $inData["userID"],
-                   $inData["buildingID"],$inData["className"],
-                   $inData["startTime"],
-                   $inData["endTime"],$inData["classCode"],
-                   $inData["term"],
-                   $inData["year"],$inData["notes"]);
+       	    if($stmt = $conn->prepare($sql))
+            {
+                for($i = 0; $i < ($length % 8); $i++) { 
+            	    $stmt->bind_param('iisssssis', $userID, $array[$i*8],
+                        $array[$i*8+1],$array[$i*8+2],$array[$i*8+3],
+                        $array[$i*8+4],$array[$i*8+5],$array[$i*8+6],
+                        $array[$i*8+7]);
 
-            	$stmt->execute();
-            	$result = $stmt->get_result();
-		}
-		else
-		{
-			returnWithError( $conn->error );
-        }
+            	    $stmt->execute();
+            	    $result = $stmt->get_result();
+                }
+	    }
+	    else
+	    {
+		returnWithError( $conn->error );
+            }
 	
-		$conn->close();
+	    $conn->close();
 	}
 
 	function getRequestInfo()
@@ -47,4 +65,4 @@
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
-?>
+ ?>
