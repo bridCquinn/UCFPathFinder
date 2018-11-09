@@ -14,6 +14,13 @@
 	$inData = getRequestInfo();
     	$userID = $inData["userID"];
     	$array  = $inData["schedule"];
+
+	$userID = 15;
+    	$array = [0,"test","","","test","test",0,"test"];    
+//      $array = [0,"test","","","test","test",0,"test",
+//              1,"test1","","","test1","test1",1,"test1"];
+
+
     	$length = count($array);
 	
 	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
