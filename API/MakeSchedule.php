@@ -48,10 +48,10 @@
        	    if($stmt = $conn->prepare($sql))
             {
 		    
-		   $stmt->bind_param('iisssssis', $temp,$temp1,$temp2,$temp3,$temp4,$temp5,$temp6,$temp7,$temp8 );
+		//   $stmt->bind_param('iisssssis', $temp,$temp1,$temp2,$temp3,$temp4,$temp5,$temp6,$temp7,$temp8 );
 
-            	    $stmt->execute();
-            	    $result = $stmt->get_result();
+            	//    $stmt->execute();
+            	//    $result = $stmt->get_result();
 		    /*
                 for($i = 0; $i < ($length % 8); $i++) { 
             	    $stmt->bind_param('iisssssis', $userID, $array[$i*8],
