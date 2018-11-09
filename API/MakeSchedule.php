@@ -16,7 +16,7 @@
     	$array  = $inData["schedule"];
 
 	$userID = 15;
-    	$array = [0,"test","","","test","test",0,"test"];    
+//    	$array = [0,"test","","","test","test",0,"test"];    
 //      $array = [0,"test","","","test","test",0,"test",
 //              1,"test1","","","test1","test1",1,"test1"];
 
@@ -38,6 +38,12 @@
 		
        	    if($stmt = $conn->prepare($sql))
             {
+		    
+		   $stmt->bind_param('iisssssis', 15, 15, "a","a","a","a","a",15,"a");
+
+            	    $stmt->execute();
+            	    $result = $stmt->get_result();
+		    /*
                 for($i = 0; $i < ($length % 8); $i++) { 
             	    $stmt->bind_param('iisssssis', $userID, $array[$i*8],
                         $array[$i*8+1],$array[$i*8+2],$array[$i*8+3],
@@ -47,6 +53,7 @@
             	    $stmt->execute();
             	    $result = $stmt->get_result();
                 }
+		*/
 	    }
 	    else
 	    {
