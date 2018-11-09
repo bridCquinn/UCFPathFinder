@@ -6,9 +6,6 @@
       "schedule" :  <<Array of classes>>
     }
     
-    Array Format :  Every 8 indices is a class 
-    Indices      :  buildingID, className, startTime, endTime, classCode,
-                    term, year, notes
 */
 
 	$inData = getRequestInfo();
