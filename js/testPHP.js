@@ -1,4 +1,5 @@
-function dophpTest{
+function dophpTest()
+{
 
 	alert();
 var jsonPayload = '{" "}';
