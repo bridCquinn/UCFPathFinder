@@ -27,8 +27,8 @@
 		
        	    if($stmt = $conn->prepare($sql))
             {
-                for($i = 0; $i < $length; $i++) 
-		{ 
+                //for($i = 0; $i < $length; $i++) 
+		//{ 
 		   //$class = $array[$i];
 		    $temp = 1;
 		    $class = json_decode($array[$i], true);
@@ -39,7 +39,7 @@
 
             	    $stmt->execute();
             	    $result = $stmt->get_result();
-                }
+               // }
 	    }
 	    else
 	    {
