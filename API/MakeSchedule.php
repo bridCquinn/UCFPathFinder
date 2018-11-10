@@ -3,15 +3,14 @@
     JSON package expected
     { 
       "userID"   :  <<userID>>
-      "schedule" :  <<Array of classes>>
+      "schedule" :  <<Array of Class Objects in JSON Format>>
     }
     
 */
 	$inData = getRequestInfo();
     	$userID = $inData["userID"];
     	$array  = $inData["schedule"];
-
-//    	$length = count($array);
+    	$length = count($array);
 	
 	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
 	if ($conn->connect_error) 
@@ -28,26 +27,17 @@
 		
        	    if($stmt = $conn->prepare($sql))
             {
-
-		    $stmt->bind_param('iisssssis', $userID, $array[0],
-                        $array[1],$array[2],$array[3],
-                        $array[4],$array[5],$array[6],
-                        $array[7]);
-
-            	    $stmt->execute();
-            	    $result = $stmt->get_result();
-		    
-		    /*
-                for($i = 0; $i < $length; $i++) { 
-            	    $stmt->bind_param('iisssssis', $userID, $array[?],
-                        $array[?],$array[?],$array[?],
-                        $array[?],$array[?],$array[?],
-                        $array[?]);
+                for($i = 0; $i < $length; $i++) 
+		{ 
+		   $class = $array[$i];
+            	    $stmt->bind_param('iisssssis', $userID, $class["building"],
+				      $class["className"],$class["startTime"],$class["endTime"],
+				      $class["classCode"],$class["term"],$class["year"],
+				      $class["notes"]);
 
             	    $stmt->execute();
             	    $result = $stmt->get_result();
                 }
-		*/
 	    }
 	    else
 	    {
