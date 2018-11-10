@@ -30,7 +30,7 @@
                 //for($i = 0; $i < $length; $i++) 
 		//{ 
 		   //$class = $array[$i];
-		    $class = json_decode($array[0], true);
+		    $class = $array[0];
             	    $stmt->bind_param('iisssssis', $userID, $class["building"],
 				      $class["className"],$class["startTime"],$class["endTime"],
 				      $class["classCode"],$class["term"],$class["year"],
