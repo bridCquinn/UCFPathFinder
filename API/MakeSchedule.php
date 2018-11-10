@@ -30,7 +30,8 @@
                 for($i = 0; $i < $length; $i++) 
 		{ 
 		   $class = $array[$i];
-            	    $stmt->bind_param('iisssssis', $userID, $class["building"],
+			$temp = 1;
+            	    $stmt->bind_param('iisssssis', $userID, $temp,
 				      $class["className"],$class["startTime"],$class["endTime"],
 				      $class["classCode"],$class["term"],$class["year"],
 				      $class["notes"]);
