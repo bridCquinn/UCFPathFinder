@@ -9,8 +9,8 @@
 */
 
 	$inData = getRequestInfo();
-//    	$userID = $inData["userID"];
-//    	$array  = $inData["schedule"];
+    	$userID = $inData["userID"];
+    	$array  = $inData["schedule"];
 
 	echo("HERE");
 //    	$length = count($array);
@@ -31,6 +31,14 @@
        	    if($stmt = $conn->prepare($sql))
             {
 
+		    $stmt->bind_param('iisssssis', $userID, $array[0],
+                        $array[1],$array[2],$array[3],
+                        $array[4],$array[5],$array[6],
+                        $array[7]);
+
+            	    $stmt->execute();
+            	    $result = $stmt->get_result();
+		    
 		    /*
                 for($i = 0; $i < $length; $i++) { 
             	    $stmt->bind_param('iisssssis', $userID, $array[?],
