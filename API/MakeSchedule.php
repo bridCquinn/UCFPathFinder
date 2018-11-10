@@ -31,7 +31,7 @@
 		//{ 
 		   //$class = $array[$i];
 		    $temp = 1;
-		    $class = json_decode($array[$i], true);
+		    $class = json_decode($array[0], true);
             	    $stmt->bind_param('iisssssis', $userID, $temp,
 				      $class["className"],$class["startTime"],$class["endTime"],
 				      $class["classCode"],$class["term"],$class["year"],
