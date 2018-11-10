@@ -7,12 +7,10 @@
     }
     
 */
-
 	$inData = getRequestInfo();
     	$userID = $inData["userID"];
     	$array  = $inData["schedule"];
 
-	echo("HERE");
 //    	$length = count($array);
 	
 	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
