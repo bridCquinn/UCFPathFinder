@@ -27,10 +27,9 @@
 		
        	    if($stmt = $conn->prepare($sql))
             {
-                //for($i = 0; $i < $length; $i++) 
-		//{ 
-		   //$class = $array[$i];
-		    $class = $array[0];
+                for($i = 0; $i < $length; $i++) 
+		{ 
+		    $class = $array[$i];
             	    $stmt->bind_param('iisssssis', $userID, $class["building"],
 				      $class["className"],$class["startTime"],$class["endTime"],
 				      $class["classCode"],$class["term"],$class["year"],
@@ -38,7 +37,7 @@
 
             	    $stmt->execute();
             	    $result = $stmt->get_result();
-               // }
+                }
 	    }
 	    else
 	    {
