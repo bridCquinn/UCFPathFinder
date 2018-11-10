@@ -29,8 +29,9 @@
             {
                 for($i = 0; $i < $length; $i++) 
 		{ 
-		   $class = $array[$i];
-			$temp = 1;
+		   //$class = $array[$i];
+		    $temp = 1;
+		    $class = json_decode($array[$i], true);
             	    $stmt->bind_param('iisssssis', $userID, $temp,
 				      $class["className"],$class["startTime"],$class["endTime"],
 				      $class["classCode"],$class["term"],$class["year"],
