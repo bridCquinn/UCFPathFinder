@@ -74,7 +74,7 @@ function makeSchedule() {
   term = document.getElementById("term").value;
   year = document.getElementById("year").value;
 
-  for(i = 0; i < schedulelist.length; i++)
+  for(i = 0; i < scheduleList.length; i++)
   {
     scheduleList[i].year = year;
     scheduleList[i].term = term;
@@ -107,6 +107,8 @@ function makeSchedule() {
 	}
 
   document.getElementById('newSch').style.display = 'none';
+
+
 }
 
 // delete the entire schedule
@@ -142,5 +144,26 @@ function deleteSchedule()
 	{
 		document.getElementById("DeleteSchedule").innerHTML = err.message;
 	}
+
+}
+
+function makeTile(course)
+{
+  var card = document.createElement("div");
+  var body = document.createElement("div");
+  var title = document.createTextNode(course.className);
+  var code = document.createTextNode(course.classCode);
+  var time = document.createTextNode(course.startTime + " - " + course.endTime);
+  var place = document.createTextNode(course.building);
+  var notes = document.createTextNode(course.notes);
+
+  card.appendChild(body);
+  body.appendChild(t);
+  card.classList.add("card-1");
+  body.classList.add("card-body");
+  document.getElementById("classes").appendChild(card);
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.appendChild(txt);
 
 }
