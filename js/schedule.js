@@ -82,9 +82,9 @@ function makeSchedule() {
 
   document.getElementById("makeSchResult").innerHTML = "";
 
-  var jsonPayload = '{"userID" : "'+userId+'", "schedule" : "'+scheduleList+'"}';
+  var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(scheduleList)+'}';
 
-  var url = urlBase + '/makeSchedule.' + extension;
+  var url = urlBase + '/MakeSchedule.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
