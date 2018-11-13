@@ -1,8 +1,16 @@
 <?php
-    /*
-        Recieves userID, classCode, term and year 
-        Deletes class associated with that userID classCode term and year
-    */
+	/*
+    
+   		JSON package expected
+    		{ 
+      			"userID"    :  <<userID>>
+			"classCode" :  <<ClassCode>>
+			"term" 	    :  <<term>>
+			"year"      :  <<year>>
+    		}
+		
+        	Deletes class associated with that userID classCode term and year
+    	*/
 
 	$inData = getRequestInfo();
 	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
