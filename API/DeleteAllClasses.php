@@ -1,6 +1,10 @@
 <?php
     /*
-        Recieves userID 
+    
+   	 JSON package expected
+    	{ 
+      		"userID"   :  <<userID>>
+    	}
         Deletes all classes associated with that userID    
     */
 
