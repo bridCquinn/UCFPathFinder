@@ -73,9 +73,10 @@ function toggle(elementId){
 function makeSchedule() {
   term = document.getElementById("term").value;
   year = document.getElementById("year").value;
-  makeTile(scheduleList[0]);
+
   for(i = 0; i < scheduleList.length; i++)
   {
+    makeTile(scheduleList[i]);
     scheduleList[i].year = year;
     scheduleList[i].term = term;
   }
@@ -151,6 +152,11 @@ function makeTile(course)
 {
   var card = document.createElement("div");
   var body = document.createElement("div");
+  var h5 = document.createElement("H5")
+  var h6code = document.createElement("H6");
+  var h6time = document.createElement("H6");
+  var ptime = document.createElement("p");
+  var pnote = document.createElement("p");
   var title = document.createTextNode(course.className);
   var code = document.createTextNode(course.classCode);
   var time = document.createTextNode(course.startTime + " - " + course.endTime);
@@ -158,13 +164,23 @@ function makeTile(course)
   var notes = document.createTextNode(course.notes);
 
   card.appendChild(body);
-  body.appendChild(title);
-  body.appendChild(code);
-  body.appendChild(time);
+  body.appendChild(h5);
+  h5.appendChild(title);
+  body.appendChild(h6code);
+  h6code.appendChild(code);
+  body.appendChild(ptime);
+  ptime.appendChild(h6time);
+  h6time.appendChild(time);
   body.appendChild(place);
-  body.appendChild(notes);
+  body.appendChild(pnote);
+  pnote.appendChild(notes);
+
   card.classList.add("card-1");
   body.classList.add("card-body");
+  h5.classList.add("card-title");
+  h6code.classList.add("card-subtitle");
+  ptime.classList.add("card-text");
+  pnote.classList.add("card-text");
   document.getElementById("classes").appendChild(card);
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
