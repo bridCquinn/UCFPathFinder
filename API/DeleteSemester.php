@@ -23,7 +23,7 @@
             		//$year = $inData["year"];
 			$userID = 25;
 			$term = 'fall';
-			$year = 2019
+			$year = 2019;
 			$stmt->execute();
 		}
 		else
