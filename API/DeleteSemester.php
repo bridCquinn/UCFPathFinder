@@ -1,7 +1,13 @@
 <?php
-    /*
-        Recieves userID, term and year 
-        Deletes all classes associated with that userID term and year
+    /*    
+   		JSON package expected
+    		{ 
+      			"userID"    :  <<userID>>
+			"term" 	    :  <<term>>
+			"year"      :  <<year>>
+    		}
+	
+        	Deletes all classes associated with that userID term and year
     */
 
 	$inData = getRequestInfo();
