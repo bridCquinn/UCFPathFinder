@@ -181,6 +181,7 @@ function makeTile(course)
   pnote.appendChild(notes);
 
   card.classList.add("card-1");
+  card.style.float = "left";
   body.classList.add("card-body");
   h5.classList.add("card-title");
   h6code.classList.add("card-subtitle");
