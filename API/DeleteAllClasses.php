@@ -18,7 +18,8 @@
 		if($stmt != false) 
 		{
 			$stmt->bind_param('i', $userID);
-			$userID = $inData["userId"];
+			//$userID = $inData["userId"];
+			$userID = 25;
 			$stmt->execute();
 		}
 		else
