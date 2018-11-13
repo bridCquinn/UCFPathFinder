@@ -18,10 +18,14 @@
 		if($stmt != false) 
 		{
 			$stmt->bind_param('issi', $userID, $classCode, $term, $year);
-			$userID = $inData["userId"];
-            $classCode = $inData["classCode"];
-            $term = $inData["term"];
-            $year = $inData["year"];
+			//$userID = $inData["userId"];
+            //$classCode = $inData["classCode"];
+            //$term = $inData["term"];
+            //$year = $inData["year"];
+			$userID = 25;
+			$classCode = '2';
+			$term = 'fall';
+			$year = 2018;
 			$stmt->execute();
 		}
 		else
