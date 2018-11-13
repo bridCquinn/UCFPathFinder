@@ -73,7 +73,7 @@ function toggle(elementId){
 function makeSchedule() {
   term = document.getElementById("term").value;
   year = document.getElementById("year").value;
-
+  makeTile(scheduleList[0]);
   for(i = 0; i < scheduleList.length; i++)
   {
     scheduleList[i].year = year;
@@ -158,7 +158,11 @@ function makeTile(course)
   var notes = document.createTextNode(course.notes);
 
   card.appendChild(body);
-  body.appendChild(t);
+  body.appendChild(title);
+  body.appendChild(code);
+  body.appendChild(time);
+  body.appendChild(place);
+  body.appendChild(notes);
   card.classList.add("card-1");
   body.classList.add("card-body");
   document.getElementById("classes").appendChild(card);
