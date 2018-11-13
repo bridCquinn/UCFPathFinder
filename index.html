@@ -143,23 +143,25 @@
     <div class="main" id="accessUIDiv" style="display:none; visibility:hidden;">
 
       <div id="schedule" class="tabcontent">
-        <h3>Term Year</h3>
+        <h3><span id="termYear"></span></h3>
 
           <!-- <button class="buttons" onclick="deleteSchedule()">Delete</button>
         <span id="delSchResult"></span> -->
         <div class = row>
           <div id="classes">
           </div>
-
+        </div>
           <!-- this is the add button/card -->
+        <div class = row style="float:right;position: fixed;bottom: 0;right: 0;;">
           <a onclick="newSchedule()">
-          <div class="card-1" id="open" style="width: 18rem;">
-            <div class="card-body">
+          <div class="card-1" id="open" style="width: 6rem;">
+            <div class="card-body" style="width: 6rem;height: 6rem;">
               <img src="images/Plus_Sign.png">
             </div>
           </div>
         </a>
       </div>
+
 
     <!-- create new schedule modal -->
     <div id="newSch" class ="modal">
@@ -254,6 +256,27 @@
                 <div class="col-4"><input class="form-control mr-sm-2" type="text" id="code" name="classCode" placeholder="Class Code"></div>
                 <div class="col-8"><input class="form-control mr-sm-2" type="text" id="name" name="className" placeholder="Class Name"></div>
               </div><br>
+              <div class="row">
+              <select class="form-control mr-sm-2" id="ddlPattern" name="ddlPattern"><option id="pattern" value="Select A Pattern">Select A Pattern</option>
+                <option value="MWF">MWF</option>
+                <option value="TR">TR</option>
+                <option value="MW">MW</option>
+                <option value="T">T</option>
+                <option value="R">R</option>
+                <option value="F">F</option>
+                <option value="W">W</option>
+                <option value="M">M</option>
+                <option value="MF">MF</option>
+                <option value="WF">WF</option>
+                <option value="TRF">TRF</option>
+                <option value="MTWRF">MTWRF</option>
+                <option value="MWRF">MWRF</option>
+                <option value="MTWR">MTWR</option>
+                <option value="MTWF">MTWF</option>
+                <option value="TWR">TWR</option>
+                <option value="Not Listed">Not Listed</option>
+              </select>
+            </div>
               <div class="row">
                 <div class="col-6">Start:<input class="form-control mr-sm-2" type="time" id="start" name="start"></div>
                 <div class="col-6">End:<input class="form-control mr-sm-2" type="time" id="end" name="end"></div>

@@ -2,6 +2,7 @@
 function Course(){
   this.building = "";
   this.className = "";
+  this.classDays = "";
   this.startTime = "";
   this.endTime = "";
   this.classCode = "";
@@ -29,8 +30,9 @@ function addtoList(course){
   div.style.display = "none";
   div.style.visibility = "hidden";
 
-  document.getElementById("name").value = name.defaultValue;
+  document.getElementById("name").value = "";
   document.getElementById("code").value = code.defaultValue;
+  document.getElementById("ddlPattern").selectedIndex = 0;
   document.getElementById("start").value = start.defaultValue;
   document.getElementById("end").value = end.defaultValue;
   document.getElementById("address").value = address.defaultValue;
@@ -43,6 +45,7 @@ function addClass(){
 
   course.className = document.getElementById("name").value;
   course.classCode = document.getElementById("code").value;
+  course.classDays = document.getElementById("ddlPattern").value;
   course.startTime = document.getElementById("start").value;
   course.endTime = document.getElementById("end").value;
   course.building = document.getElementById("address").value;
@@ -80,7 +83,7 @@ function makeSchedule() {
     scheduleList[i].year = year;
     scheduleList[i].term = term;
   }
-
+  document.getElementById("termYear").innerHTML= term + " " + year;
   document.getElementById("makeSchResult").innerHTML = "";
 
   var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(scheduleList)+'}';
@@ -159,6 +162,7 @@ function makeTile(course)
   var pnote = document.createElement("p");
   var title = document.createTextNode(course.className);
   var code = document.createTextNode(course.classCode);
+  var days = document.createTextNode(course.classDays);
   var time = document.createTextNode(course.startTime + " - " + course.endTime);
   var place = document.createTextNode(course.building);
   var notes = document.createTextNode(course.notes);
@@ -168,6 +172,7 @@ function makeTile(course)
   h5.appendChild(title);
   body.appendChild(h6code);
   h6code.appendChild(code);
+  body.appendChild(days);
   body.appendChild(ptime);
   ptime.appendChild(h6time);
   h6time.appendChild(time);
