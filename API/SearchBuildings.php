@@ -21,7 +21,7 @@
 	} 
 	else
 	{	
-		$sql = "CALL searhBuildingsBoth(?,?);";
+		$sql = "CALL searchBuildingsBoth(?,?);";
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
 		{
