@@ -25,9 +25,9 @@
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
 		{
-			$stmt->bind_param('ss', $buildingName, $buildingName);
-			//$buildingName = $inData["search"];
-			$buildingName = "a";
+			$stmt->bind_param('ss', $search, $search);
+			//$search = $inData["search"];
+			$search = "a";
 			$stmt->execute();
             		$result = $stmt->get_result();
 
