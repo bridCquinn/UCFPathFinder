@@ -7,7 +7,7 @@
 
     JSON package returned
     {
-      "results"  :  <<Array of arrays. Each index being a building>> 
+      "results"  :  <<Array of building arrays>> 
       "error"    :  <<error if one exists>>
     }
     Each building array : [buildingID, buildingAbbreviation, buildingName]
@@ -44,11 +44,12 @@
 					}
 			
 					$searchCount++;
-                			// Create and initialize variable with contact attribute
+                			// Initialize variables to be added to searchResults
 					$buildingID = $row["buildingID"];
 					$buildingAbb = $row["buildingAbbreviation"];
 					$buildingName = $row["buildingName"];
 
+					// Create building array and added to searchResults
 					$searchResults .= '["' . $buildingID . '","' . $buildingAbb 
                             			. '","' . $buildingName . '"]';
 				}
