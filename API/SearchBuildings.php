@@ -8,6 +8,7 @@
     JSON package returned
     {
       "results"  :  <<Array of arrays. Each index being a building>> 
+      "error"    :  <<error if one exists>>
     }
     Each building array : [buildingID, buildingAbbreviation, buildingName]
 */
@@ -25,9 +26,8 @@
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
 		{
-			$search = 'a';
 			$stmt->bind_param('ss', $search, $search);
-			//$search = $inData["search"];
+			$search = $inData["search"];
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
