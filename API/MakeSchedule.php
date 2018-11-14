@@ -6,6 +6,10 @@
       "schedule" :  <<Array of Class Objects in JSON Format>>
     }
     
+    JSON package returned if error
+    {
+     "error"     :  <<error message if one exisits>>
+    }
 */
 	$inData = getRequestInfo();
     	$userID = $inData["userID"];
