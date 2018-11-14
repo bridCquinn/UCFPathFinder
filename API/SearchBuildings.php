@@ -25,9 +25,9 @@
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
 		{
+			$search = 'ENG1';
 			$stmt->bind_param('ss', $search, $search);
 			//$search = $inData["search"];
-			$search = 'ENG1';
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
