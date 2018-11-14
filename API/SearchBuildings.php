@@ -31,7 +31,7 @@
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
-			echo( $result );
+			echo( $result->fetch_assoc() );
 		}
 	}
 			/*
@@ -87,7 +87,7 @@
 
     function returnWithInfo( $searchResults )
 	{
-		$retValue = '{"results":' . $searchResults . ',"error":""}';
+		$retValue = '{"results": [' . $searchResults . '] ,"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}*/
 ?>
