@@ -27,7 +27,7 @@
 		{
 			$stmt->bind_param('ss', $search, $search);
 			//$search = $inData["search"];
-			$search = 'a';
+			$search = 'ENG1';
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
