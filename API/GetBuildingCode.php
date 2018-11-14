@@ -26,10 +26,9 @@
 		if($stmt != false) 
 		{
 			$stmt->bind_param('i', $buildingID);
-			//$buildingID = $inData["buildingID"];
-            $buildingID = 1;			
-            $stmt->execute();
-            $result = $stmt->get_result();
+			$buildingID = $inData["buildingID"];			
+            		$stmt->execute();
+            		$result = $stmt->get_result();
 
             if ($result->num_rows > 0)
             {
