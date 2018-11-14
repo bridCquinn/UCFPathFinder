@@ -32,6 +32,8 @@
 			
             		$result = $stmt->get_result();
 			echo( $result );
+		}
+	}
 			/*
             		if ($result->num_rows > 0)
 			{
