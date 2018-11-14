@@ -31,7 +31,7 @@
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
-			echo( $result->fetch_assoc() );
+			echo( $result == NULL );
 		}
 	}
 			/*
