@@ -9,7 +9,7 @@
     {
       "results"  :  <<Array of arrays. Each index being a building>> 
     }
-    Each building array : [buildingID, buildingAbbreviation, buildingName, plusCode]
+    Each building array : [buildingID, buildingAbbreviation, buildingName]
 */
 
 	$inData = getRequestInfo();
@@ -31,7 +31,7 @@
 			$stmt->execute();
             		$result = $stmt->get_result();
 
-            if ($result->num_rows > 0)
+            		if ($result->num_rows > 0)
 			{
 				while($row = $result->fetch_assoc())
 				{
@@ -39,18 +39,17 @@
 					{
 						$searchResults .= ",";
 					}
-				
+			
 					$searchCount++;
                 			// Create and initialize variable with contact attribute
 					$buildingID = $row["buildingID"];
 					$buildingAbb = $row["buildingAbbreviation"];
 					$buildingName = $row["buildingName"];
-              	  			$plusCode = $row["plusCode"];
 
 					$searchResults .= '["' . $buildingID . '","' . $buildingAbb 
-                            . '","' . $buildingName . '","' . $plusCode . '"]';
+                            			. '","' . $buildingName . '"]';
 				}
-				returnWithInfo( $searchResults );
+					returnWithInfo( $searchResults );
 			}
 			else
 			{
