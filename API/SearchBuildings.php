@@ -26,9 +26,10 @@
 		if($stmt != false) 
 		{
 			$stmt->bind_param('ss', $buildingName, $buildingName);
-			$buildingName = $inData["search"];
+			//$buildingName = $inData["search"];
+			$buildingName = "a";
 			$stmt->execute();
-            $result = $stmt->get_result();
+            		$result = $stmt->get_result();
 
             if ($result->num_rows > 0)
 			{
@@ -44,7 +45,7 @@
 					$buildingID = $row["buildingID"];
 					$buildingAbb = $row["buildingAbbreviation"];
 					$buildingName = $row["buildingName"];
-              	  	$plusCode = $row["plusCode"];
+              	  			$plusCode = $row["plusCode"];
 
 					$searchResults .= '["' . $buildingID . '","' . $buildingAbb 
                             . '","' . $buildingName . '","' . $plusCode . '"]';
