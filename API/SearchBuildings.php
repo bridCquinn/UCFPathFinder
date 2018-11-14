@@ -31,7 +31,7 @@
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
-			echo( $result != NULL );
+			echo( mysqli_fetch_assoc($result) );
 		}
 	}
 			/*
