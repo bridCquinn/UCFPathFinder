@@ -31,10 +31,9 @@
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
-			echo( mysqli_fetch_assoc($result) );
-		}
-	}
-			/*
+			
+			$searchCount = 0;
+			$searchResults = "";
             		if ($result->num_rows > 0)
 			{
 				while($row = $result->fetch_assoc())
@@ -66,13 +65,13 @@
 		}
 		$conn->close();
 	}
-*/
+
 
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
 	}
-/*
+
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
@@ -89,5 +88,5 @@
 	{
 		$retValue = '{"results": [' . $searchResults . '] ,"error":""}';
 		sendResultInfoAsJson( $retValue );
-	}*/
+	}
 ?>
