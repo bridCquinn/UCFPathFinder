@@ -31,7 +31,8 @@
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
-
+			echo( $result );
+			/*
             		if ($result->num_rows > 0)
 			{
 				while($row = $result->fetch_assoc())
@@ -85,5 +86,5 @@
 	{
 		$retValue = '{"results":' . $searchResults . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
-	}
+	}*/
 ?>
