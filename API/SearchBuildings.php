@@ -27,8 +27,9 @@
 		{
 			$stmt->bind_param('ss', $search, $search);
 			//$search = $inData["search"];
-			$search = "a";
+			$search = 'a';
 			$stmt->execute();
+			
             		$result = $stmt->get_result();
 
             		if ($result->num_rows > 0)
