@@ -55,7 +55,7 @@
 				
 					$searchCount++;
 					
-					$classID = $row["$classID"];
+					$classID = $row["classID"];
 					$buildingID = $row["buildingID"];
 					$className = $row["className"];
               	  			$startTime = $row["startTime"];
