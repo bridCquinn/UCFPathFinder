@@ -63,7 +63,7 @@
                 	$notes = $row["notes"];
                 	$classDays = $row["days"];
 				 
-                	$searchResults = "['".$classID."','".$buildingID."','"
+                	$searchResults = "['".$buildingID."','"
                         .$className."','".$startTime."','".$endTime."','"
                         .$classCode."','".$term."','".$year."','".$notes."','"
                         .$classDays."']";
