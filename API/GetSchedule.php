@@ -31,9 +31,9 @@
 		{
 			$stmt->bind_param('isi', $userID, $term, $year);
 			if($argc > 1) {
-				$userID = $argc[3];
+				$userID = $argc[1];
 				$term = $argc[2];
-				$year = $argc[1];
+				$year = $argc[3];
 				echo($userID."\n".$term."\n".$year."\n");
 			}
 			else {
