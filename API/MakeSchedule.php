@@ -33,8 +33,8 @@
 		    $class = $array[$i];
             	    $stmt->bind_param('iisssssiss', $userID, $class["building"],
 				      $class["className"],$class["startTime"],$class["endTime"],
-				      $class["classCode"],$class["term"],$class["year"], $class["classDays"],
-				      $class["notes"]);
+				      $class["classCode"],$class["term"],$class["year"], $class["notes"],
+				      $class["classDays"]);
 
             	    $stmt->execute();
             	    $result = $stmt->get_result();
