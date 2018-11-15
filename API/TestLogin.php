@@ -46,7 +46,7 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				$schedule = shell_exec($call);
 				$temp2 = json_decode($schedule);
 				$temp = $temp2["results"];
-				echo $temp;
+				echo count($temp);
 			  
 				//returnWithInfo($firstName, $lastName, $userID, $schedule);
 			}
