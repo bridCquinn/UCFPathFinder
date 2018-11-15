@@ -12,7 +12,7 @@
       "results"  :  <<Array of class arrays>> 
       "error"    :  <<error if one exists>>
     }
-    Each class array : [buildingID, className, startTime, endTime, 
+    Each class array : [classID, buildingID, className, startTime, endTime, 
                         classCode, term, year, notes, classDays]
 */
 
@@ -30,9 +30,12 @@
 		if($stmt != false) 
 		{
 			$stmt->bind_param('isi', $userID, $term, $year);
-			$userID = $inData["userID"];
-            		$term = $inData["term"];
-			$year = $inData["year"];
+			//$userID = $inData["userID"];
+            		//$term = $inData["term"];
+			//$year = $inData["year"];
+			$userID = 25;
+			$term = "fall";
+			$year = 2018;
 			
 			$stmt->execute();
 			  
@@ -51,7 +54,8 @@
 					}
 				
 					$searchCount++;
-
+					
+					$classID = $row["$classID"];
 					$buildingID = $row["buildingID"];
 					$className = $row["className"];
               	  			$startTime = $row["startTime"];
@@ -62,7 +66,7 @@
                 			$notes = $row["notes"];
                 			$classDays = $row["days"];
 				 
-                			$searchResults .= "['".$buildingID."','"
+                			$searchResults .= "['".$classID."','".$buildingID."','"
                         			.$className."','".$startTime."','".$endTime."','"
                         			.$classCode."','".$term."','".$year."','".$notes."','"
                         			.$classDays."']";
