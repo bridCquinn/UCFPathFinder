@@ -42,10 +42,10 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				$conn->query($sql2);
 				*/
 				// TESTING
-				$call = "php GetSchedule.php fall 2018 ".$userID;
-				$schedule = shell_exec($call);
+				//$call = "php GetSchedule.php fall 2018 ".$userID;
+				//$schedule = shell_exec($call);
 			
-				returnWithInfo($firstName, $lastName, $userID, $schedule);
+				returnWithInfo($firstName, $lastName, $userID);
 			}
 			
 			else
@@ -73,9 +73,9 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $firstName, $lastName, $userID, $schedule)
+	function returnWithInfo( $firstName, $lastName, $userID)
 	{
-		$retValue = '{"userID":' . $userID . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . ',"schedule":"' . $schedule . '","error":""}';
+		$retValue = '{"userID":' . $userID . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . ","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
