@@ -30,16 +30,16 @@
 		if($stmt != false) 
 		{
 			$stmt->bind_param('isi', $userID, $term, $year);
-			if($argc == 4) {
+		/*	if($argc == 4) {
 				$userID = $argc[3];
 				$term = $argc[2];
 				$year = $argc[1];
-			}
-			else {
+			}*/
+		//	else {
 				$userID = $inData["userID"];
             			$term = $inData["term"];
 				$year = $inData["year"];
-			}
+		//	}
 			
 			
 			$stmt->execute();
