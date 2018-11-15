@@ -37,7 +37,11 @@
 			$term = 'fall';
 			$year = 2018;
 			$stmt->execute();
-
+			  
+			$result = $stmt->get_result();
+			
+			$searchCount = 0;
+			$searchResults = "";
         	if ($result->num_rows > 0)
 			{
 				while($row = $result->fetch_assoc())
