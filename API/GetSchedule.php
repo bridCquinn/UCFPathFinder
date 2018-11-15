@@ -30,12 +30,9 @@
 		if($stmt != false) 
 		{
 			$stmt->bind_param('isi', $userID, $term, $year);
-			//$userID = $inData["userID"];
-            		//$term = $inData["term"];
-			//$year = $inData["year"];
-			$userID = 25;
-			$term = "fall";
-			$year = 2018;
+			$userID = $inData["userID"];
+            		$term = $inData["term"];
+			$year = $inData["year"];
 			
 			$stmt->execute();
 			  
