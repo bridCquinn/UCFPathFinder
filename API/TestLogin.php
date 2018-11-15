@@ -44,7 +44,8 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				// TESTING
 				$call = "php GetSchedule.php ".$userID." fall 2018";
 				$schedule = shell_exec($call);
-				$temp = $schedule["results"];
+				$temp2 = json_decode($schedule);
+				$temp = $temp2["results"];
 				echo $temp;
 			  
 				//returnWithInfo($firstName, $lastName, $userID, $schedule);
