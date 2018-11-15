@@ -30,19 +30,18 @@
 		if($stmt != false) 
 		{
 			$stmt->bind_param('isi', $userID, $term, $year);
-			//$userID = $inData["userId"];
-            		//$term = $inData["term"];
-            		//$year = $inData["year"];
-			$userID = 25;
-			$term = "fall";
-			$year = 2018;
+			$userID = $inData["userId"];
+            		$term = $inData["term"];
+            		$year = $inData["year"];
+			
 			$stmt->execute();
 			  
 			$result = $stmt->get_result();
 			
 			$searchCount = 0;
 			$searchResults = "";
-        	if ($result->num_rows > 0)
+        	
+			if ($result->num_rows > 0)
 			{
 				while($row = $result->fetch_assoc())
 				{
