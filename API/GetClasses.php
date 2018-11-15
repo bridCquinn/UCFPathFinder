@@ -34,7 +34,7 @@
             		//$term = $inData["term"];
             		//$year = $inData["year"];
 			$userID = 25;
-			$term = 'fall';
+			$term = "fall";
 			$year = 2018;
 			$stmt->execute();
 			  
@@ -55,18 +55,18 @@
 
 					$buildingID = $row["buildingID"];
 					$className = $row["className"];
-              	  	$startTime = $row["startTime"];
-                	$endTime = $row["endTime"];
-                	$classCode = $row["classCode"];
-                	$term = $row["term"];
-                	$year = $row["year"];				
-                	$notes = $row["notes"];
-                	$classDays = $row["days"];
+              	  			$startTime = $row["startTime"];
+		                	$endTime = $row["endTime"];
+                			$classCode = $row["classCode"];
+                			$term = $row["term"];
+                			$year = $row["year"];				
+                			$notes = $row["notes"];
+                			$classDays = $row["days"];
 				 
-                	$searchResults = "['".$buildingID."','"
-                        .$className."','".$startTime."','".$endTime."','"
-                        .$classCode."','".$term."','".$year."','".$notes."','"
-                        .$classDays."']";
+                			$searchResults = "['".$buildingID."','"
+                        			.$className."','".$startTime."','".$endTime."','"
+                        			.$classCode."','".$term."','".$year."','".$notes."','"
+                        			.$classDays."']";
             
 				}
 				returnWithInfo( $searchResults );
