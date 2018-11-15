@@ -34,7 +34,7 @@
 				$userID = $argc[1];
 				$term = $argc[2];
 				$year = $argc[3];
-				echo($userID."\n".$term."\n".$year."\n");
+				echo($userID);
 			}
 			else {
 				$userID = $inData["userID"];
