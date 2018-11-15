@@ -3,7 +3,7 @@
     JSON package expected
     { 
       "userID"   :  <<userID>>
-      "schedule" :  <<Array of Class Objects in JSON Format>>
+      "schedule" :  <<Class Object in JSON Format>>
     }
     
     JSON package returned if error
@@ -28,22 +28,11 @@
 		
        	    if($stmt = $conn->prepare($sql))
             {     
-           	   // $stmt->bind_param('iiissssss', $userID, $class["classID"],
-			   //   $class["building"],$class["className"],$class["startTime"],
-			   //   $class["endTime"], $class["classCode"],
-			   //   $class["notes"], $class["classDays"]);
-                $stmt->bind_param('iiissssss', $userID, $temp1,$temp2,
-                            $temp3,$temp4,$temp5,$temp6,$temp7,$temp8);
+           	    $stmt->bind_param('iiissssss', $userID, $class["classID"],
+			      $class["building"],$class["className"],$class["startTime"],
+			      $class["endTime"], $class["classCode"],
+			      $class["notes"], $class["classDays"]);
 
-                $userID = 25;
-                $temp1 = 19;
-                $temp2 = 1;
-                $temp3 = "change";
-                $temp4 = "01:00:00";
-                $temp5 = "02:00:00";
-                $temp6 = "change123";
-                $temp7 = "does this work?";
-                $temp8 = "MWF";
 
            	    $stmt->execute();
            	    $result = $stmt->get_result();
