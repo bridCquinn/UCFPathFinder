@@ -42,7 +42,7 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				$conn->query($sql2);
 				*/
 				// TESTING
-				$call = "php GetSchedule.php ".$userID."fall 2018";
+				$call = "php GetSchedule.php ".$userID." fall 2018";
 				$schedule = shell_exec($call);
 			  echo $schedule;
 				//returnWithInfo($firstName, $lastName, $userID);
