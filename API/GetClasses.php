@@ -12,7 +12,7 @@
       "results"  :  <<Array of class arrays>> 
       "error"    :  <<error if one exists>>
     }
-    Each class array : [classID, buildingID, className, startTime, endTime, 
+    Each class array : [buildingID, className, startTime, endTime, 
                         classCode, term, year, notes, classDays]
 */
 
@@ -53,7 +53,6 @@
 				
 					$searchCount++;
 
-					$classID = $row["classID"];
 					$buildingID = $row["buildingID"];
 					$className = $row["className"];
               	  	$startTime = $row["startTime"];
