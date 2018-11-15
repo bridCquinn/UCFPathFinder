@@ -44,8 +44,8 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				// TESTING
 				$call = "php GetSchedule.php ".$userID." fall 2018";
 				$schedule = shell_exec($call);
-			  echo $schedule;
-				//returnWithInfo($firstName, $lastName, $userID);
+			  
+				returnWithInfo($firstName, $lastName, $userID, $schedule);
 			}
 			
 			else
@@ -75,7 +75,7 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 	
 	function returnWithInfo( $firstName, $lastName, $userID, $schedule)
 	{
-		$retValue = '{"userID":' . $userID . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"userID":' . $userID . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","schedule":"'.$schedule.'","error" : ""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
