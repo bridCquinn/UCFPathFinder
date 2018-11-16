@@ -27,7 +27,12 @@
 		if($stmt != false) 
 		{
 			$stmt->bind_param('ss', $search, $search);
-			$search = $inData["search"];
+			
+			//$search = $inData["search"];
+			if(argc > 1) 
+			{
+				$search = argv[1];
+			}
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
