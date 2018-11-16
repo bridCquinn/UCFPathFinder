@@ -112,7 +112,7 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-    function returnWithInfo( $searchResults )
+    function returnWithInfo( $searchResults, $argc )
 	{
 		$retValue = '{"results":' . json_encode($searchResults) . ',"error":""}';
 	    	if ($argc > 1 )
