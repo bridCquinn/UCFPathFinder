@@ -11,8 +11,8 @@
     }
     Each building array : [buildingID, buildingAbbreviation, buildingName]
 */
-
 	$inData = getRequestInfo();
+
 	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
 	
 	if ($conn->connect_error) 
