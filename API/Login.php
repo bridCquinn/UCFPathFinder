@@ -25,8 +25,6 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 		{
 			/*creates the prepared statement*/
 			$stmt->bind_param('ss', $inData["username"], $inData["password"]);/*Binds params to markers*/
-			//$stmt->bind_param('ss', $name, $name);/*Binds params to markers*/
-			//$name = "bobby";
 			$stmt->execute();
 			$result	= $stmt->get_result();
 			//$result = $conn->query($sql);
@@ -42,10 +40,11 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				$conn->query($sql2);
 				*/
 				// TESTING
-				//$call = "php GetSchedule.php fall 2018 ".$userID;
-				//$schedule = shell_exec($call);
-			
-				returnWithInfo($firstName, $lastName, $userID);
+				$call = "php TestGetSchedule.php ".$userID." fall 2018";
+				$callResult = shell_exec($call);
+				$schedule = json_decode($callResult);
+			  
+				returnWithInfo($firstName, $lastName, $userID, $schedule);
 			}
 			
 			else
@@ -75,7 +74,7 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 	
 	function returnWithInfo( $firstName, $lastName, $userID, $schedule)
 	{
-		$retValue = '{"userID":' . $userID . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"userID":' . $userID . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","schedule":"'.$schedule.'","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
