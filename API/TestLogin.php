@@ -47,6 +47,39 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				$currentDay = date("j");
 				//echo($year." ". $currentMonth ." ". $currentDay."\n");
 				
+			for($i = 0; $i < 5; $i++)
+			{
+				if($i == 0)
+				{
+				$year = 2019;
+				$currentMonth = 1;
+				$currentDay = 15;	
+				}
+				if($i == 1)
+				{
+				$year = 2019;
+				$currentMonth = 5;
+				$currentDay = 15;	
+				}
+				if($i == 2)
+				{
+				$year = 2019;
+				$currentMonth = 8;
+				$currentDay = 15;	
+				}
+				if($i == 3)
+				{
+				$year = 2019;
+				$currentMonth = 8;
+				$currentDay = 18;	
+				}
+				if($i == 4)
+				{
+				$year = 2019;
+				$currentMonth = 112;
+				$currentDay = 24;	
+				}
+				
 				if($currentMonth >= 1 && $currentMonth <= 5)
 				{
 					$term = "Spring";
@@ -85,11 +118,15 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 					}
 				}
 				
+				echo ($term." ". $year."\n");
+				
+				$userID = 25;
 				$call = "php TestGetSchedule.php ".$userID." ".$term." ".$year;
 				$schedule = shell_exec($call);
 				
-			  
-				returnWithInfo($firstName, $lastName, $userID, $schedule);
+			  	echo($schedule."\n");
+			}
+				//returnWithInfo($firstName, $lastName, $userID, $schedule);
 			}
 			
 			else
