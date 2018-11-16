@@ -31,7 +31,7 @@
             {
                 for($i = 0; $i < $length; $i++) 
 		{ 
-		    if($class["classID"] == -1) 
+		    if($class["classID"] != -1) 
 		    {
 			continue;    
 		    }
