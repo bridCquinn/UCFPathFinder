@@ -75,7 +75,7 @@
                         			.$classDays."']";
             
 				}
-				returnWithInfo( $searchResults );
+				returnWithInfo( $searchResults, $argc );
 			}
 			else
 			{
@@ -104,7 +104,7 @@
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
-    function returnWithInfo( $searchResults )
+    function returnWithInfo( $searchResults, $argc )
 	{
 		$retValue = '{"results":[' . $searchResults . '],"error":""}';
 	    	if ($argc > 1 )
