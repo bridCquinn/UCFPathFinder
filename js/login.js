@@ -67,8 +67,6 @@ function doLogin()
 		document.getElementById("loginName").value = loginName.defaultValue;
 		document.getElementById("loginPassword").value =loginPassword.defaultValue;
 
-		alert(jsonObject.schedule);
-		
     hideOrShow( "tabs", true);
 		hideOrShow( "accessUIDiv", true);
 		hideOrShow( "loginPage", false);
