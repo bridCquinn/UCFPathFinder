@@ -82,6 +82,7 @@ function makeSchedule() {
   for(i = 0; i < scheduleList.length; i++)
   {
     makeTile(scheduleList[i]);
+	alert(scheduleList[i]);
     scheduleList[i].year = year;
     scheduleList[i].term = term;
   }
