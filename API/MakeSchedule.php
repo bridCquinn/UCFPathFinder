@@ -17,6 +17,7 @@
     	$length = count($array);
 	
 	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
+
 	if ($conn->connect_error) 
 	{	
 		returnWithError( $conn->connect_error );
