@@ -15,8 +15,8 @@
     Each class array : [classID, buildingID, className, startTime, endTime, 
                         classCode, term, year, notes, classDays]
 */
-
 	$inData = getRequestInfo();
+	
 	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
 	
 	if ($conn->connect_error) 
@@ -84,6 +84,7 @@
 	{
 		return json_decode(file_get_contents('php://input'), true);
 	}
+
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
@@ -96,7 +97,7 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-    function returnWithInfo( $searchResults, $argc )
+   	function returnWithInfo( $searchResults, $argc )
 	{
 		$retValue = '{"results":' . json_encode($searchResults) . ',"error":""}';
 	    	if ($argc > 1 )
