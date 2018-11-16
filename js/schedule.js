@@ -114,6 +114,7 @@ function makeSchedule() {
 	}
 
   document.getElementById('newSch').style.display = 'none';
+  document.getElementById('delSch').style.display = 'block';
 
 
 }
