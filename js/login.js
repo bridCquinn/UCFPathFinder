@@ -63,7 +63,7 @@ function doLogin()
 		lastName = jsonObject.lastName;
 
 		//document.getElementById("userName").innerHTML = firstName + " " + lastName;
-    alert(jsonObject.length);
+
     for(i = 0; i < jsonObject.length; i++)
     {
       var course = new Course();
