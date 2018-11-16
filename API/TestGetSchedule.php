@@ -108,7 +108,7 @@
 	}
     function returnWithInfo( $searchResults, $argc )
 	{
-		$retValue = '{"results":' . $searchResults . ',"error":""}';
+		$retValue = '{"results":' . json_encode($searchResults) . ',"error":""}';
 	    	if ($argc > 1 )
 		{
 			echo json_encode($searchResults);
