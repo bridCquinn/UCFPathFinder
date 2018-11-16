@@ -187,7 +187,7 @@ function makeTile(course)
   card.classList.add("card-1");
   card.id = course.classCode + course.className;
   // needs editing ( is not getting the code)
-  card.setAttribute("onclick", "editClass(this.id)");
+  // card.setAttribute("onclick", "editClass(this.id)");
   body.classList.add("card-body");
   span.classList.add("close");
   span.id = course.classCode;
@@ -267,43 +267,43 @@ function findCourse(code){
 // when tile is pressed, the make/edit modal is unhidden
 // when list item is pressed, info is placed back in text boxes
 // this allows them to be edited
-function editClass(code)
-{
-  // get course from scheduleList
-  var course = findCourse(code);
-  // brings up the schedule modal
-  newSchedule();
-
-  document.getElementById("name").value = course.className;
-  document.getElementById("code").value = course.classCode;
-  document.getElementById("ddlPattern").selectedIndex = course.days;
-  document.getElementById("start").value = course.startTime;
-  document.getElementById("end").value = course.endTime;
-  document.getElementById("address").value = course.building;
-  document.getElementById("note").value = course.notes;
-
-  var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(scheduleList)+'}';
-
-  var url = urlBase + '/EditClass.' + extension;
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-  try
-  {
-    xhr.onreadystatechange = function()
-    {
-      if (this.readyState == 4 && this.status == 200)
-      {
-        //document.getElementById("contactAddResult").innerHTML = "Contact has been added";
-        ;
-      }
-    };
-    xhr.send(jsonPayload);
-  }
-  catch(err)
-  {
-    document.getElementById("makeSchResult").innerHTML = err.message;
-  }
-
-}
+// function editClass(code)
+// {
+//   // get course from scheduleList
+//   var course = findCourse(code);
+//   // brings up the schedule modal
+//   newSchedule();
+//
+//   document.getElementById("name").value = course.className;
+//   document.getElementById("code").value = course.classCode;
+//   document.getElementById("ddlPattern").selectedIndex = course.days;
+//   document.getElementById("start").value = course.startTime;
+//   document.getElementById("end").value = course.endTime;
+//   document.getElementById("address").value = course.building;
+//   document.getElementById("note").value = course.notes;
+//
+//   var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(scheduleList)+'}';
+//
+//   var url = urlBase + '/EditClass.' + extension;
+//
+//   var xhr = new XMLHttpRequest();
+//   xhr.open("POST", url, true);
+//   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+//   try
+//   {
+//     xhr.onreadystatechange = function()
+//     {
+//       if (this.readyState == 4 && this.status == 200)
+//       {
+//         //document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+//         ;
+//       }
+//     };
+//     xhr.send(jsonPayload);
+//   }
+//   catch(err)
+//   {
+//     document.getElementById("makeSchResult").innerHTML = err.message;
+//   }
+//
+// }
