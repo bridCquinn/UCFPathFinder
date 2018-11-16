@@ -82,6 +82,9 @@ function doLogin()
       scheduleList.push(course);
 
       addtoList(course);
+
+      if(scheduleList < 1)
+        document.getElementById("delSch").style.display = 'none';
     }
 
 
