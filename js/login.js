@@ -64,7 +64,7 @@ function doLogin()
 
 		//document.getElementById("userName").innerHTML = firstName + " " + lastName;
 
-    for(i = 0; i < jsonObject.length; i++)
+    for(i = 0; i < jsonObject.schedule.length; i++)
     {
       var course = new Course();
 
