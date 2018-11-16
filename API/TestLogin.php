@@ -76,7 +76,7 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				if($i == 4)
 				{
 				$year = 2019;
-				$currentMonth = 112;
+				$currentMonth = 12;
 				$currentDay = 24;	
 				}
 				
