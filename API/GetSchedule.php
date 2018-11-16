@@ -39,6 +39,10 @@
 				$userID = $inData["userID"];
             			$term = $inData["term"];
 				$year = $inData["year"];
+				
+				$userID = 25;
+				$term = "fall";
+				$year = 2018;
 			}
 			
 			
