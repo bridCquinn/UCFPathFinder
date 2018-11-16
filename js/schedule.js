@@ -21,14 +21,9 @@ function addtoList(course){
   document.getElementById("myUL").appendChild(li);
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
-  li.id = course.classCode;
+  li.id = "list" + course.classCode;
   li.setAttribute('onclick', "toggle(course)");
   span.appendChild(txt);
-
-  var div = document.createElement("div");
-  div.id = ("div" + li.id);
-  div.style.display = "none";
-  div.style.visibility = "hidden";
 
   document.getElementById("name").value = "";
   document.getElementById("code").value = code.defaultValue;
@@ -122,16 +117,8 @@ function makeSchedule() {
 // delete the entire schedule
 function deleteSchedule()
 {
-  if(confirm("Confirm Delete"))
-  {
-    ;
-  }
-  else {
-    return;
-  }
-
-  var jsonPayload = '{"userId": "'+ userId +'","contactId"}';
-  var url = urlBase + '/DeleteSchedule.' + extension;
+  var jsonPayload = '{"userId": "'+ userId +'"}';
+  var url = urlBase + '/DeleteAllClasses.' + extension;
 
   var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -153,6 +140,10 @@ function deleteSchedule()
 		document.getElementById("DeleteSchedule").innerHTML = err.message;
 	}
 
+  document.getElementById("classes").innerHTML = "";
+  document.getElementById("myUL").innerHTML = "";
+  scheduleList = [];
+  document.getElementById("delSch").style.display = 'none';
 }
 
 function makeTile(course)
@@ -189,6 +180,7 @@ function makeTile(course)
   pnote.appendChild(notes);
 
   card.classList.add("card-1");
+  card.id = course.classCode + course.className;
   body.classList.add("card-body");
   span.classList.add("close");
   span.id = course.classCode;
@@ -208,7 +200,6 @@ function makeTile(course)
 
 function deleteClass(code){
 
-  alert(code);
   var course = findCourse(code);
 
   var jsonPayload = '{"userId": "'+ userId +'","classCode": "'+ course.classCode +'", "term": "'+ course.term +'", "year": "' + course.year + '"}';
@@ -238,11 +229,19 @@ function deleteClass(code){
   scheduleList.splice( scheduleList.indexOf(course), 1 );
 
   // takes the tile off of the GUI
-  deleteTile();
+  deleteTile(course);
+
+  if(scheduleList < 1)
+    document.getElementById("delSch").style.display = 'none';
 }
 
-function deleteTile(){
-  makeSchedule();
+function deleteTile(course){
+    var element = document.getElementById(course.classCode + course.className);
+    element.parentNode.removeChild(element);
+
+    var listelement = document.getElementById("list" + course.classCode);
+    listelement.parentNode.removeChild(listelement);
+
 }
 
 function findCourse(code){
