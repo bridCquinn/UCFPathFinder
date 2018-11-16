@@ -1,7 +1,15 @@
 <?php
-
+/*
+   	 JSON package expected
+    	{ 
+		"firstName"  :  <<firstName>>
+		"lastName"   :  <<lastName>>
+		"username"   :  <<username>>
+		"password"   :  <<password>>
+		"email"      :  <<email>>
+    	}   
+*/
 	$inData = getRequestInfo();
-	
 	
 	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
 	
@@ -20,24 +28,20 @@
 			
 			$stmt->execute();
 		}
+		
 		else
 		{
 			returnWithError( $conn->error );
 		}
-		
 			
-			
-			
-				
-		
-		
-		
 		$conn->close();
 	}
+
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
 	}
+
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
