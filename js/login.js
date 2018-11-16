@@ -66,21 +66,28 @@ function doLogin()
 
     for(i = 0; i < jsonObject.length; i++)
     {
-      scheduleList[i].classID = jsonObject[i][0];
-      scheduleList[i].building = jsonObject[i][1];
-      scheduleList[i].className = jsonObject[i][2];
-      scheduleList[i].startTime = jsonObject[i][3];
-      scheduleList[i].endTime = jsonObject[i][4];
-      scheduleList[i].classCode = jsonObject[i][5];
-      scheduleList[i].term = jsonObject[i][6];
-      scheduleList[i].year = jsonObject[i][7];
-      scheduleList[i].notes = jsonObject[i][8];
-      scheduleList[i].classDays = jsonObject[i][9];
+      var course = new Course();
+
+      course.classID = jsonObject[i][0];
+      course.building = jsonObject[i][1];
+      course.className = jsonObject[i][2];
+      course.startTime = jsonObject[i][3];
+      course.endTime = jsonObject[i][4];
+      course.classCode = jsonObject[i][5];
+      course.term = jsonObject[i][6];
+      course.year = jsonObject[i][7];
+      course.notes = jsonObject[i][8];
+      course.classDays = jsonObject[i][9];
+
+      scheduleList.push(course);
+
+      addtoList(course);  
+      }
     }
 
     for(j = 0; j < scheduleList.length; j++)
       makeTile(scheduleList[j]);
-    
+
 		document.getElementById("loginName").value = loginName.defaultValue;
 		document.getElementById("loginPassword").value =loginPassword.defaultValue;
 

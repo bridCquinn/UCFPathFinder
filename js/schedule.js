@@ -1,6 +1,6 @@
 
 function Course(){
-  this.
+  this.classID = "";
   this.building = "";
   this.className = "";
   this.classDays = "";
