@@ -9,7 +9,7 @@
 
     JSON package returned
     {
-      "results"  :  <<Array of class arrays>> 
+      "schedule"  :  <<Array of class arrays>> 
       "error"    :  <<error if one exists>>
     }
     Each class array : [classID, buildingID, className, startTime, endTime, 
@@ -99,7 +99,7 @@
 
    	function returnWithInfo( $searchResults, $argc )
 	{
-		$retValue = '{"results":' . json_encode($searchResults) . ',"error":""}';
+		$retValue = '{"schedule":' . json_encode($searchResults) . ',"error":""}';
 	    	if ($argc > 1 )
 		{
 			echo json_encode($searchResults);
