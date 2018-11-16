@@ -45,18 +45,18 @@
 			$result = $stmt->get_result();
 			
 			$searchCount = 0;
-			$searchResults = "";
+			$searchResults = array();
         	
 			if ($result->num_rows > 0)
 			{
 				while($row = $result->fetch_assoc())
 				{
-					if( $searchCount > 0 )
-					{
-						$searchResults .= ",";
-					}
+					//if( $searchCount > 0 )
+					//{
+					//	$searchResults .= ",";
+					//}
 				
-					$searchCount++;
+					//$searchCount++;
 					
 					$classID = $row["classID"];
 					$buildingID = $row["buildingID"];
@@ -68,11 +68,13 @@
                 			$year = $row["year"];				
                 			$notes = $row["notes"];
                 			$classDays = $row["days"];
-				 
-                			$searchResults .= "['".$classID."','".$buildingID."','"
-                        			.$className."','".$startTime."','".$endTime."','"
-                        			.$classCode."','".$term."','".$year."','".$notes."','"
-                        			.$classDays."']";
+				 	
+					$class = array($classID, $buildingID, $className, $startTime, $endTime, $classCode, $term, $year, $notes, $classDays);
+                			//$searchResults .= "['".$classID."','".$buildingID."','"
+                        		//	.$className."','".$startTime."','".$endTime."','"
+                        		//	.$classCode."','".$term."','".$year."','".$notes."','"
+                        		//	.$classDays."']";
+					array_push($searchResults, $class);
             
 				}
 				returnWithInfo( $searchResults, $argc );
@@ -106,7 +108,7 @@
 	}
     function returnWithInfo( $searchResults, $argc )
 	{
-		$retValue = '{"results":[' . $searchResults . '],"error":""}';
+		$retValue = '{"results":' . $searchResults . ',"error":""}';
 	    	if ($argc > 1 )
 		{
 			echo json_encode($searchResults);
