@@ -107,6 +107,11 @@
     function returnWithInfo( $searchResults )
 	{
 		$retValue = '{"results":[' . $searchResults . '],"error":""}';
+	    	if ($argc > 1 )
+		{
+			echo json_encode($searchResults);
+			return;
+		}
 		sendResultInfoAsJson( $retValue );
 	}
 ?>
