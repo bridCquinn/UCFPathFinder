@@ -38,6 +38,7 @@ function doLogout(){
   document.getElementById("classes").innerHTML = "";
   document.getElementById("myUL").innerHTML = "";
   scheduleList = [];
+  document.getElementById('delSch').style.display = 'none';
 
   hideOrShow( "tabs", false);
   hideOrShow( "accessUIDiv", false);
