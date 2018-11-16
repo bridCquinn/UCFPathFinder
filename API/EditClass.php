@@ -16,6 +16,7 @@
     	$class  = $inData["class"];
 	
 	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
+
 	if ($conn->connect_error) 
 	{	
 		returnWithError( $conn->connect_error );
@@ -44,10 +45,12 @@
 	
 	    $conn->close();
 	}
+
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
 	}
+
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
@@ -58,6 +61,5 @@
 	{
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
-	
     	}
 ?>
