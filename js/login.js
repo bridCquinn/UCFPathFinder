@@ -68,16 +68,16 @@ function doLogin()
     {
       var course = new Course();
 
-      course.classID = jsonObject[i][0];
-      course.building = jsonObject[i][1];
-      course.className = jsonObject[i][2];
-      course.startTime = jsonObject[i][3];
-      course.endTime = jsonObject[i][4];
-      course.classCode = jsonObject[i][5];
-      course.term = jsonObject[i][6];
-      course.year = jsonObject[i][7];
-      course.notes = jsonObject[i][8];
-      course.classDays = jsonObject[i][9];
+      course.classID = jsonObject.schedule[i][0];
+      course.building = jsonObject.schedule[i][1];
+      course.className = jsonObject.schedule[i][2];
+      course.startTime = jsonObject.schedule[i][3];
+      course.endTime = jsonObject.schedule[i][4];
+      course.classCode = jsonObject.schedule[i][5];
+      course.term = jsonObject.schedule[i][6];
+      course.year = jsonObject.schedule[i][7];
+      course.notes = jsonObject.schedule[i][8];
+      course.classDays = jsonObject.schedule[i][9];
 
       scheduleList.push(course);
 
