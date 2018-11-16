@@ -81,9 +81,9 @@ function doLogin()
 
       scheduleList.push(course);
 
-      addtoList(course);  
-      }
+      addtoList(course);
     }
+
 
     for(j = 0; j < scheduleList.length; j++)
       makeTile(scheduleList[j]);
