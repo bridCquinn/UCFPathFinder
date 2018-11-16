@@ -31,10 +31,10 @@
             {
                 for($i = 0; $i < $length; $i++) 
 		{ 
-		    if($class["classID"] != "") 
-		    {
-			continue;    
-		    }
+		    //if($class["classID"] != "") 
+		    //{
+			//continue;    
+		    //}
 		    $class = $array[$i];
             	    $stmt->bind_param('iisssssiss', $userID, $class["building"],
 				      $class["className"],$class["startTime"],$class["endTime"],
