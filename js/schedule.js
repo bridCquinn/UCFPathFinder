@@ -13,7 +13,8 @@ function Course(){
 
 var scheduleList = [];
 
-// this is used to add to the physical collapsable list
+// this is used to add to the physical list
+// creates the list node with all of the information
 function addtoList(course){
   var li = document.createElement("li");
   var t = document.createTextNode(course.classCode + " - " + course.className);
@@ -34,7 +35,9 @@ function addtoList(course){
   document.getElementById("note").value = note.defaultValue;
 }
 
-// adds class to the schedulelist and is triggered by the addClass button
+// triggered by the addClass button
+// creates a new course object and fills it with data
+// then adds it to the scheduleList
 function addClass(){
   var course = new Course();
 
@@ -66,7 +69,7 @@ function toggle(elementId){
     }
 }
 
-// used to create a completely new schedule and submits that final
+// used to create a completely new schedule and submits the final
 // classes to the API
 function makeSchedule() {
 
@@ -146,6 +149,7 @@ function deleteSchedule()
   document.getElementById("delSch").style.display = 'none';
 }
 
+// makes the GUI tile of each class
 function makeTile(course)
 {
   var card = document.createElement("div");
@@ -181,6 +185,8 @@ function makeTile(course)
 
   card.classList.add("card-1");
   card.id = course.classCode + course.className;
+  // needs editing ( is not getting the code)
+  card.setAttribute("onclick", "editClass(this.id)");
   body.classList.add("card-body");
   span.classList.add("close");
   span.id = course.classCode;
@@ -198,6 +204,8 @@ function makeTile(course)
 
 }
 
+// deletes class, updates array
+// also removes delete button on empty list
 function deleteClass(code){
 
   var course = findCourse(code);
@@ -235,6 +243,7 @@ function deleteClass(code){
     document.getElementById("delSch").style.display = 'none';
 }
 
+// deletes tile and list
 function deleteTile(course){
     var element = document.getElementById(course.classCode + course.className);
     element.parentNode.removeChild(element);
@@ -244,6 +253,7 @@ function deleteTile(course){
 
 }
 
+// find course in scheduleList from the course Code
 function findCourse(code){
   for(i = 0; i < scheduleList.length; i++)
   {
@@ -251,4 +261,48 @@ function findCourse(code){
       return scheduleList[i];
   }
   alert("Not found!");
+}
+
+// when tile is pressed, the make/edit modal is unhidden
+// when list item is pressed, info is placed back in text boxes
+// this allows them to be edited
+function editClass(code)
+{
+  // get course from scheduleList
+  var course = findCourse(code);
+  // brings up the schedule modal
+  newSchedule();
+
+  document.getElementById("name").value = course.className;
+  document.getElementById("code").value = course.classCode;
+  document.getElementById("ddlPattern").selectedIndex = course.days;
+  document.getElementById("start").value = course.startTime;
+  document.getElementById("end").value = course.endTime;
+  document.getElementById("address").value = course.building;
+  document.getElementById("note").value = course.notes;
+
+  var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(scheduleList)+'}';
+
+  var url = urlBase + '/EditClass.' + extension;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  try
+  {
+    xhr.onreadystatechange = function()
+    {
+      if (this.readyState == 4 && this.status == 200)
+      {
+        //document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+        ;
+      }
+    };
+    xhr.send(jsonPayload);
+  }
+  catch(err)
+  {
+    document.getElementById("makeSchResult").innerHTML = err.message;
+  }
+
 }
