@@ -119,6 +119,7 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 	{
 		return json_decode(file_get_contents('php://input'), true);
 	}
+
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
@@ -136,5 +137,4 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 		$retValue = '{"userID":' . $userID . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","schedule":'.$schedule.',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
-	
 ?>
