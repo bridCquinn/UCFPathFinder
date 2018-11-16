@@ -90,7 +90,6 @@ function makeSchedule() {
   document.getElementById("makeSchResult").innerHTML = "";
 
   var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(scheduleList)+'}';
-	alert(JSON.stringify(scheduleList));
   var url = urlBase + '/MakeSchedule.' + extension;
 
 	var xhr = new XMLHttpRequest();
