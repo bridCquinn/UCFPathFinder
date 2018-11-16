@@ -42,9 +42,9 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				$conn->query($sql2);
 				*/
 				
-				$year = date(Y);
-				$currentMonth = date(n);
-				$currentDay = date(j);
+				$year = date("Y");
+				$currentMonth = date("n");
+				$currentDay = date("j");
 				
 				if($currentMonth >= 1 && $currentMonth <= 5)
 				{
