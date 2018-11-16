@@ -35,6 +35,10 @@ function doLogout(){
 	firstName = "";
 	lastName = "";
 
+  document.getElementById("classes").innerHTML = "";
+  document.getElementById("myUL").innerHTML = "";
+  scheduleList = [];
+
   hideOrShow( "tabs", false);
   hideOrShow( "accessUIDiv", false);
   hideOrShow( "loginPage", true);

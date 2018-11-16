@@ -1,5 +1,6 @@
 
 function Course(){
+  this.
   this.building = "";
   this.className = "";
   this.classDays = "";
