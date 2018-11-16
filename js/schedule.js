@@ -74,6 +74,9 @@ function toggle(elementId){
 // used to create a completely new schedule and submits that final
 // classes to the API
 function makeSchedule() {
+
+  document.getElementById("classes").innerHTML = "";
+
   term = document.getElementById("term").value;
   year = document.getElementById("year").value;
 
@@ -187,7 +190,8 @@ function makeTile(course)
   card.classList.add("card-1");
   body.classList.add("card-body");
   span.classList.add("close");
-  span.setAttribute("onclick", "deleteClass()");
+  span.id = course.classCode;
+  span.setAttribute("onclick", "deleteClass(this.id)");
   span.style.top = 0;
   span.style.right = 0;
   h5.classList.add("card-title");
@@ -199,4 +203,52 @@ function makeTile(course)
   var txt = document.createTextNode("\u00D7");
   span.appendChild(txt);
 
+}
+
+function deleteClass(code){
+
+  alert(code);
+  var course = findCourse(code);
+
+  var jsonPayload = '{"userId": "'+ userId +'","classCode": "'+ course.classCode +'", "term": "'+ course.term +'", "year": "' + course.year + '"}';
+  var url = urlBase + '/DeleteClass.' + extension;
+
+  var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+	 	{
+	 		if (this.readyState == 4 && this.status == 200)
+			{
+				;
+				//document.getElementById("deleteContactResult").innerHTML = "Contact has been deleted!";
+			}
+	 	};
+	 	xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("DeleteClass").innerHTML = err.message;
+	}
+
+  // makes sure the scheduleList is updated
+  scheduleList.splice( scheduleList.indexOf(course), 1 );
+
+  // takes the tile off of the GUI
+  deleteTile();
+}
+
+function deleteTile(){
+  makeSchedule();
+}
+
+function findCourse(code){
+  for(i = 0; i < scheduleList.length; i++)
+  {
+    if(scheduleList[i].classCode == code)
+      return scheduleList[i];
+  }
+  alert("Not found!");
 }
