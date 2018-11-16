@@ -31,11 +31,11 @@
             {
                 for($i = 0; $i < $length; $i++) 
 		{ 
+		    $class = $array[$i];
 		    if($class["classID"] != -1) 
 		    {
 			continue;    
 		    }
-		    $class = $array[$i];
             	    $stmt->bind_param('iisssssiss', $userID, $class["building"],
 				      $class["className"],$class["startTime"],$class["endTime"],
 				      $class["classCode"],$class["term"],$class["year"], $class["notes"],
