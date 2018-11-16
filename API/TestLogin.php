@@ -41,10 +41,48 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				$sql2 = "UPDATE users SET dateLastLoggedIn = NOW() WHERE userID = $userID";
 				$conn->query($sql2);
 				*/
-				// TESTING
-				$call = "php TestGetSchedule.php ".$userID." fall 2018";
+				
+				$year = date(Y);
+				$currentMonth = date(n);
+				$currentDay = date(j);
+				
+				if($currentMonth >= 1 && $currentMonth <= 5)
+				{
+					if( $currentMonth == 5 && $currentDay < 8)
+					{
+						$term = "Spring";		
+					}
+					else {
+						$term = "Summer";
+					}
+				}
+				else if($currentMonth >= 5 && $currentMonth <= 8)
+				{
+					if( $currentMonth == 8 && $currentDay < 18) 
+					{
+						$term = "Summer";
+					}
+					else
+					{
+						$term = "Fall";
+					}
+				}
+				else if($currentMonth >= 8 && $currentMonth <= 12)
+				{
+					if( $currentMonth == 12 && $currentDay < 18)
+					{
+						$term = "Fall";
+					}
+					else
+					{
+						$term = "Spring";
+						$year = $year + 1;
+					}
+				}
+				
+				$call = "php TestGetSchedule.php ".$userID." ".$term." ".$year;
 				$schedule = shell_exec($call);
-				//$schedule = json_decode($callResult);
+				
 			  
 				returnWithInfo($firstName, $lastName, $userID, $schedule);
 			}
