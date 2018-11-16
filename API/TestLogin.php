@@ -45,37 +45,40 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				$year = date("Y");
 				$currentMonth = date("n");
 				$currentDay = date("j");
-				echo($year." ". $currentMonth ." ". $currentDay."\n");
+				//echo($year." ". $currentMonth ." ". $currentDay."\n");
 				
 				if($currentMonth >= 1 && $currentMonth <= 5)
 				{
+					$term = "Spring";
 					if( $currentMonth == 5 && $currentDay < 8)
 					{
 						$term = "Spring";		
 					}
-					else 
+					else if ($currentMonth == 5)
 					{
 						$term = "Summer";
 					}
 				}
 				else if($currentMonth >= 5 && $currentMonth <= 8)
 				{
+					$term = "Summer";
 					if( $currentMonth == 8 && $currentDay < 18) 
 					{
 						$term = "Summer";
 					}
-					else
+					else if ($currentMonth == 8)
 					{
 						$term = "Fall";
 					}
 				}
 				else if($currentMonth >= 8 && $currentMonth <= 12)
 				{
+					$term = "Fall";
 					if( $currentMonth == 12 && $currentDay < 18)
 					{
 						$term = "Fall";
 					}
-					else
+					else if ($currentMonth == 12)
 					{
 						$term = "Spring";
 						$year = $year + 1;
@@ -86,7 +89,7 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				$schedule = shell_exec($call);
 				
 			  
-				//returnWithInfo($firstName, $lastName, $userID, $schedule);
+				returnWithInfo($firstName, $lastName, $userID, $schedule);
 			}
 			
 			else
