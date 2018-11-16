@@ -76,7 +76,7 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 	
 	function returnWithInfo( $firstName, $lastName, $userID, $schedule)
 	{
-		$retValue = '{"userID":' . $userID . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","schedule":['.$schedule.'],"error" : ""}';
+		$retValue = '{"userID":' . $userID . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","schedule":'.$schedule.',"error" : ""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
