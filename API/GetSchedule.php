@@ -39,31 +39,16 @@
 				$userID = $inData["userID"];
             			$term = $inData["term"];
 				$year = $inData["year"];
-				
-				$userID = 25;
-				$term = "fall";
-				$year = 2018;
 			}
 			
-			
-			$stmt->execute();
-			  
+			$stmt->execute();  
 			$result = $stmt->get_result();
-			
-			//$searchCount = 0;
 			$searchResults = array();
         	
 			if ($result->num_rows > 0)
 			{
 				while($row = $result->fetch_assoc())
-				{
-					//if( $searchCount > 0 )
-					//{
-					//	$searchResults .= ",";
-					//}
-				
-					//$searchCount++;
-					
+				{					
 					$classID = $row["classID"];
 					$buildingID = $row["buildingID"];
 					$className = $row["className"];
@@ -77,11 +62,6 @@
 				 
 					
 					$class = array($classID, $buildingID, $className, $startTime, $endTime, $classCode, $term, $year, $notes, $classDays);
-					
-                			//$searchResults .= "['".$classID."','".$buildingID."','"
-                        		//	.$className."','".$startTime."','".$endTime."','"
-                        		//	.$classCode."','".$term."','".$year."','".$notes."','"
-                        		//	.$classDays."']";
 					
 					array_push($searchResults, $class);
             
