@@ -1,5 +1,22 @@
 <?php
 /*
+    JSON package expected
+    { 
+      "username"   :  <<username>>
+      "password"   :  <<password>>
+    }
+    JSON package returned
+    {
+      "userID"     :  <<Array of class arrays>> 
+      "firstName"  :  <<User's first name>>
+      "lastName"   :  <<User's last name>>
+      "schedule"   :  <<Array of class Arrays>>
+      "error"      :  <<error if one exists>>
+    }
+    Each class array : [classID, buildingID, className, startTime, endTime, 
+                        classCode, term, year, notes, classDays]
+
+
 Login:
 SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND password = '<hashed password>';
 */
@@ -39,10 +56,9 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 				$sql2 = "UPDATE users SET dateLastLoggedIn = NOW() WHERE userID = $userID";
 				$conn->query($sql2);
 				*/
-				// TESTING
+			
 				$call = "php GetSchedule.php ".$userID." fall 2018";
 				$schedule = shell_exec($call);
-				//$schedule = json_decode($callResult);
 			  
 				returnWithInfo($firstName, $lastName, $userID, $schedule);
 			}
