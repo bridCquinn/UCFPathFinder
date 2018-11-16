@@ -23,8 +23,8 @@ function searchLocation()
 	
 		var srch = document.getElementById("searchText").value;
 		
-		var jsonPayload =  '{"userID": "'+ userId +'","search" : "' + srch + '"}';
-		var url = urlBase + '/Search.' + extension;
+		var jsonPayload =  '{"search" : "' + srch + '"}';
+		var url = urlBase + '/SearchBuildings.' + extension;
 		
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", url, true);
@@ -35,20 +35,26 @@ function searchLocation()
 			{
 				if(this.readyState == 4 && this.status == 200)
 				{
-					var jsonObject=JSON.parse(xhr.responseText);
+					var jsonObject = JSON.parse(xhr.responseText);
 					var i;
+					//var array = JSON.stringify(jsonObject[result"][1]);
+					var x = "";
+				
+				
 					
-					for( i=0; i<jsonObject.results.length-6; i+=11)
+					for(i=0; i < jsonObject['results'].length ; i++)
 					{
+						x = jsonObject['results'][i][2];
+						console.log(x);
 						var li = document.createElement("li");
-						var t = document.createTextNode(jsonObject.results[i+1] + " " + jsonObject.results[i+2]);
+						var t = document.createTextNode(JSON.stringify(x));
 						
 						li.appendChild(t);
 						document.getElementById("mapUL").appendChild(li);
 						
 						var span = document.createElement("SPAN");
 						var txt = document.createTextNode("\u00D7");
-						li.id = jsonObject.results[i];
+						li.id = jsonObject['results'][i][0];
 					//	li.setAttribute('onclick', "displayInfo(this.id)");
 						span.appendChild(txt);
 					
