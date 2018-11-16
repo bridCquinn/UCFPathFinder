@@ -24,7 +24,9 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 		if($stmt = $conn->prepare($sql))
 		{
 			/*creates the prepared statement*/
-			$stmt->bind_param('ss', $inData["username"], $inData["password"]);/*Binds params to markers*/
+			//$stmt->bind_param('ss', $inData["username"], $inData["password"]);/*Binds params to markers*/
+			$stmt->bind_param('ss', $name, $name);
+			$name = 'bobby';
 			$stmt->execute();
 			$result	= $stmt->get_result();
 			//$result = $conn->query($sql);
