@@ -34,8 +34,7 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 		returnWithError( $conn->connect_error );
 	} 
 	else
-	{
-		
+	{	
 		$sql = "CALL login (?, ?)";
 		
 		if($stmt = $conn->prepare($sql))
