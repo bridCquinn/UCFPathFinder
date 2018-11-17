@@ -10,7 +10,7 @@
     JSON package returned
     {
       "schedule"  :  <<Array of class arrays>> 
-      "error"    :  <<error if one exists>>
+      "error"     :  <<error if one exists>>
     }
     Each class array : [classID, buildingID, className, startTime, endTime, 
                         classCode, term, year, notes, classDays]
