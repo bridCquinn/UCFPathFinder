@@ -1,0 +1,5 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <item name="ic_menu_agenda" type="drawable">@android:drawable/ic_menu_agenda</item>
+    <item name="ic_menu_map" type="drawable">@android:drawable/ic_menu_compass</item>
+    <item name="ic_menu_logout" type="drawable">@android:drawable/ic_menu_close_clear_cancel</item>
+</resources>
