@@ -22,9 +22,11 @@
 
             if (!empty($indata))
             	{
-               	 $row = $result->fetch_assoc();
+		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
+		    $mode = "walking";
+		  
 	            returnWithInfo( $row["plusCode"] );
-			       }
+		 }
 			else
 			{
 				returnWithError( "No Records Found" );
