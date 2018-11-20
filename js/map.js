@@ -16,7 +16,7 @@ function myMap()
 
 function searchLocation()
 {
-	var thisUL = getElementById("mapUL");
+	var thisUL = document.getElementById("mapUL");
 	while(thisUL.hasChildNodes())
 	{
 		// myUL.removeChild(mapUL.firstChild);
