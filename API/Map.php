@@ -12,13 +12,13 @@
 */
 	$inData = getRequestInfo();
 		
-	/*$testCode = "JQ2W+VP Heritage Oaks, Florida";
+	$testCode = "JQ2W+VP Heritage Oaks, Florida";
 	    if (!empty($indata))
 		{
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
 		    $encodedURL = "";
 
-		    for($i=0; $i<strlen($testCode); i++){
+		   /* for($i=0; $i<strlen($testCode); i++){
 			if($testCode[i]==' '){
 				$encodedURL =  $encodedURL."+";	
 			}
@@ -28,18 +28,13 @@
 			else{
 				$encodedURL = $encodedURL."".$testcode[i]."";
 			}
-		    }
+		    }*/
 
 		    $mode = "&travelmode=walking";
 
 		    returnWithInfo($base.$encodedURL.$mode);
 		 }
-	else
-	{
-		returnWithError( "No Records Found" );
-	}
-
-	*/
+	
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
