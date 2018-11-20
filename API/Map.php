@@ -12,7 +12,7 @@
 */
 	$inData = getRequestInfo();
 		
-	$testCode = "JQ2W+VP Heritage Oaks, Florida";
+	/*$testCode = "JQ2W+VP Heritage Oaks, Florida";
 	    if (!empty($indata))
 		{
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
@@ -39,7 +39,7 @@
 		returnWithError( "No Records Found" );
 	}
 
-	
+	*/
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
