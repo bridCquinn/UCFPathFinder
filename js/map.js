@@ -16,7 +16,7 @@ function myMap()
 
 function searchLocation()
 {
-	while(mapUL.hasChild())
+	while(mapUL.hasChildNodes())
 	{
 		// myUL.removeChild(mapUL.firstChild);
 		myUL.removeChild(myUL.childNodes[0]);
