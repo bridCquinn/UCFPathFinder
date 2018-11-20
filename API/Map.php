@@ -34,6 +34,9 @@
 
 		    returnWithInfo($base.$encodedURL.$mode);
 		 }
+	else{
+		returnWithError("Empty Field");	
+	}
 	
 	function getRequestInfo()
 	{
