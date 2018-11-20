@@ -16,11 +16,9 @@ function myMap()
 
 function searchLocation()
 {
-	var thisUL = document.getElementById("mapUL");
-	while(thisUL.hasChildNodes())
+	while(mapUL.hasChildNodes())
 	{
-		// myUL.removeChild(mapUL.firstChild);
-		thisUL.removeChild(thisUL.childNodes[0]);
+		mapUL.removeChild(mapUL.childNodes[0]);
 	}
 	
 		var srch = document.getElementById("searchText").value;
