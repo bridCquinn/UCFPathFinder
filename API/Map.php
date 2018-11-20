@@ -13,7 +13,7 @@
 	$inData = getRequestInfo();
 		
 	$testCode = "JQ2W+VP Heritage Oaks, Florida";
-	    if (!empty($inData))
+	    if (empty($inData) || T)
 		{
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
 		    $encodedURL = "";
