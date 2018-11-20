@@ -11,20 +11,13 @@
     }
 */
 	$inData = getRequestInfo();
-	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
-	
-	if ($conn->connect_error) 
-	{
-		returnWithError( $conn->connect_error );
-	} 
-	else
-	{	
+		
 	$testCode = "JQ2W+VP Heritage Oaks, Florida";
-            if (!empty($indata))
-            	{
+	    if (!empty($indata))
+		{
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
 		    $encodedURL = "";
-		    
+
 		    for($i=0; $i<strlen($testCode); i++){
 			if($testCode[i]==' '){
 				$encodedURL =  $encodedURL."+";	
@@ -36,22 +29,16 @@
 				$encodedURL = $encodedURL."".$testcode[i]."";
 			}
 		    }
-			    
+
 		    $mode = "&travelmode=walking";
-		  
-	            returnWithInfo($base.$encodedURL.$mode);
+
+		    returnWithInfo($base.$encodedURL.$mode);
 		 }
-			else
-			{
-				returnWithError( "No Records Found" );
-        	}
-		}
-		else
-		{
-			returnWithError($conn->error);
-		}
-		$conn->close();
+	else
+	{
+		returnWithError( "No Records Found" );
 	}
+
 	
 	function getRequestInfo()
 	{
