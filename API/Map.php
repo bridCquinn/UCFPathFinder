@@ -19,13 +19,27 @@
 	} 
 	else
 	{	
-
+	$testCode = "JQ2W+VP Heritage Oaks, Florida";
             if (!empty($indata))
             	{
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
-		    $mode = "walking";
+		    $encodedURL = "";
+		    
+		    for($i=0; $i<strlen($testCode); i++){
+			if($testCode[i]==' '){
+				$encodedURL =  $encodedURL."+";	
+			}
+			else if($testCode[i]==','){
+				$encodedURL =  $encodedURL."%2C";	
+			}
+			else{
+				$encodedURL = $encodedURL."".$testcode[i]."";
+			}
+		    }
+			    
+		    $mode = "&travelmode=walking";
 		  
-	            returnWithInfo( $row["plusCode"] );
+	            returnWithInfo($base.$encodedURL.$mode);
 		 }
 			else
 			{
