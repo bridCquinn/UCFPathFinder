@@ -2,14 +2,13 @@
 /*
     JSON package expected
     { 
-      "buildingID"   :  <<buildingID>>
+      "plusCode"   :  <<building plusCode>> 
     }
     JSON package returned
     {
-      "results"  :  <<building plusCode>> 
+      "results"  :  <<encodedURL>> 
       "error"    :  <<error if one exists>>
     }
-    Each building array : [buildingID, buildingAbbreviation, buildingName]
 */
 	$inData = getRequestInfo();
 	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
@@ -20,17 +19,10 @@
 	} 
 	else
 	{	
-		$sql = "CALL getBuildingCode (?);";
-		$stmt = $conn->prepare($sql);
-		if($stmt != false) 
-		{
-			$stmt->bind_param('i', $buildingID);
-			$buildingID = $inData["buildingID"];			
-            		$stmt->execute();
-            		$result = $stmt->get_result();
-            if ($result->num_rows > 0)
-            {
-                $row = $result->fetch_assoc();
+
+            if (!empty($indata))
+            	{
+               	 $row = $result->fetch_assoc();
 	            returnWithInfo( $row["plusCode"] );
 			       }
 			else
@@ -60,9 +52,9 @@
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
-    function returnWithInfo( $searchResults )
+    function returnWithInfo( $encodedURL )
 	{
-		$retValue = '{"results":' . $searchResults . ',"error":""}';
+		$retValue = '{"results":' . $encodedURL . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>
