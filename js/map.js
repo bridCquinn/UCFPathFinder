@@ -16,9 +16,9 @@ function myMap()
 
 function searchLocation()
 {
-	while(myUL.firstChild)
+	while(mapUL.firstChild)
 	{
-		myUL.removeChild(myUL.firstChild);
+		myUL.removeChild(mapUL.firstChild);
 		//myUL.removeChild(myUL.childNodes[0]);
 	}
 	
