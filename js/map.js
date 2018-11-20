@@ -20,7 +20,7 @@ function searchLocation()
 	while(thisUL.hasChildNodes())
 	{
 		// myUL.removeChild(mapUL.firstChild);
-		thisUL.removeChild(myUL.childNodes[0]);
+		thisUL.removeChild(thisUL.childNodes[0]);
 	}
 	
 		var srch = document.getElementById("searchText").value;
