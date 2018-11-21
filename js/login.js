@@ -89,7 +89,7 @@ function doLogin()
 
     for(j = 0; j < scheduleList.length; j++)
     {
-      alert(scheduleList[j],className);
+      alert(scheduleList[j].className);
       makeTile(scheduleList[j]);
     }
 
