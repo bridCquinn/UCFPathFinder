@@ -63,7 +63,6 @@ function doLogin()
 		lastName = jsonObject.lastName;
 
 		//document.getElementById("userName").innerHTML = firstName + " " + lastName;
-    alert(jsonObject.schedule.length);
     for(i = 0; i < jsonObject.schedule.length; i++)
     {
       var course = new Course();
@@ -86,12 +85,11 @@ function doLogin()
       if(scheduleList < 1)
         document.getElementById("delSch").style.display = 'none';
     }
-
-    for(j = 0; j < scheduleList.length; j++)
-    {
-      alert(scheduleList[j].className);
-      makeTile(scheduleList[j]);
-    }
+    // 
+    // for(j = 0; j < scheduleList.length; j++)
+    // {
+    //   makeTile(scheduleList[j]);
+    // }
 
 
 		document.getElementById("loginName").value = loginName.defaultValue;
@@ -100,7 +98,6 @@ function doLogin()
     hideOrShow( "tabs", true);
 		hideOrShow( "accessUIDiv", true);
 		hideOrShow( "loginPage", false);
-    hideOrShow("Map", false);
     hideOrShow("Profile", false);
     hideOrShow("scaleable-wrapper", false);
 
