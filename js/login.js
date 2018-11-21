@@ -85,11 +85,11 @@ function doLogin()
       if(scheduleList < 1)
         document.getElementById("delSch").style.display = 'none';
     }
-    // 
-    // for(j = 0; j < scheduleList.length; j++)
-    // {
-    //   makeTile(scheduleList[j]);
-    // }
+    
+    for(j = 0; j < scheduleList.length; j++)
+    {
+      makeTile(scheduleList[j]);
+    }
 
 
 		document.getElementById("loginName").value = loginName.defaultValue;
