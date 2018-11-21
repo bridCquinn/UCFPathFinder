@@ -87,9 +87,12 @@ function doLogin()
         document.getElementById("delSch").style.display = 'none';
     }
 
-
     for(j = 0; j < scheduleList.length; j++)
+    {
+      alert(scheduleList[j],className);
       makeTile(scheduleList[j]);
+    }
+
 
 		document.getElementById("loginName").value = loginName.defaultValue;
 		document.getElementById("loginPassword").value =loginPassword.defaultValue;
