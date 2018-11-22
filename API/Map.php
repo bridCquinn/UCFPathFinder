@@ -11,11 +11,13 @@
     }
 */
 	$inData = getRequestInfo();
-	$plusCode = $inData["plusCode"];
+	
 	    if (!empty($inData))
 		{
+		    $plusCode = $inData["plusCode"];
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
 		    $plusCode = str_replace(" ", "+", $plusCode);
+		    $pluscode = str_replace(",", "%2C", $plusCode)
 		/*' ' to '+'
 		',' to "%2C"*/
 		   
