@@ -30,7 +30,7 @@
 
 		    $mode = "&travelmode=walking";
 			
-		    returnWithInfo("not working");
+		    returnWithInfo($base.$encodedURL.$mode);
 		 }
 	else{
 		returnWithError("Empty Field");	
