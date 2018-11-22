@@ -16,18 +16,9 @@
 		{
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
 		    $encodedURL = "";
-
-		   for($i=0; $i<strlen($plusCode); i++){
-			/*if($plusCode[i]===' '){
-				$encodedURL =  $encodedURL."+";	
-			}
-			else if($plusCode[i]===','){
-				$encodedURL =  $encodedURL."%2C";	
-			}
-			else{
-				$encodedURL = $encodedURL.$plusCode[i];
-			}*/
-		    }
+		/*' ' to '+'
+		',' to "%2C"*/
+		   
 
 		    $mode = "&travelmode=walking";
 			
