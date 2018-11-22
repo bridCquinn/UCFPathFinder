@@ -30,7 +30,7 @@
 
 		    $mode = "&travelmode=walking";
 			
-		    returnWithError("not working");
+		    returnWithInfo("not working");
 		 }
 	else{
 		returnWithError("Empty Field");	
@@ -53,7 +53,7 @@
 	}
     function returnWithInfo( $searchResults )
 	{
-		$retValue = '{"results":' . $searchResults . ',"error":""}';
+		$retValue = '{"results":"' . $searchResults . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>
