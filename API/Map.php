@@ -15,7 +15,7 @@
 	    if (!empty($inData))
 		{
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
-		    str_replace(" ", "+", $plusCode);
+		    $plusCode = str_replace(" ", "+", $plusCode);
 		/*' ' to '+'
 		',' to "%2C"*/
 		   
