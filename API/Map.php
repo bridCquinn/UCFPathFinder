@@ -18,10 +18,10 @@
 		    $encodedURL = "";
 
 		   for($i=0; $i<strlen($plusCode); i++){
-			if($plusCode[i]==' '){
+			if($plusCode[i]===' '){
 				$encodedURL =  $encodedURL."+";	
 			}
-			else if($plusCode[i]==','){
+			else if($plusCode[i]===','){
 				$encodedURL =  $encodedURL."%2C";	
 			}
 			else{
