@@ -30,7 +30,7 @@
 
 		    $mode = "&travelmode=walking";
 			
-		    returnWithInfo("test");
+		    returnWithInfo("");
 		 }
 	else{
 		returnWithError("Empty Field");	
