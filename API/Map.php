@@ -15,14 +15,14 @@
 	    if (!empty($inData))
 		{
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
-		    $encodedURL = "";
+		    str_replace(" ", "+", $plusCode);
 		/*' ' to '+'
 		',' to "%2C"*/
 		   
 
 		    $mode = "&travelmode=walking";
 			
-		    returnWithInfo($base.$encodedURL.$mode);
+		    returnWithInfo($base.$plusCode.$mode);
 		 }
 	else{
 		returnWithError("Empty Field");	
