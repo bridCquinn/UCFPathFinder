@@ -30,7 +30,7 @@
 
 		    $mode = "&travelmode=walking";
 			
-		    returnWithInfo($encodedURL);
+		    returnWithInfo("reached here");
 		 }
 	else{
 		returnWithError("Empty Field");	
