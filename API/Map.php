@@ -11,8 +11,6 @@
     }
 */
 	$inData = getRequestInfo();
-		
-	$testCode = "JQ2W+VP Heritage Oaks, Florida";
 	    if (empty($inData))
 		{
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
