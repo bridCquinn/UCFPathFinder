@@ -11,7 +11,7 @@
     }
 */
 	$inData = getRequestInfo();
-	    if (empty($inData))
+	    if (!empty($inData))
 		{
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
 		    $encodedURL = "";
@@ -29,8 +29,8 @@
 		    }*/
 
 		    $mode = "&travelmode=walking";
-
-		    returnWithInfo($base.$encodedURL.$mode);
+			
+		    returnWithInfo($encodedURL);
 		 }
 	else{
 		returnWithError("Empty Field");	
