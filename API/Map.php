@@ -11,20 +11,21 @@
     }
 */
 	$inData = getRequestInfo();
+	$plusCode = $inData["plusCode"];
 	    if (!empty($inData))
 		{
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
 		    $encodedURL = "";
 
-		   for($i=0; $i<strlen($inData["plusCode"]); i++){
-			if($testCode[i]==' '){
+		   for($i=0; $i<strlen($plusCode); i++){
+			if($plusCode[i]==' '){
 				$encodedURL =  $encodedURL."+";	
 			}
-			else if($testCode[i]==','){
+			else if($plusCode[i]==','){
 				$encodedURL =  $encodedURL."%2C";	
 			}
 			else{
-				$encodedURL = $encodedURL.$inData["plusCode"];
+				$encodedURL = $encodedURL.$plusCode[i];
 			}
 		    }
 
