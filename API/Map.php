@@ -51,9 +51,9 @@
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
-    function returnWithInfo( $encodedURL )
+    function returnWithInfo( $searchResults )
 	{
-		$retValue = '{"results":' . $encodedURL . ',"error":""}';
+		$retValue = '{"results":' . $searchResults . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>
