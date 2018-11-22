@@ -16,7 +16,7 @@
 		    $base = "https://www.google.com/maps/dir/?api=1&destination=";
 		    $encodedURL = "";
 
-		   /* for($i=0; $i<strlen($testCode); i++){
+		   for($i=0; $i<strlen($inData["plusCode"]); i++){
 			if($testCode[i]==' '){
 				$encodedURL =  $encodedURL."+";	
 			}
@@ -24,9 +24,9 @@
 				$encodedURL =  $encodedURL."%2C";	
 			}
 			else{
-				$encodedURL = $encodedURL."".$testcode[i]."";
+				$encodedURL = $encodedURL.$inData["plusCode"];
 			}
-		    }*/
+		    }
 
 		    $mode = "&travelmode=walking";
 			
