@@ -18,7 +18,7 @@
 		    $encodedURL = "";
 
 		   for($i=0; $i<strlen($plusCode); i++){
-			if($plusCode[i]===' '){
+			/*if($plusCode[i]===' '){
 				$encodedURL =  $encodedURL."+";	
 			}
 			else if($plusCode[i]===','){
@@ -26,7 +26,7 @@
 			}
 			else{
 				$encodedURL = $encodedURL.$plusCode[i];
-			}
+			}*/
 		    }
 
 		    $mode = "&travelmode=walking";
