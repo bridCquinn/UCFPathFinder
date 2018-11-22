@@ -30,7 +30,7 @@
 
 		    $mode = "&travelmode=walking";
 			
-		    returnWithInfo($inData["plusCode"]);
+		    returnWithInfo($mode);
 		 }
 	else{
 		returnWithError("Empty Field");	
