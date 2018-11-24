@@ -33,24 +33,28 @@ public class RegisterActivity extends AppCompatActivity {
                 EditText editTextFirstName = findViewById(R.id.editText_firstName_registerActivity);
                 EditText editTextLastName = findViewById(R.id.editText_lastName_registerActivity);
                 EditText editTextUsername = findViewById(R.id.editText_username_registerActivity);
+                EditText editTextEmail = findViewById(R.id.editText_email_registerActivity);
                 EditText editTextPassword = findViewById(R.id.editText_password_registerActivity);
                 EditText editTextRetypePassword = findViewById(R.id.editText_retypePassword_registerActivity);
 
                 String firstName = editTextFirstName.getText().toString();
                 String lastName = editTextLastName.getText().toString();
                 String username = editTextUsername.getText().toString();
+                String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
                 String retypePassword = editTextRetypePassword.getText().toString();
 
-                boolean result = requestUserAccount(firstName, lastName, username, password, retypePassword);
+                boolean result = requestUserAccount(firstName, lastName, username, email, password, retypePassword);
                 if(result)
                 {
                     // Clear the text entered.
-                    editTextFirstName.getText().clear();;
+                    editTextFirstName.getText().clear();
+                    editTextLastName.getText().clear();
                     editTextUsername.getText().clear();
-                    editTextPassword.getText().clear();
+                    editTextEmail.getText().clear();
                     editTextPassword.getText().clear();
                     editTextRetypePassword.getText().clear();
+                    finish();
                 }
 
             }
@@ -66,56 +70,20 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private boolean requestUserAccount(String firstName, String lastName, String username, String password, String retypePassword) {
+    private boolean requestUserAccount(String firstName, String lastName, String username, String email, String password, String retypePassword) {
         if(!(password.equals(retypePassword)))
         {
             Toast.makeText(this, "Passwords do not match", Toast.LENGTH_LONG).show();
             return false;
         }
-
-        String login_url = "http://192.168.37.5/api/register.php";
-        try {
-            URL url = new URL(login_url);
-
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setDoInput(true);
-
-            OutputStream outputStream = httpURLConnection.getOutputStream();
-
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-
-            String postData = URLEncoder.encode("first_name_key", "UTF-8") + "=" + URLEncoder.encode(firstName, "UTF-8") + "&" +
-                    URLEncoder.encode("last_name_key", "UTF-8") + "=" + URLEncoder.encode(lastName, "UTF-8") + "&" +
-                    URLEncoder.encode("username_key", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") + "&" +
-                    URLEncoder.encode("password_key", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
-
-            bufferedWriter.write(postData);
-            bufferedWriter.flush();
-            bufferedWriter.close();
-
-            outputStream.close();
-
-            InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-            String result = "";
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                result += (line);
-            }
-            bufferedReader.close();
-            inputStream.close();
-            httpURLConnection.disconnect();
-
-
-            Toast.makeText(this, result, Toast.LENGTH_LONG).show();
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(!(email.contains("@") && email.contains(".")))
+        {
+            Toast.makeText(this,"Invalid Email",Toast.LENGTH_LONG).show();
+            return false;
         }
+
+        BackgroundWorker backgroundWorker = new BackgroundWorker(username, password, firstName, lastName, email, "register", this);
+        backgroundWorker.execute();
         return true;
     }
 
