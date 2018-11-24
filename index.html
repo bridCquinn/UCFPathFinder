@@ -176,8 +176,39 @@
           <div class="col-6">
 
             <div class="row">
-              <div class="col-6"><input class="form-control mr-sm-2" type="text" id="term" name="term" placeholder="Term"></div>
-              <div class="col-6"><input class="form-control mr-sm-2" type="number" id="year" name="year" placeholder="Year"></div>
+              <div class="col-6">
+              <div class="row">
+              <select class="form-control mr-sm-2" id="term" name="term"><option id="thisTerm" value="Term">Term</option>
+                <option value="Spring">Spring</option>
+                <option value="Fall">Fall</option>
+                <option value="Summer A">Summer A</option>
+                <option value="Summer B">Summer B</option>
+                <option value="Summer C">Summer C</option>
+                <option value="Not Listed">Not Listed</option>
+              </select>
+              </div>
+            </div>
+
+              <div class="col-6">
+                <div class="row">
+                <select class="form-control mr-sm-2" id="year" name="year"><option id="thisYear" value="Year">Year</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                  <option value="2029">2029</option>
+                  <option value="2030">2030</option>
+                  <option value="Not Listed">Not Listed</option>
+                </select>
+                </div>
+              </div>
             </div><br>
 
             <div class="scrollbar scrollbar-primary">
@@ -190,57 +221,6 @@
               </div>
             </div>
 
-
-            <!-- <ul>
-            <div class="accordion" id="accordionExample">
-              <li>
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="toggle('collapseOne')">
-                      Code - ClassName1
-                    </button>
-                  </h5>
-                </div>
-
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div class="card-body">
-                      <h5 class="card-title">Class Name</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Class Code</h6>
-                      <p class="card-text">
-                        <h6> Start Time - End Time </h6>
-                      </p>
-                      <a href="#" class="card-link">Address</a>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="card">
-                <div class="card-header" id="headingTwo">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" onclick="toggle('collapseTwo')">
-                      Code - ClassName2
-                    </button>
-                  </h5>
-                </div>
-
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                  <div class="card-body">
-                    <h5 class="card-title">Class Name</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Class Code</h6>
-                    <p class="card-text">
-                      <h6> Start Time - End Time </h6>
-                    </p>
-                    <a href="#" class="card-link">Address</a>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </div>
-            </ul> -->
             <br>
             <button class="buttons" onclick="makeSchedule()">Submit</button>
             <span id="makeSchResult"></span>
@@ -297,7 +277,7 @@
     </div> <!--end of modal-->
 	</div> <!--end of schedule tab -->
 
-	 
+
 
 
       <div id="Profile" class="tabcontent">
