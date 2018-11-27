@@ -16,8 +16,10 @@
     	$array  = $inData["schedule"];
     	$length = count($array);
 	
-	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
-
+	$info = json_decode(file_get_contents('info.json'), true);
+	
+	$conn = new mysqli("localhost", $info["name"], $info["pass"], $info["data"]);	
+	
 	if ($conn->connect_error) 
 	{	
 		returnWithError( $conn->connect_error );
