@@ -83,11 +83,13 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
                 spEditior = sharedPreferences.edit();
                 spEditior.putString("userID", result);
                 spEditior.putString("username", getUsername());
-                spEditior.putString("password", getPreHashPassword());
+                // Password stored is hashed.
+                spEditior.putString("password", passwordHashMD5(getPreHashPassword()));
                 spEditior.commit();
 
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 intent.putExtra("loginResultJson", result);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getContext().startActivity(intent);
             }
             else if(getRequestResult() && !(isRecordsFound()))
@@ -328,6 +330,7 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
     private HttpURLConnection getHTTPURLConnection(URL url)
     {
         // Connection to the server.
+        // TODO if offline?
         try {
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");

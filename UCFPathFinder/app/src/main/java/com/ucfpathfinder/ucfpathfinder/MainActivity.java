@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_logout) {
             Toast.makeText(this, "Logging Out", Toast.LENGTH_SHORT).show();
+            // TODO remove local user info.
             finish();
         }
 
