@@ -21,14 +21,16 @@ Login:
 SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND password = '<hashed password>';
 */
 	$inData = getRequestInfo();
+	$info = json_decode(file_get_contents('info.json'), true);
 	
 	$userID = 0;
 	$firstName = "";
 	$lastName = "";
 	
 	/*Connection to the database*/
-	$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
-	
+	//$conn = new mysqli("localhost", "root", "orlando", "ucfpathfinder");
+	$conn = new mysqli("localhost", $info["name"], $info["pass"], $info["data");	
+
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
