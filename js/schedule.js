@@ -51,9 +51,12 @@ function addClass(){
   course.building = document.getElementById("address").value;
   course.notes = document.getElementById("note").value;
 
-  scheduleList.push(course);
+  if(course.className != "" || course.classCode != "")
+  {
+    scheduleList.push(course);
 
-  addtoList(course);
+    addtoList(course);
+  }
 }
 
 // is activated when newSchedule is pressed
