@@ -28,6 +28,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String id = sharedPreferences.getString("userID","No ID Found");
+        String username = sharedPreferences.getString("username", "No Username Found");
+        String password = sharedPreferences.getString("password", "No Password Found");
+
+        TextView tv = findViewById(R.id.textView_mainActivity);
+        tv.setText("ID : "+id+"\nUsername: "+username+"\nPassword: \n"+password);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,11 +102,20 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
             Toast.makeText(this, "Logging Out", Toast.LENGTH_SHORT).show();
             // TODO remove local user info.
+            removeUserInfo();
             finish();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void removeUserInfo()
+    {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences.edit().remove("userID").commit();
+        sharedPreferences.edit().remove("username").commit();
+        sharedPreferences.edit().remove("password").commit();
     }
 }
