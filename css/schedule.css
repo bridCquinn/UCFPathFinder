@@ -86,3 +86,15 @@ img {
   margin-left: 30%;
   margin-right: 30%;
 }
+
+#newSch {
+  overflow-y: auto;
+}
+
+.round {
+    border-radius: 80%;
+    background-color: #f4c542;
+    width: 40px;
+    height: 40px;
+    color: black;
+}

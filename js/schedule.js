@@ -13,6 +13,7 @@ function Course(){
 };
 
 var scheduleList = [];
+var lastPressed = -1;
 
 // this is used to add to the physical list
 // creates the list node with all of the information
@@ -23,9 +24,9 @@ function addtoList(course){
   document.getElementById("myUL").appendChild(li);
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
-  li.id = "list" + course.classCode;
-  li.setAttribute('onclick', "toggle(course)");
+  li.id = "list" + course.classID;
   span.appendChild(txt);
+  li.setAttribute('onclick', "choose(this.id)");
 
   document.getElementById("name").value = "";
   document.getElementById("code").value = code.defaultValue;
@@ -115,7 +116,13 @@ function makeSchedule() {
   document.getElementById('newSch').style.display = 'none';
   document.getElementById('delSch').style.display = 'block';
 
-
+  document.getElementById("name").value = "";
+  document.getElementById("code").value = code.defaultValue;
+  document.getElementById("ddlPattern").selectedIndex = 0;
+  document.getElementById("start").value = start.defaultValue;
+  document.getElementById("end").value = end.defaultValue;
+  document.getElementById("address").value = address.defaultValue;
+  document.getElementById("note").value = note.defaultValue;
 }
 
 // delete the entire schedule
@@ -185,12 +192,12 @@ function makeTile(course)
   pnote.appendChild(notes);
 
   card.classList.add("card-1");
-  card.id = course.classCode + course.className;
+  card.id = "edit" + course.classID;
   // needs editing ( is not getting the code)
   // card.setAttribute("onclick", "editClass(this.id)");
   body.classList.add("card-body");
   span.classList.add("close");
-  span.id = course.classCode;
+  span.id = "del" + course.classID;
   span.setAttribute("onclick", "deleteClass(this.id)");
   span.style.top = 0;
   span.style.right = 0;
@@ -209,7 +216,7 @@ function makeTile(course)
 // also removes delete button on empty list
 function deleteClass(code){
 
-  var course = findCourse(code);
+  var course = findCourse("del",code);
 
   var jsonPayload = '{"userId": "'+ userId +'","classCode": "'+ course.classCode +'", "term": "'+ course.term +'", "year": "' + course.year + '"}';
   var url = urlBase + '/DeleteClass.' + extension;
@@ -239,6 +246,8 @@ function deleteClass(code){
 
   // takes the tile off of the GUI
   deleteTile(course);
+  // delete list element
+  deleteListElement(course);
 
   if(scheduleList < 1)
     document.getElementById("delSch").style.display = 'none';
@@ -246,64 +255,142 @@ function deleteClass(code){
 
 // deletes tile and list
 function deleteTile(course){
-    var element = document.getElementById(course.classCode + course.className);
+    var element = document.getElementById("edit" + course.classID);
     element.parentNode.removeChild(element);
+}
 
-    var listelement = document.getElementById("list" + course.classCode);
-    listelement.parentNode.removeChild(listelement);
-
+function deleteListElement(course){
+  var listelement = document.getElementById("list" + course.classID);
+  listelement.parentNode.removeChild(listelement);
 }
 
 // find course in scheduleList from the course Code
-function findCourse(code){
+function findCourse(word, id){
+
+  //breaking down the id to only the classID
+  var classID = id.substring(word.length);
+
+  // finds course in array
   for(i = 0; i < scheduleList.length; i++)
   {
-    if(scheduleList[i].classCode == code)
+    if(scheduleList[i].classID == classID)
       return scheduleList[i];
   }
   alert("Not found!");
 }
 
-// when tile is pressed, the make/edit modal is unhidden
-// when list item is pressed, info is placed back in text boxes
-// this allows them to be edited
-// function editClass(code)
-// {
-//   // get course from scheduleList
-//   var course = findCourse(code);
-//   // brings up the schedule modal
-//   newSchedule();
-//
-//   document.getElementById("name").value = course.className;
-//   document.getElementById("code").value = course.classCode;
-//   document.getElementById("ddlPattern").selectedIndex = course.days;
-//   document.getElementById("start").value = course.startTime;
-//   document.getElementById("end").value = course.endTime;
-//   document.getElementById("address").value = course.building;
-//   document.getElementById("note").value = course.notes;
-//
-//   var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(scheduleList)+'}';
-//
-//   var url = urlBase + '/EditClass.' + extension;
-//
-//   var xhr = new XMLHttpRequest();
-//   xhr.open("POST", url, true);
-//   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-//   try
-//   {
-//     xhr.onreadystatechange = function()
-//     {
-//       if (this.readyState == 4 && this.status == 200)
-//       {
-//         //document.getElementById("contactAddResult").innerHTML = "Contact has been added";
-//         ;
-//       }
-//     };
-//     xhr.send(jsonPayload);
-//   }
-//   catch(err)
-//   {
-//     document.getElementById("makeSchResult").innerHTML = err.message;
-//   }
-//
-// }
+function choose(code)
+{
+  var course = findCourse("list",code);
+
+  document.getElementById("name").value = course.className;
+  document.getElementById("code").value = course.classCode;
+  document.getElementById("ddlPattern").selectedIndex = course.classDays;
+  document.getElementById("start").value = course.startTime;
+  document.getElementById("end").value = course.endTime;
+  document.getElementById("address").value = course.building;
+  document.getElementById("note").value = course.notes;
+
+  hideOrShow("add", false);
+  hideOrShow("save", true);
+  hideOrShow("sub", false);
+  hideOrShow("fin", true);
+  hideOrShow("back", true);
+
+  lastPressed = course.classID;
+}
+
+function saveEdit(){
+
+  // finding the correct course from the scheuleList to edit
+  for(i = 0; i < scheduleList.length; i++)
+    if(scheduleList[i].classID == lastPressed)
+      break;
+
+  // changes values in schedule
+  scheduleList[i].className = document.getElementById("name").value;
+  scheduleList[i].classCode = document.getElementById("code").value;
+  scheduleList[i].classDays = document.getElementById("ddlPattern").value;
+  scheduleList[i].startTime = document.getElementById("start").value;
+  scheduleList[i].endTime = document.getElementById("end").value;
+  scheduleList[i].building = document.getElementById("address").value;
+  scheduleList[i].notes = document.getElementById("note").value;
+
+
+  // places default values in the text boxes
+  document.getElementById("name").value = "";
+  document.getElementById("code").value = code.defaultValue;
+  document.getElementById("ddlPattern").selectedIndex = 0;
+  document.getElementById("start").value = start.defaultValue;
+  document.getElementById("end").value = end.defaultValue;
+  document.getElementById("address").value = address.defaultValue;
+  document.getElementById("note").value = note.defaultValue;
+
+  deleteListElement(scheduleList[i]);
+
+  var li = document.createElement("li");
+  var t = document.createTextNode(scheduleList[i].classCode + " - " + scheduleList[i].className);
+  li.appendChild(t);
+  document.getElementById("myUL").appendChild(li);
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  li.id = "list" + scheduleList[i].classID;
+  span.appendChild(txt);
+  li.setAttribute('onclick', "choose(this.id)");
+
+}
+
+function finishEdit(){
+
+  for(i = 0; i < scheduleList.length; i++)
+  {
+    deleteTile(scheduleList[i]);
+    makeTile(scheduleList[i]);
+  }
+    document.getElementById('newSch').style.display = 'none';
+
+    back();
+
+  var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(scheduleList)+'}';
+
+  var url = urlBase + '/EditClass.' + extension;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  try
+  {
+    xhr.onreadystatechange = function()
+    {
+      if (this.readyState == 4 && this.status == 200)
+      {
+        //document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+        ;
+      }
+    };
+    xhr.send(jsonPayload);
+  }
+  catch(err)
+  {
+    document.getElementById("makeSchResult").innerHTML = err.message;
+  }
+
+}
+
+function back()
+{
+  hideOrShow("add", true);
+  hideOrShow("save", false);
+  hideOrShow("sub", true);
+  hideOrShow("fin", false);
+  hideOrShow("back", false);
+
+  // places default values in the text boxes
+  document.getElementById("name").value = "";
+  document.getElementById("code").value = code.defaultValue;
+  document.getElementById("ddlPattern").selectedIndex = 0;
+  document.getElementById("start").value = start.defaultValue;
+  document.getElementById("end").value = end.defaultValue;
+  document.getElementById("address").value = address.defaultValue;
+  document.getElementById("note").value = note.defaultValue;
+}

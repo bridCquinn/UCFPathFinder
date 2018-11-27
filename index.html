@@ -162,7 +162,6 @@
         </a>
       </div>
 
-
     <!-- create new schedule modal -->
     <div id="newSch" class ="modal">
 
@@ -222,8 +221,9 @@
             </div>
 
             <br>
-            <button class="buttons" onclick="makeSchedule()">Submit</button>
+            <button class="buttons" id="sub" onclick="makeSchedule()">Submit</button>
             <span id="makeSchResult"></span>
+            <button class="buttons" id="fin" style="visibility: hidden; display:none" onclick="finishEdit()">Finish Edit</button>
 
           </div> <!--end of col-6 for class list-->
 
@@ -265,9 +265,11 @@
               <div class="col-12"><input class="form-control mr-sm-2" type="text" id="note" name="notes" placeholder="Notes"></div><br>
 
             </form>
-            <button class="buttons" onclick="addClass()">Add Class</button>
-          </div>
+            <button class="buttons" id="add" onclick="addClass()">Add Class</button>
+            <button class="buttons" id="save" style="visibility: hidden; display:none" onclick="saveEdit()">Save Edit</button>
 
+          </div>
+            <a href="#" class="round" id="back" style="visibility: hidden; display:none" onclick="back()">&#8249;</a>
         </div> <!-- end of row-->
         </h1>
 
