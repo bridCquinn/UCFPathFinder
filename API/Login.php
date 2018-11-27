@@ -101,7 +101,7 @@ SELECT userID, firstName, lastName, login FROM users WHERE login = '<login>' AND
 					}
 				}
 				
-				$call = "php TestGetSchedule.php ".$userID." ".$term." ".$year;
+				$call = "php GetSchedule.php ".$userID." ".$term." ".$year;
 				$schedule = shell_exec($call);
 			  
 				returnWithInfo($firstName, $lastName, $userID, $schedule);
