@@ -287,15 +287,14 @@
         <p>Profile will have general info.</p>
 		<div class="container">
 
-								<input class="form-control" id="searchText" type="text" onkeyup="searchLocation()" placeholder="Search location.."/>
+								<input class="form-control" id="searchText" type="text" onclick="document.getElementById('scroll').style.display='block'" onkeyup="searchLocation()" placeholder="Search location.."/>
+									<div id ="scroll" class="scrollbar scrollbar-primary" style="display:none;">
+										<div class="force-overflow">
+											<ul class="list-group" id="mapUL" style="list-style-type:none" onclick="document.getElementById('scroll').style.display='none'">
 
-								<div class="scrollbar scrollbar-primary">
-									<div class="force-overflow">
-									<ul class="list-group" id="mapUL" style="list-style-type:none">
-
-									</ul>
+											</ul>
+										</div>
 									</div>
-								</div>
 								
 							
 

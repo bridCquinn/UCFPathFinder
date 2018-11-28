@@ -23,6 +23,9 @@ function searchLocation()
 	
 		var srch = document.getElementById("searchText").value;
 		
+		if(srch == "")
+			return;
+		
 		var jsonPayload =  '{"search" : "' + srch + '"}';
 		var url = urlBase + '/SearchBuildings.' + extension;
 		

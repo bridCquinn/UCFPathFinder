@@ -23,7 +23,7 @@ hr{
     margin-left: 25px;
     margin-right: 25px;
     margin-top: 20px;
-    height: 300px;
+	max-height: 200px;
     width: auto;
     background: #fff;
     overflow-y: auto;
@@ -47,7 +47,7 @@ ul {
 ul li {
     cursor: pointer;
     position: relative;
-    padding: 12px 8px 12px 40px;
+    padding: 8px;
     background: #eee;
     font-size: 18px;
     transition: 0.2s;
