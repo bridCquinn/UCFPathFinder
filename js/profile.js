@@ -1,6 +1,6 @@
 function changeTerm() {
-  var term = document.getElementById("profileTerm");
-  var year = document.getElementById("profileYear");
+  var term = document.getElementById("profileTerm").value;
+  var year = document.getElementById("profileYear").value;
 
   document.getElementById("classes").innerHTML = "";
   document.getElementById("myUL").innerHTML = "";
