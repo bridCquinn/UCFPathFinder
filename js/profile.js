@@ -6,7 +6,7 @@ function changeTerm() {
   document.getElementById("myUL").innerHTML = "";
   scheduleList = [];
 
-  var jsonPayload = '{"userID" : "'+userId+'", "term" : '+term+', "year" : "'+year+'"}';
+  var jsonPayload = '{"userID" : "'+ userId +'", "term" : "'+ term +'", "year" : "'+ year +'"}';
   var url = urlBase + '/GetSchedule.' + extension;
 
   var xhr = new XMLHttpRequest();
@@ -14,12 +14,12 @@ function changeTerm() {
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
   try
   {
-  	xhr.send(jsonPayload);
+    xhr.send(jsonPayload);
 
-  	var jsonObject = JSON.parse( xhr.responseText );
+    var jsonObject = JSON.parse( xhr.responseText );
 
-
-  	//document.getElementById("userName").innerHTML = firstName + " " + lastName;
+    alert(jsonObject.schedule[0][2]);
+    //document.getElementById("userName").innerHTML = firstName + " " + lastName;
     for(i = 0; i < jsonObject.schedule.length; i++)
     {
       var course = new Course();
@@ -52,7 +52,6 @@ function changeTerm() {
   catch(err)
   {
     // make new error message
-  	// document.getElementById("loginResult").innerHTML = err.message;
+    // document.getElementById("loginResult").innerHTML = err.message;
   }
-
 }
