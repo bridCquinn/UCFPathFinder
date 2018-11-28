@@ -140,7 +140,7 @@
       </div> <!-- end of scaling-->
 
     <!-- beginning of the webapp home -->
-    <div class="main" id="accessUIDiv" style="display:block; visibility:visible;">
+    <div class="main" id="accessUIDiv" style="display:none; visibility:hidden;">
 
       <div id="schedule" class="tabcontent">
         <h3><span id="termYear"></span></h3>
@@ -295,6 +295,11 @@
 
 									</ul>
 									</div>
+								</div>
+								
+								<div id="testDropdown" class="dropdown-content">
+									<input type="text" placeholder="Search for a building.." id="testDropdownInput" onkeyup="testSearchBuilding()">
+									
 								</div>
 
       </div>
