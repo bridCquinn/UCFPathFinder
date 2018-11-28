@@ -117,7 +117,7 @@ function makeSchedule() {
   document.getElementById("myUL").innerHTML = "";
   scheduleList = [];
 
-  var jsonPayload = '{"userID" : "'+userId+'", "term" : '+term+', "year" : "'+year+'"}';
+  var jsonPayload = '{"userID" : "'+ userId +'", "term" : "'+ term +'", "year" : "'+ year +'"}';
   var url = urlBase + '/GetSchedule.' + extension;
 
   var xhr = new XMLHttpRequest();
