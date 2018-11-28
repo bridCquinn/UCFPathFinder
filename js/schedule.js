@@ -51,11 +51,14 @@ function addClass(){
   course.building = document.getElementById("address").value;
   course.notes = document.getElementById("note").value;
 
-  if(course.className != "" || course.classCode != "")
+  if(course.className != "" || course.classCode != "" || course.term != "" || course.year != "")
   {
     scheduleList.push(course);
 
     addtoList(course);
+  }
+  else {
+    $("#exampleModalCenter").modal();
   }
 }
 
