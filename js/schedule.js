@@ -405,6 +405,7 @@ function finishEdit(){
 
     back();
 
+alert(scheduleList[0]);
   var jsonPayload = '{"userID" : "'+ userId +'", "schedule" : '+JSON.stringify(scheduleList)+'}';
 
   var url = urlBase + '/EditClass.' + extension;
