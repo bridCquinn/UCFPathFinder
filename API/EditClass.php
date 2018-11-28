@@ -13,7 +13,8 @@
 */
 	$inData = getRequestInfo();
     	$userID = $inData["userID"];
-    	$class  = $inData["class"];
+    	$array  = $inData["schedule"];
+	$length = count($array);
 
 	$info = json_decode(file_get_contents('info.json'), true);
 
@@ -31,14 +32,18 @@
 		
        	    if($stmt = $conn->prepare($sql))
             {     
-           	    $stmt->bind_param('iiissssss', $userID, $class["classID"],
+		    for($i = 0; $i < $length; $i++)
+		    {
+			$class = $array[$i];
+		    	$stmt->bind_param('iiissssss', $userID, $class["classID"],
 			      $class["building"],$class["className"],$class["startTime"],
 			      $class["endTime"], $class["classCode"],
 			      $class["notes"], $class["classDays"]);
 
 
-           	    $stmt->execute();
-           	    $result = $stmt->get_result();
+           	    	$stmt->execute();
+           	    	$result = $stmt->get_result();
+		    }
 	    }
 	    else
 	    {
