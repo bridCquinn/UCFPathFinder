@@ -85,7 +85,7 @@ function doLogin()
       if(scheduleList < 1)
         document.getElementById("delSch").style.display = 'none';
     }
-    
+    document.getElementById("termYear").innerHTML= course.term + " " + course.year;
     for(j = 0; j < scheduleList.length; j++)
     {
       makeTile(scheduleList[j]);

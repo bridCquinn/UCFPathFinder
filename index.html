@@ -20,6 +20,7 @@
 	<script src="js/main.js"></script>
   <script src="js/schedule.js"></script>
 	<script src="js/map.js"></script>
+  <script src="js/profile.js"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -210,17 +211,12 @@
               </div>
             </div><br>
 
-            <div class="scrollbar scrollbar-primary">
               <div class="force-overflow">
-                <div class="accordion" id="accordionExample">
                   <ul class="list-group" id="myUL" style="list-style-type:none">
 
                   </ul>
-                </div>
               </div>
-            </div>
 
-            <br>
             <button class="buttons" id="sub" onclick="makeSchedule()">Submit</button>
             <span id="makeSchResult"></span>
             <button class="buttons" id="fin" style="visibility: hidden; display:none" onclick="finishEdit()">Finish Edit</button>
@@ -284,7 +280,47 @@
 
       <div id="Profile" class="tabcontent">
         <h3>Profile</h3>
-        <p>Profile will have general info.</p>
+        <p> Select Term: </p>
+
+        <div class="row">
+          <div class="col-6">
+          <div class="row">
+          <select class="form-control mr-sm-2" id="profileTerm" name="profileTerm"><option id="currentTerm" value="Term">Term</option>
+            <option value="Spring">Spring</option>
+            <option value="Fall">Fall</option>
+            <option value="Summer A">Summer A</option>
+            <option value="Summer B">Summer B</option>
+            <option value="Summer C">Summer C</option>
+            <option value="Not Listed">Not Listed</option>
+          </select>
+          </div>
+        </div>
+
+          <div class="col-6">
+            <div class="row">
+            <select class="form-control mr-sm-2" id="profileYear" name="profileYear"><option id="currentYear" value="Year">Year</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2028">2028</option>
+              <option value="2029">2029</option>
+              <option value="2030">2030</option>
+              <option value="Not Listed">Not Listed</option>
+            </select>
+            </div>
+          </div>
+        </div>
+
+        <button class="buttons" margin="auto" id="changeTerm" onclick="changeTerm()">Change</button>
+
+
 		<div class="container">
 
 								<input class="form-control" id="searchText" type="text" onclick="document.getElementById('scroll').style.display='block'" onkeyup="searchLocation()" placeholder="Search location.."/>
@@ -295,8 +331,8 @@
 											</ul>
 										</div>
 									</div>
-								
-							
+
+
 
       </div>
 
