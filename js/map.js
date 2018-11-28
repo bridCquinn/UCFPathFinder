@@ -78,7 +78,7 @@ function searchLocation()
 	
 }
 
-function testsearchBuilding()
+function testSearchBuilding()
 {
 	while(mapUL.hasChildNodes())
 	{
