@@ -1,4 +1,4 @@
-/* this solely deals with the nav bar  
+/* this solely deals with the nav bar
 the style for each page are on seperate files */
 
 /* Add a black background color to the top navigation */
@@ -26,4 +26,9 @@ the style for each page are on seperate files */
 #logout
 {
   float:right;
+}
+
+#changeTerm {
+  margin-left: 45%;
+  margin-right: 45%;
 }
