@@ -58,6 +58,7 @@ function addClass(){
     addtoList(course);
   }
   else {
+    alert(course.term + " " + course.year);
     $("#exampleModalCenter").modal();
   }
 }
