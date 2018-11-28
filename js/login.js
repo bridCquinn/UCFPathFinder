@@ -85,7 +85,10 @@ function doLogin()
       if(scheduleList < 1)
         document.getElementById("delSch").style.display = 'none';
       else
+      {
         document.getElementById("termYear").innerHTML= course.term + " " + course.year;
+        document.getElementById("delSch").style.display = 'block';
+      }
     }
 
     for(j = 0; j < scheduleList.length; j++)
