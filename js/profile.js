@@ -18,7 +18,6 @@ function changeTerm() {
 
     var jsonObject = JSON.parse( xhr.responseText );
 
-    alert(jsonObject.schedule[0][2]);
     //document.getElementById("userName").innerHTML = firstName + " " + lastName;
     for(i = 0; i < jsonObject.schedule.length; i++)
     {

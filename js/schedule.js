@@ -342,6 +342,8 @@ function choose(code)
   document.getElementById("end").value = course.endTime;
   document.getElementById("address").value = course.building;
   document.getElementById("note").value = course.notes;
+  document.getElementById("term").value = course.term;
+  document.getElementById("year").value = course.year;
 
   hideOrShow("add", false);
   hideOrShow("save", true);
@@ -403,7 +405,7 @@ function finishEdit(){
 
     back();
 
-  var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(scheduleList)+'}';
+  var jsonPayload = '{"userID" : "'+ userId +'", "schedule" : '+JSON.stringify(scheduleList)+'}';
 
   var url = urlBase + '/EditClass.' + extension;
 
