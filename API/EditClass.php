@@ -35,7 +35,6 @@
 		    for($i = 0; $i < $length; $i++)
 		    {
 			$class = $array[$i];
-			$class["classDays"] = "mwf";
 		    	$stmt->bind_param('iiissssss', $userID, $class["classID"],
 			      $class["building"],$class["className"],$class["startTime"],
 			      $class["endTime"], $class["classCode"],
