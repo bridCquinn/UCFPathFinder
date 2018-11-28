@@ -50,6 +50,8 @@ function addClass(){
   course.endTime = document.getElementById("end").value;
   course.building = document.getElementById("address").value;
   course.notes = document.getElementById("note").value;
+  course.term = document.getElementById("term").value;
+  course.year = document.getElementById("year").value;
 
   if(course.className != "" && course.classCode != "" && course.term != "" && course.year != "" && course.term != "Term" && course.year != "Year")
   {
