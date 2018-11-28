@@ -51,7 +51,7 @@ function addClass(){
   course.building = document.getElementById("address").value;
   course.notes = document.getElementById("note").value;
 
-  if(course.className != "" || course.classCode != "" || course.term != "Term" || course.year != "Year")
+  if(course.className != "" && course.classCode != "" && course.term != "Term" && course.year != "Year")
   {
     scheduleList.push(course);
 
