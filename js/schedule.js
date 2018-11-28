@@ -129,11 +129,10 @@ function makeSchedule() {
 
   	var jsonObject = JSON.parse( xhr.responseText );
 
-
+    alert(jsonObject.schedule[0][2]);
   	//document.getElementById("userName").innerHTML = firstName + " " + lastName;
     for(i = 0; i < jsonObject.schedule.length; i++)
     {
-      alert("something in the jsonObject");
       var course = new Course();
 
       course.classID = jsonObject.schedule[i][0];
