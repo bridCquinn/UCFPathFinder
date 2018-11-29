@@ -128,7 +128,6 @@ function makeSchedule() {
 
   	var jsonObject = JSON.parse( xhr.responseText );
 
-    alert(jsonObject.schedule[0][2]);
   	//document.getElementById("userName").innerHTML = firstName + " " + lastName;
     for(i = 0; i < jsonObject.schedule.length; i++)
     {
@@ -337,7 +336,7 @@ function choose(code)
 
   document.getElementById("name").value = course.className;
   document.getElementById("code").value = course.classCode;
-  document.getElementById("ddlPattern").selectedIndex = course.classDays;
+  document.getElementById("ddlPattern").options = course.classDays;
   document.getElementById("start").value = course.startTime;
   document.getElementById("end").value = course.endTime;
   document.getElementById("address").value = course.building;
@@ -364,7 +363,7 @@ function saveEdit(){
   // changes values in schedule
   scheduleList[i].className = document.getElementById("name").value;
   scheduleList[i].classCode = document.getElementById("code").value;
-  scheduleList[i].classDays = document.getElementById("ddlPattern").value;
+  scheduleList[i].classDays = document.getElementById("ddlPattern").selected;
   scheduleList[i].startTime = document.getElementById("start").value;
   scheduleList[i].endTime = document.getElementById("end").value;
   scheduleList[i].building = document.getElementById("address").value;

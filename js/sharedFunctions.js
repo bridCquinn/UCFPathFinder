@@ -5,6 +5,9 @@ var userId = 0;
 var firstName = "";
 var lastName = "";
 
+var gTerm = "";
+var gYear = "";
+
 function hideOrShow( elementId, showState )
 {
 	var vis = "visible";

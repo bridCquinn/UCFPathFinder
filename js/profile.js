@@ -1,6 +1,12 @@
+// Profile
+
+// All functions for profile tab
+// Also holds the functions that deal with switching Term or Year on Schedule Page
+
 function changeTerm() {
   var term = document.getElementById("profileTerm").value;
   var year = document.getElementById("profileYear").value;
+  document.getElementById("termYear").innerHTML= term + " " + year;
 
   document.getElementById("classes").innerHTML = "";
   document.getElementById("myUL").innerHTML = "";
@@ -53,4 +59,12 @@ function changeTerm() {
     // make new error message
     // document.getElementById("loginResult").innerHTML = err.message;
   }
+}
+
+function popUp() {
+  // var prev = document.
+}
+
+function pop() {
+  alert("interesting");
 }
