@@ -66,7 +66,7 @@ function popUp(elementId) {
   $("#" + elementId + "Check").modal();
 }
 
-function switch() {
+function change() {
   alert("swtich");
 }
 
