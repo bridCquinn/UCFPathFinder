@@ -63,18 +63,13 @@ function changeTerm() {
 
 function popUp(elementId) {
 
-  var currentValue = $(".term").val();
-  var previousValue = $("#Prev"+elementId).val();
-
-  if (previousValue != "")
-  {
-      alert("CurrentValue : " + currentValue + " PreviousValue : " + previousValue);
-  }
-  else
-  {
-      alert("CurrentValue : " + currentValue + " And FirstTime Dropdown Value is selected.");
-      $("#Prev"+elementId).val(currentValue);
-  }
+  var previous_value;
+$(".term").on('shown.bs.select', function(e) {
+        previous_value = $(this).val();
+}).change(function() {
+    alert(previous_value);
+    previous_value = $(this).val();
+});
 
   if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year")
     $("#" + elementId + "Check").modal();
