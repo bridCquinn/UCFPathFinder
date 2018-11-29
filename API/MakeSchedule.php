@@ -43,6 +43,7 @@
 				      $class["classCode"],$class["term"],$class["year"], $class["notes"],
 				      $class["classDays"]);
 
+		    $userID = 25;
             	    $stmt->execute();
             	    $result = $stmt->get_result();
 		    $classID = $conn->lastInsertId();
@@ -52,6 +53,7 @@
 	    {
 		returnWithError( $conn->error );
             }
+	echo $classID;
 	    returnWithInfo($classID);
 	    $conn->close();
 	}
