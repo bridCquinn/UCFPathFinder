@@ -49,7 +49,7 @@ function searchLocation()
 					//	if(document.getElementById("div" + li.id) != null)
 					//	{
 						//	continue;
-					//	}
+					//	} document.getElementById("searchText").value =  searchText.defaultValue; for laters
 
 
 
@@ -66,13 +66,10 @@ function searchLocation()
 
 }
 
-function resetPlaceholder(location)
-{
-	document.getElementById("searchText").value =  searchText.defaultValue;
-}
+
 function setBuildingTo(location)
 {
 
- 	document.getElementById("searchText").value =  location;
-	document.getElementById("searchText").setAttribute('onclick', "resetPlaceholder(location)");
+ 	document.getElementById("searchText").value = location;
+
 }
