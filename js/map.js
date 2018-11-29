@@ -1,19 +1,4 @@
 
-
-function myMap()
-{
-	lastSearchLocationClicked = 0;
-
-	//var mapOptions = {
-	//	center: new google.maps.LatLng(51.5, -0.12),
-	//	zoom: 10,
-	//	mapTypeId: google.maps.MapTypeId.HYBRID
-	// curly bracket goes here
-	//var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-	searchLocation();
-}
-
 function searchLocation()
 {
 	while(mapUL.hasChildNodes())
@@ -81,30 +66,13 @@ function searchLocation()
 
 }
 
-
+function resetPlaceholder(location)
+{
+	document.getElementById("searchText").value =  searchText.defaultValue;
+}
 function setBuildingTo(location)
 {
 
  	document.getElementById("searchText").value =  location;
-
-}
-
-
-
-
-
-
-function displayInfo(location)
-{
-	if(lastSearchLocationClicked >= 1)
-	{
-		document.getElementById("div" + lastSearchLocationClicked).style.display = "none";
-		document.getElementById("div" + lastSearchLocationClicked).style.visibility = "hidden";
-	}
-
-	document.getElementById("div" + location).style.display = "block";
-	document.getElementById("div" + location).style.visibility = "visible";
-
-	lastSearchLocationClicked = location;
-
+	document.getElementById("searchText").setAttribute('onclick', "resetPlaceholder(location)");
 }
