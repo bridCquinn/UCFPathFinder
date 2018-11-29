@@ -63,7 +63,7 @@ function changeTerm() {
 
 function popUp(elementId) {
   alert(document.getElementById("term").value != "Term");
-   alert(document.getElementById("year").value);
+   alert(document.getElementById("year").value != "Year");
    alert(gTerm != "");
    alert(gYear!= "");
     alert(document.getElementById("year").value != gYear);
