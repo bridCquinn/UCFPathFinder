@@ -114,8 +114,12 @@ function makeSchedule() {
 		document.getElementById("makeSchResult").innerHTML = err.message;
 	}
 
-  sleep(2);
-  
+  setTimeout(makeSchHelp(term, year), 500);
+
+}
+
+function makeSchHelp(term, year) {
+
   document.getElementById("classes").innerHTML = "";
   document.getElementById("myUL").innerHTML = "";
   scheduleList = [];
@@ -148,7 +152,6 @@ function makeSchedule() {
       course.notes = jsonObject.schedule[i][8];
       course.classDays = jsonObject.schedule[i][9];
 
-      alert(course.className);
       scheduleList.push(course);
 
       addtoList(course);
