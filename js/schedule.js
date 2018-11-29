@@ -370,7 +370,7 @@ function saveEdit(){
   // changes values in schedule
   scheduleList[i].className = document.getElementById("name").value;
   scheduleList[i].classCode = document.getElementById("code").value;
-  scheduleList[i].classDays = document.getElementById("ddlPattern").selectedIndex.value;
+  scheduleList[i].classDays = document.getElementById("ddlPattern").value;
   scheduleList[i].startTime = document.getElementById("start").value;
   scheduleList[i].endTime = document.getElementById("end").value;
   scheduleList[i].building = document.getElementById("address").value;
