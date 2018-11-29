@@ -135,8 +135,6 @@ function makeSchHelp(term, year) {
   	xhr.send(jsonPayload);
 
   	var jsonObject = JSON.parse( xhr.responseText );
-
-    }
   }
   catch(err)
   {
@@ -164,6 +162,7 @@ function makeSchHelp(term, year) {
     scheduleList.push(course);
 
     addtoList(course);
+  }
 
   for(j = 0; j < scheduleList.length; j++)
   {
