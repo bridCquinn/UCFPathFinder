@@ -45,13 +45,14 @@
 
             	    $stmt->execute();
             	    $result = $stmt->get_result();
+		    $classID = $conn->lastInsertId();
                 }
 	    }
 	    else
 	    {
 		returnWithError( $conn->error );
             }
-	
+	    returnWithInfo($classID);
 	    $conn->close();
 	}
 
@@ -69,6 +70,12 @@
 	function returnWithError( $err )
 	{
 		$retValue = '{"error":"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
+
+	function returnWithInfo( $classID )
+	{
+		$retValue = '{"classID":' . $classID . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
  ?>
