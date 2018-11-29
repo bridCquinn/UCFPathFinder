@@ -137,38 +137,37 @@ function makeSchHelp(term, year) {
   	var jsonObject = JSON.parse( xhr.responseText );
 
     }
-
-    alert(jsonObject.schedule.length);
-    //document.getElementById("userName").innerHTML = firstName + " " + lastName;
-    for(i = 0; i < jsonObject.schedule.length+; i++)
-    {
-      var course = new Course();
-
-      course.classID = jsonObject.schedule[i][0];
-      course.building = jsonObject.schedule[i][1];
-      course.className = jsonObject.schedule[i][2];
-      course.startTime = jsonObject.schedule[i][3];
-      course.endTime = jsonObject.schedule[i][4];
-      course.classCode = jsonObject.schedule[i][5];
-      course.term = jsonObject.schedule[i][6];
-      course.year = jsonObject.schedule[i][7];
-      course.notes = jsonObject.schedule[i][8];
-      course.classDays = jsonObject.schedule[i][9];
-
-      scheduleList.push(course);
-
-      addtoList(course);
-
-    for(j = 0; j < scheduleList.length; j++)
-    {
-      makeTile(scheduleList[j]);
-    }
-
   }
   catch(err)
   {
     // make new error message
   	// document.getElementById("loginResult").innerHTML = err.message;
+  }
+
+  alert(jsonObject.schedule.length);
+  //document.getElementById("userName").innerHTML = firstName + " " + lastName;
+  for(i = 0; i < jsonObject.schedule.length+; i++)
+  {
+    var course = new Course();
+
+    course.classID = jsonObject.schedule[i][0];
+    course.building = jsonObject.schedule[i][1];
+    course.className = jsonObject.schedule[i][2];
+    course.startTime = jsonObject.schedule[i][3];
+    course.endTime = jsonObject.schedule[i][4];
+    course.classCode = jsonObject.schedule[i][5];
+    course.term = jsonObject.schedule[i][6];
+    course.year = jsonObject.schedule[i][7];
+    course.notes = jsonObject.schedule[i][8];
+    course.classDays = jsonObject.schedule[i][9];
+
+    scheduleList.push(course);
+
+    addtoList(course);
+
+  for(j = 0; j < scheduleList.length; j++)
+  {
+    makeTile(scheduleList[j]);
   }
 
 
