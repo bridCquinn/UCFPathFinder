@@ -71,6 +71,7 @@ $(".term").on('shown.bs.select', function(e) {
     previous_value = $(this).val();
 });
 
+alert(previous_value);
   if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year")
     $("#" + elementId + "Check").modal();
 }
