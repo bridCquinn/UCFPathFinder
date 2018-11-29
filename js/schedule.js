@@ -180,6 +180,10 @@ function makeSchedule() {
   document.getElementById("note").value = note.defaultValue;
 }
 
+function delModal() {
+    $("#delCheck").modal();
+}
+
 // delete the entire schedule
 function deleteSchedule()
 {
