@@ -13,7 +13,6 @@ function Course(){
 };
 
 var scheduleList = [];
-var temp = [];
 var lastPressed = -1;
 
 // this is used to add to the physical list
@@ -66,8 +65,6 @@ function addClass(){
     $("#exampleModalCenter").modal();
   }
 
-  temp = [];
-  temp.push(course);
   makeSchedule();
 }
 
@@ -96,9 +93,8 @@ function makeSchedule() {
   document.getElementById("termYear").innerHTML= term + " " + year;
   document.getElementById("makeSchResult").innerHTML = "";
 
-  alert(JSON.stringify(temp));
 
-  var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(temp)+'}';
+  var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(scheduleList)+'}';
   var url = urlBase + '/MakeSchedule.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -121,10 +117,12 @@ function makeSchedule() {
 		document.getElementById("makeSchResult").innerHTML = err.message;
 	}
 
-  makeSchHelp(term, year);
 }
 
-function makeSchHelp(term, year) {
+function makeSchHelp() {
+
+  var term  = document.getElementById("term").value;
+  var year  = document.getElementById("year").value;
 
   document.getElementById("classes").innerHTML = "";
   document.getElementById("myUL").innerHTML = "";
