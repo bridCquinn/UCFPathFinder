@@ -114,6 +114,12 @@ function makeSchedule() {
 		document.getElementById("makeSchResult").innerHTML = err.message;
 	}
 
+  setTimeout(makeSchHelp(term, year), 10000);
+
+}
+
+function makeSchHelp(term, year) {
+
   document.getElementById("classes").innerHTML = "";
   document.getElementById("myUL").innerHTML = "";
   scheduleList = [];
@@ -129,36 +135,6 @@ function makeSchedule() {
   	xhr.send(jsonPayload);
 
   	var jsonObject = JSON.parse( xhr.responseText );
-
-  	//document.getElementById("userName").innerHTML = firstName + " " + lastName;
-    for(i = 0; i < jsonObject.schedule.length; i++)
-    {
-      var course = new Course();
-
-      course.classID = jsonObject.schedule[i][0];
-      course.building = jsonObject.schedule[i][1];
-      course.className = jsonObject.schedule[i][2];
-      course.startTime = jsonObject.schedule[i][3];
-      course.endTime = jsonObject.schedule[i][4];
-      course.classCode = jsonObject.schedule[i][5];
-      course.term = jsonObject.schedule[i][6];
-      course.year = jsonObject.schedule[i][7];
-      course.notes = jsonObject.schedule[i][8];
-      course.classDays = jsonObject.schedule[i][9];
-
-      scheduleList.push(course);
-
-      addtoList(course);
-
-      if(scheduleList < 1)
-        document.getElementById("delSch").style.display = 'none';
-    }
-
-    for(j = 0; j < scheduleList.length; j++)
-    {
-      makeTile(scheduleList[j]);
-    }
-
   }
   catch(err)
   {
@@ -166,10 +142,36 @@ function makeSchedule() {
   	// document.getElementById("loginResult").innerHTML = err.message;
   }
 
+  alert(jsonObject.schedule.length);
+  //document.getElementById("userName").innerHTML = firstName + " " + lastName;
+  for(i = 0; i < jsonObject.schedule.length; i++)
+  {
+    var course = new Course();
+
+    course.classID = jsonObject.schedule[i][0];
+    course.building = jsonObject.schedule[i][1];
+    course.className = jsonObject.schedule[i][2];
+    course.startTime = jsonObject.schedule[i][3];
+    course.endTime = jsonObject.schedule[i][4];
+    course.classCode = jsonObject.schedule[i][5];
+    course.term = jsonObject.schedule[i][6];
+    course.year = jsonObject.schedule[i][7];
+    course.notes = jsonObject.schedule[i][8];
+    course.classDays = jsonObject.schedule[i][9];
+
+    scheduleList.push(course);
+
+    addtoList(course);
+  }
+
+  for(j = 0; j < scheduleList.length; j++)
+  {
+    makeTile(scheduleList[j]);
+  }
+
 
   document.getElementById('newSch').style.display = 'none';
-  if(scheduleList >= 1)
-    document.getElementById('delSch').style.display = 'block';
+  document.getElementById('delSch').style.display = 'block';
 
   document.getElementById("name").value = "";
   document.getElementById("code").value = code.defaultValue;
@@ -178,6 +180,10 @@ function makeSchedule() {
   document.getElementById("end").value = end.defaultValue;
   document.getElementById("address").value = address.defaultValue;
   document.getElementById("note").value = note.defaultValue;
+}
+
+function delModal() {
+    $("#delCheck").modal();
 }
 
 // delete the entire schedule
@@ -209,7 +215,6 @@ function deleteSchedule()
   document.getElementById("classes").innerHTML = "";
   document.getElementById("myUL").innerHTML = "";
   scheduleList = [];
-  document.getElementById("delSch").style.display = 'none';
 }
 
 // makes the GUI tile of each class
@@ -302,8 +307,6 @@ function deleteClass(code){
   // delete list element
   deleteListElement(course);
 
-  if(scheduleList < 1)
-    document.getElementById("delSch").style.display = 'none';
 }
 
 // deletes tile and list
