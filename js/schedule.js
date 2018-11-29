@@ -144,7 +144,7 @@ function makeSchHelp(term, year) {
 
   alert(jsonObject.schedule.length);
   //document.getElementById("userName").innerHTML = firstName + " " + lastName;
-  for(i = 0; i < jsonObject.schedule.length+; i++)
+  for(i = 0; i < jsonObject.schedule.length; i++)
   {
     var course = new Course();
 
