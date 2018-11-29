@@ -5,8 +5,8 @@ var userId = 0;
 var firstName = "";
 var lastName = "";
 
-var gTerm = "";
-var gYear = "";
+var gTerm = "Fall";
+var gYear = "2018";
 
 function hideOrShow( elementId, showState )
 {
