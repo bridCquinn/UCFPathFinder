@@ -67,9 +67,11 @@ function popUp(elementId) {
 }
 
 function change() {
-  alert("swtich");
+  document.getElementById("profileTerm").value = document.getElementById("term").value;
+  document.getElementById("profileYear").value = document.getElementById("year").value;
+  changeTerm();
 }
 
 function resume() {
-  alert("resume");
+
 }
