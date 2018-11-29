@@ -62,8 +62,10 @@ function changeTerm() {
 }
 
 function popUp(elementId) {
-  var prev = document.getElementById(elementId).value;
-  alert(prev);
+  var prev;
+  $(elementId).on('focus', function() {prev = this.value;}).change(function() {
+    alert(prev);
+  })
   if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year" && prev != "Term" && prev != "Year")
     $("#" + elementId + "Check").modal();
 }
