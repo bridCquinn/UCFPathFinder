@@ -63,7 +63,7 @@ function changeTerm() {
 
 function popUp(elementId) {
 
-  var currentValue = $("."+elementId).val();
+  var currentValue = $(elementId).val();
   var previousValue = $("#Prev"+elementId).val();
 
   if (previousValue != "")
