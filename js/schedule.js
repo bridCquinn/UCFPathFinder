@@ -20,9 +20,9 @@ var lastPressed = -1;
 // creates the list node with all of the information
 function addtoList(course){
   var li = document.createElement("li");
-  var bold = document.createElement("bold");
+  var bold = document.createElement("b");
   var t = document.createTextNode(course.classCode + " - " + course.className);
-  li.appendChild(b);
+  li.appendChild(bold);
   bold.appendChild(t);
   document.getElementById("myUL").appendChild(li);
   var span = document.createElement("SPAN");
