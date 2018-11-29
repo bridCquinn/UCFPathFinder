@@ -75,8 +75,6 @@ function change() {
     gYear = document.getElementById("year").value;
   else
     gTerm = document.getElementById("term").value;
-
-  document.getElementById('newSch').style.display = 'none';
 }
 
 function resume() {
