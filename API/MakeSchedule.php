@@ -31,7 +31,8 @@
 		
        	    if($stmt = $conn->prepare($sql))
             {
-                for($i = 0; $i < $length; $i++) 
+        $length = 1;
+		    for($i = 0; $i < $length; $i++) 
 		{ 
 		    $class = $array[$i];
 		    if($class["classID"] != -1) 
