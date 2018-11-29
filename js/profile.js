@@ -64,7 +64,9 @@ function changeTerm() {
 function popUp(elementId) {
   if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year" && gTerm != "" && gYear!= "" && document.getElementById("year").value != gYear && document.getElementById("term").value != gTerm)
     $("#" + elementId + "Check").modal();
+    alert(gTerm);
   gTerm = document.getElementById("term").value;
+  alert(gTerm);
   gYear = document.getElementById("year").value;
 }
 
