@@ -71,11 +71,6 @@ function change() {
   document.getElementById("profileYear").value = document.getElementById("year").value;
   changeTerm();
 
-  if(elementId == "term")
-    gTerm = document.getElementById(elementId).value;
-  else
-    gYear = document.getElementById(elementId).value;
-    
   document.getElementById('newSch').style.display = 'none';
 }
 
