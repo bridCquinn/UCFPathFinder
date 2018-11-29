@@ -96,6 +96,8 @@ function makeSchedule() {
   document.getElementById("termYear").innerHTML= term + " " + year;
   document.getElementById("makeSchResult").innerHTML = "";
 
+  alert(JSON.stringify(temp));
+
   var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(temp)+'}';
   var url = urlBase + '/MakeSchedule.' + extension;
 
