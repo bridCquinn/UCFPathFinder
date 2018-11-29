@@ -85,7 +85,7 @@ function searchLocation()
 function setBuildingTo(location)
 {
 
- 	document.getElementById("searchText").value =  location;
+ 	document.getElementById("searchText").value =  location.value;
 
 }
 
