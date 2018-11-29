@@ -62,11 +62,9 @@ function changeTerm() {
 }
 
 function popUp(elementId) {
-  if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year")
-  {
-    var prev = document.getElementById(elementId).value;
+  var prev = document.getElementById(elementId).value;
+  if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year" && prev != "Term" && prev != "Year")
     $("#" + elementId + "Check").modal();
-  }
 }
 
 function change() {
