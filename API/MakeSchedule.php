@@ -47,8 +47,13 @@
 		    $userID = 25;
             	    $stmt->execute();
             	    $result = $stmt->get_result();
-		    $classID = $conn->lastInsertId();
-			    echo $classID;
+		  //  $classID = $conn->lastInsertId();
+			    $sql2 = "CALL getMostRecentClassID (?)";
+			    $stmt = $conn->prepare($sql2);
+			    $stmt->bind_param('i', $userID);
+			    $stmt->execute();
+			    $result = $stmt->get_result();
+			    echo $result;
                 }
 	    }
 	    else
