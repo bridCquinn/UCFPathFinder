@@ -61,8 +61,9 @@ function changeTerm() {
   }
 }
 
-function popUp() {
-  // var prev = document.
+function popUp(elementId) {
+  var prev = document.getElementById(elementId).value;
+  $("#" + elementId + "Check").modal();
 }
 
 function pop() {
