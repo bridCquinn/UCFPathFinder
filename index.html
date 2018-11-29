@@ -178,7 +178,7 @@
             <div class="row">
               <div class="col-6">
               <div class="row">
-              <select class="form-control mr-sm-2" id="term" name="term" onchange = "pop()" onclick="popUp()"><option id="thisTerm" value="Term">Term</option>
+              <select class="form-control mr-sm-2" id="term" name="term" onclick="popUp(this.id)"><option id="thisTerm" value="Term">Term</option>
                 <option value="Spring">Spring</option>
                 <option value="Fall">Fall</option>
                 <option value="Summer A">Summer A</option>
@@ -191,7 +191,7 @@
 
               <div class="col-6">
                 <div class="row">
-                <select class="form-control mr-sm-2" id="year" name="year"><option id="thisYear" value="Year">Year</option>
+                <select class="form-control mr-sm-2" id="year" name="year" onclick="popUp(this.id)"><option id="thisYear" value="Year">Year</option>
                   <option value="2018">2018</option>
                   <option value="2019">2019</option>
                   <option value="2020">2020</option>
