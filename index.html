@@ -178,7 +178,7 @@
             <div class="row">
               <div class="col-6">
               <div class="row">
-              <select class="form-control mr-sm-2" id="term" name="term" onclick="popUp(this.id)"><option id="thisTerm" value="Term">Term</option>
+              <select class="form-control mr-sm-2" id="term" name="term" onchange="popUp(this.id)"><option id="thisTerm" value="Term">Term</option>
                 <option value="Spring">Spring</option>
                 <option value="Fall">Fall</option>
                 <option value="Summer A">Summer A</option>
@@ -191,7 +191,7 @@
 
               <div class="col-6">
                 <div class="row">
-                <select class="form-control mr-sm-2" id="year" name="year" onclick="popUp(this.id)"><option id="thisYear" value="Year">Year</option>
+                <select class="form-control mr-sm-2" id="year" name="year" onchange="popUp(this.id)"><option id="thisYear" value="Year">Year</option>
                   <option value="2018">2018</option>
                   <option value="2019">2019</option>
                   <option value="2020">2020</option>
@@ -295,7 +295,7 @@
       </div>
     </div> <!-- end of warning modal -->
 
-    <!-- Warning Modal -->
+    <!-- term Modal -->
     <div class="modal fade" id="termCheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -306,15 +306,37 @@
             </button>
           </div>
           <div class="modal-body">
-            Changes that were not previously submitted will be lost. Please submit the current classes before switching to a new term.
+            Changes that were not previously submitted will be lost. Please submit the current classes before switching to a new term or year.
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Switch</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Resume</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="switch()">Switch</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resume()">Resume</button>
           </div>
         </div>
       </div>
-    </div> <!-- end of warning modal -->
+    </div> <!-- end of term modal -->
+
+    <!-- term Modal -->
+    <div class="modal fade" id="yearCheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="yearCheckTitle">Are you sure?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Changes that were not previously submitted will be lost. Please submit the current classes before switching to a new term or year.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="switch()">Switch</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resume()">Resume</button>
+          </div>
+        </div>
+      </div>
+    </div> <!-- end of term modal -->
+
 
 	</div> <!--end of schedule tab -->
 

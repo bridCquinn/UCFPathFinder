@@ -66,6 +66,10 @@ function popUp(elementId) {
   $("#" + elementId + "Check").modal();
 }
 
-function pop() {
-  alert("interesting");
+function switch() {
+  alert("swtich");
+}
+
+function resume() {
+  alert("resume");
 }
