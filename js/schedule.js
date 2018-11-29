@@ -156,8 +156,6 @@ function makeSchHelp(term, year) {
 
       addtoList(course);
 
-      if(scheduleList < 1)
-        document.getElementById("delSch").style.display = 'none';
     }
 
     for(j = 0; j < scheduleList.length; j++)
@@ -174,8 +172,7 @@ function makeSchHelp(term, year) {
 
 
   document.getElementById('newSch').style.display = 'none';
-  if(scheduleList >= 1)
-    document.getElementById('delSch').style.display = 'block';
+  document.getElementById('delSch').style.display = 'block';
 
   document.getElementById("name").value = "";
   document.getElementById("code").value = code.defaultValue;
@@ -219,7 +216,6 @@ function deleteSchedule()
   document.getElementById("classes").innerHTML = "";
   document.getElementById("myUL").innerHTML = "";
   scheduleList = [];
-  document.getElementById("delSch").style.display = 'none';
 }
 
 // makes the GUI tile of each class
@@ -312,8 +308,6 @@ function deleteClass(code){
   // delete list element
   deleteListElement(course);
 
-  if(scheduleList < 1)
-    document.getElementById("delSch").style.display = 'none';
 }
 
 // deletes tile and list
