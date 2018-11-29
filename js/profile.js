@@ -62,24 +62,6 @@ function changeTerm() {
 }
 
 function popUp(elementId) {
-
-  // store initial value
-  var initialValue = $('.cmbType').val();
-  $('.cmbType').data('previousValue', initialValue);
-
-  // change handler
-  $('.cmbType').change(function(e) {
-
-      var previousValue = $(this).data('previousValue');
-
-      // make decision
-      alert(previousValue);
-
-      // store previousValue
-      $(this).data('previousValue', $(this).val());
-  });
-
-alert(previousValue);
   if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year")
     $("#" + elementId + "Check").modal();
 }
