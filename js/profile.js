@@ -63,6 +63,7 @@ function changeTerm() {
 
 function popUp(elementId) {
   var prev = document.getElementById(elementId).value;
+  alert(prev);
   if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year" && prev != "Term" && prev != "Year")
     $("#" + elementId + "Check").modal();
 }
