@@ -31,14 +31,14 @@
 		
        	    if($stmt = $conn->prepare($sql))
             {
-        $length = 1;
-		    for($i = 0; $i < $length; $i++) 
-		{ 
-		    $class = $array[$i];
-		    if($class["classID"] != -1) 
-		    {
-			continue;    
-		    }
+        //$length = 1;
+		  //  for($i = 0; $i < $length; $i++) 
+		//{ 
+		    //$class = $array[$i];
+		    //if($class["classID"] != -1) 
+		    //{
+			//continue;    
+		    //}
             	    $stmt->bind_param('iisssssiss', $userID, $class["building"],
 				      $class["className"],$class["startTime"],$class["endTime"],
 				      $class["classCode"],$class["term"],$class["year"], $class["notes"],
@@ -64,7 +64,7 @@
 			    $stmt->execute();
 			    $result = $stmt->get_result();
 			    echo $result;
-                }
+            //    }
 	    }
 	    else
 	    {
