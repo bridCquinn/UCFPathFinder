@@ -12,9 +12,9 @@
     }
 */
 	$inData = getRequestInfo();
-    	$userID = $inData["userID"];
-    	$array  = $inData["schedule"];
-    	$length = count($array);
+    	//$userID = $inData["userID"];
+    	//$array  = $inData["schedule"];
+    	//$length = count($array);
 	
 	$info = json_decode(file_get_contents('info.json'), true);
 	
@@ -44,7 +44,17 @@
 				      $class["classCode"],$class["term"],$class["year"], $class["notes"],
 				      $class["classDays"]);
 
-		    $userID = 25;
+			   
+		    	    $userID = 25;
+			    $class["building"] = 0;
+			     $class["className"] = "lakj";
+			     $class["startTime"] = "00:00:00";
+			     $class["endTime"] = "00:00:00";
+			     $class["classCode"] = "as";
+			     $class["term"] = "Fall";
+			     $class["year"] = "2018";
+			     $class["notes"] = "lj";
+			     $class["classDays"] = "MWF";
             	    $stmt->execute();
             	    $result = $stmt->get_result();
 		  //  $classID = $conn->lastInsertId();
