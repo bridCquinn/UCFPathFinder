@@ -28,6 +28,7 @@
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
 		{
+			$search = "";
 			$stmt->bind_param('ss', $search, $search);
 			
 			$search = $inData["search"];
