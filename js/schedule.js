@@ -52,6 +52,8 @@ function addClass(){
   course.notes = document.getElementById("note").value;
   course.term = document.getElementById("term").value;
   course.year = document.getElementById("year").value;
+  gTerm = course.term;
+  gYear = course.year;
 
   if(course.className != "" && course.classCode != "" && course.term != "" && course.year != "" && course.term != "Term" && course.year != "Year")
   {
@@ -367,6 +369,8 @@ function saveEdit(){
     if(scheduleList[i].classID == lastPressed)
       break;
 
+  gTerm = document.getElementById("term").value;
+  gYear = document.getElementById("year").value;
   // changes values in schedule
   scheduleList[i].className = document.getElementById("name").value;
   scheduleList[i].classCode = document.getElementById("code").value;

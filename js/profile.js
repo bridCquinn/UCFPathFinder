@@ -62,7 +62,7 @@ function changeTerm() {
 }
 
 function popUp(elementId) {
-  if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year")
+  if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year" && gTerm != "" && gYear!= "" && document.getElementById("year").value != gYear && document.getElementById("term").value != gTerm)
     $("#" + elementId + "Check").modal();
 }
 
@@ -70,8 +70,11 @@ function change() {
   document.getElementById("profileTerm").value = document.getElementById("term").value;
   document.getElementById("profileYear").value = document.getElementById("year").value;
   changeTerm();
+
+  document.getElementById('newSch').style.display = 'none';
 }
 
 function resume() {
-
+  document.getElementById("term").value = gTerm;
+  document.getElementById("year").value = gYear;
 }
