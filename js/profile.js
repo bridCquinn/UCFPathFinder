@@ -62,8 +62,11 @@ function changeTerm() {
 }
 
 function popUp(elementId) {
-  var prev = document.getElementById(elementId).value;
-  $("#" + elementId + "Check").modal();
+  if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year")
+  {
+    var prev = document.getElementById(elementId).value;
+    $("#" + elementId + "Check").modal();
+  }
 }
 
 function change() {
