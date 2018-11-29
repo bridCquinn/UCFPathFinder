@@ -48,14 +48,15 @@
             	    $stmt->execute();
             	    $result = $stmt->get_result();
 		    $classID = $conn->lastInsertId();
+			    echo $classID;
                 }
 	    }
 	    else
 	    {
 		returnWithError( $conn->error );
             }
-	echo $classID;
-	    returnWithInfo($classID);
+	//echo $classID;
+	   // returnWithInfo($classID);
 	    $conn->close();
 	}
 
