@@ -22,7 +22,7 @@ function addtoList(course){
   var li = document.createElement("li");
   var bold = document.createElement("bold");
   var t = document.createTextNode(course.classCode + " - " + course.className);
-  li.appendChild(bold);
+  li.appendChild(b);
   bold.appendChild(t);
   document.getElementById("myUL").appendChild(li);
   var span = document.createElement("SPAN");
