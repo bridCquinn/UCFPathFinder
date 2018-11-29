@@ -86,8 +86,7 @@ function toggle(elementId){
     }
 }
 
-// used to create a completely new schedule and submits the final
-// classes to the API
+// is used in the add class and submits to database
 function makeSchedule() {
 
   term = document.getElementById("term").value;
