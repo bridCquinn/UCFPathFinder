@@ -13,6 +13,7 @@ function Course(){
 };
 
 var scheduleList = [];
+var temp = [];
 var lastPressed = -1;
 
 // this is used to add to the physical list
@@ -65,7 +66,9 @@ function addClass(){
     $("#exampleModalCenter").modal();
   }
 
+  temp.push(course);
   makeSchedule();
+  temp=[];
 }
 
 // is activated when newSchedule is pressed
@@ -94,7 +97,7 @@ function makeSchedule() {
   document.getElementById("makeSchResult").innerHTML = "";
 
 
-  var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(scheduleList)+'}';
+  var jsonPayload = '{"userID" : "'+userId+'", "schedule" : '+JSON.stringify(temp)+'}';
   var url = urlBase + '/MakeSchedule.' + extension;
 
 	var xhr = new XMLHttpRequest();
