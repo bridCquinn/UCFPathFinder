@@ -106,21 +106,16 @@ function makeSchedule() {
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
-				;
-			}
-		};
-		xhr.send(jsonPayload);
+    	xhr.send(jsonPayload);
+
+    	var jsonObject = JSON.parse( xhr.responseText );
 	}
 	catch(err)
 	{
 		document.getElementById("makeSchResult").innerHTML = err.message;
 	}
 
+  alert(jsonObject.classID);
 }
 
 function makeSchHelp() {
