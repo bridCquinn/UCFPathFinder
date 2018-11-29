@@ -63,15 +63,23 @@ function changeTerm() {
 
 function popUp(elementId) {
 
-  var previous_value;
-$(".term").on('shown.bs.select', function(e) {
-        previous_value = $(this).val();
-}).change(function() {
-    alert(previous_value);
-    previous_value = $(this).val();
-});
+  // store initial value
+  var initialValue = $('.cmbType').val();
+  $('.cmbType').data('previousValue', initialValue);
 
-alert(previous_value);
+  // change handler
+  $('.cmbType').change(function(e) {
+
+      var previousValue = $(this).data('previousValue');
+
+      // make decision
+      alert(previousValue);
+
+      // store previousValue
+      $(this).data('previousValue', $(this).val());
+  });
+
+alert(previousValue);
   if(document.getElementById("term").value != "Term" && document.getElementById("year").value != "Year")
     $("#" + elementId + "Check").modal();
 }
