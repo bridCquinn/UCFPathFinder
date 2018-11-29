@@ -334,9 +334,10 @@ function choose(code)
 {
   var course = findCourse("list",code);
 
+  alert(document.getElementById("ddlPattern").options.length);
   document.getElementById("name").value = course.className;
   document.getElementById("code").value = course.classCode;
-  document.getElementById("ddlPattern").selected = document.getElementById("ddlPattern").options.indexOf(course.classDays);
+  document.getElementById("ddlPattern").selected = course.classDays;
   document.getElementById("start").value = course.startTime;
   document.getElementById("end").value = course.endTime;
   document.getElementById("address").value = course.building;
