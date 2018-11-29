@@ -336,7 +336,7 @@ function choose(code)
 
   document.getElementById("name").value = course.className;
   document.getElementById("code").value = course.classCode;
-  document.getElementById("ddlPattern").selectedIndex = indexOf(course.classDays);
+  document.getElementById("ddlPattern").selected = document.getElementById("ddlPattern").indexOf(course.classDays);
   document.getElementById("start").value = course.startTime;
   document.getElementById("end").value = course.endTime;
   document.getElementById("address").value = course.building;
