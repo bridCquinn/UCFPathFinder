@@ -6,7 +6,7 @@ function searchLocation()
 		mapUL.removeChild(mapUL.childNodes[0]);
 	}
 
-		var srch = document.getElementById("searchText").value;
+		var srch = document.getElementById("address").value;
 
 		if(srch == "")
 			return;
@@ -70,6 +70,6 @@ function searchLocation()
 function setBuildingTo(location)
 {
 
- 	document.getElementById("searchText").value = location;
+ 	document.getElementById("address").value = location;
 
 }
