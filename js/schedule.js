@@ -340,7 +340,6 @@ function choose(code)
 {
   var course = findCourse("list",code);
 
-  alert(document.getElementById("ddlPattern").options.("T"));
   document.getElementById("name").value = course.className;
   document.getElementById("code").value = course.classCode;
   document.getElementById("ddlPattern").selected = findDaysIndex(course.classDays);
