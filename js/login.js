@@ -88,6 +88,8 @@ function doLogin()
       {
         document.getElementById("termYear").innerHTML= course.term + " " + course.year;
         document.getElementById("delSch").style.display = 'block';
+        document.getElementById("term").value = "Fall";
+        document.getElementById("year").value = "2018";
       }
     }
 
