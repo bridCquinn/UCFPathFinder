@@ -63,7 +63,9 @@
 			    $stmt->bind_param('i', $userID);
 			    $stmt->execute();
 			    $result = $stmt->get_result();
-			    echo $result;
+		    $row = $result->fetch_assoc()
+			    $classID = $row["classID"];
+			    echo $classID;
             //    }
 	    }
 	    else
