@@ -146,6 +146,7 @@ function makeSchedule() {
       course.notes = jsonObject.schedule[i][8];
       course.classDays = jsonObject.schedule[i][9];
 
+      alert(course.className);
       scheduleList.push(course);
 
       addtoList(course);
