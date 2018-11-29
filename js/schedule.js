@@ -114,6 +114,8 @@ function makeSchedule() {
 		document.getElementById("makeSchResult").innerHTML = err.message;
 	}
 
+  sleep(2);
+  
   document.getElementById("classes").innerHTML = "";
   document.getElementById("myUL").innerHTML = "";
   scheduleList = [];
