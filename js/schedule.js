@@ -114,7 +114,7 @@ function makeSchedule() {
 		document.getElementById("makeSchResult").innerHTML = err.message;
 	}
 
-  setTimeout(makeSchHelp(term, year), 1000);
+  setTimeout(makeSchHelp(term, year), 10000);
 
 }
 
