@@ -136,6 +136,7 @@ function makeSchHelp(term, year) {
 
   	var jsonObject = JSON.parse( xhr.responseText );
 
+    alert("jsonObject.schedule.length");
   	//document.getElementById("userName").innerHTML = firstName + " " + lastName;
     for(i = 0; i < jsonObject.schedule.length; i++)
     {
