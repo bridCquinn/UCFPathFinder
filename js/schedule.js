@@ -330,14 +330,20 @@ function findCourse(word, id){
   alert("Not found!");
 }
 
+function findDaysIndex(days) {
+  for(i = 0; i < document.getElementById("ddlPattern").options.length; i++)
+    if(document.getElementById("ddlPattern").options[i].value == days)
+      return i;
+}
+
 function choose(code)
 {
   var course = findCourse("list",code);
 
-  alert(document.getElementById("ddlPattern").options[4].value);
+  alert(document.getElementById("ddlPattern").options.("T"));
   document.getElementById("name").value = course.className;
   document.getElementById("code").value = course.classCode;
-  document.getElementById("ddlPattern").selected = course.classDays;
+  document.getElementById("ddlPattern").selected = findDaysIndex(course.classDays);
   document.getElementById("start").value = course.startTime;
   document.getElementById("end").value = course.endTime;
   document.getElementById("address").value = course.building;
