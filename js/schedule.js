@@ -136,9 +136,11 @@ function makeSchHelp(term, year) {
 
   	var jsonObject = JSON.parse( xhr.responseText );
 
+    }
+
     alert(jsonObject.schedule.length);
-  	//document.getElementById("userName").innerHTML = firstName + " " + lastName;
-    for(i = 0; i < jsonObject.schedule.length; i++)
+    //document.getElementById("userName").innerHTML = firstName + " " + lastName;
+    for(i = 0; i < jsonObject.schedule.length+; i++)
     {
       var course = new Course();
 
@@ -156,8 +158,6 @@ function makeSchHelp(term, year) {
       scheduleList.push(course);
 
       addtoList(course);
-
-    }
 
     for(j = 0; j < scheduleList.length; j++)
     {
