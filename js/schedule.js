@@ -116,13 +116,12 @@ function makeSchedule() {
 		};
 		xhr.send(jsonPayload);
     var jsonObject = JSON.parse( xhr.responseText );
+		 alert(jsonObject.classID);
 	}
 	catch(err)
 	{
 		document.getElementById("makeSchResult").innerHTML = err.message;
 	}
-
-  alert(jsonObject.classID);
 }
 
 function makeSchHelp() {
