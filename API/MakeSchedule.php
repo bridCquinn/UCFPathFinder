@@ -79,7 +79,7 @@
 
 	function returnWithInfo( $classID )
 	{
-		$retValue = '{"classID":"' . $classID . '","error":""}';
+		$retValue = '{"classID":' . $classID . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
  ?>
