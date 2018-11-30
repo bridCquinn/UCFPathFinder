@@ -117,6 +117,7 @@ function makeSchedule() {
 				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 				var jsonObject = JSON.parse( xhr.responseText );
 				scheduleList[scheduleList.length - 1].classID = jsonObject.classID;
+				alert(JSON.stringify(scheduleList[scheduleList.length - 1]));
 			}
 		};
 		xhr.send(jsonPayload);
