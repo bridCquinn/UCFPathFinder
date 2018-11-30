@@ -378,7 +378,7 @@ function choose(code)
 }
 
 function saveEdit(){
-
+alert(JSON.stringify(scheduleList));
   // finding the correct course from the scheuleList to edit
   for(i = 0; i < scheduleList.length; i++)
     if(scheduleList[i].classID == lastPressed)
