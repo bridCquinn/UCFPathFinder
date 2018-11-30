@@ -65,7 +65,7 @@ function addClass(){
     temp.push(course);
     makeSchedule();
     temp=[];
-	  alert(JSON.stringify(scheduleList[scheduleList.length - 1]);
+	  alert(JSON.stringify(scheduleList[scheduleList.length - 1]));
     addtoList(scheduleList[scheduleList.length - 1]);
   }
   else {
