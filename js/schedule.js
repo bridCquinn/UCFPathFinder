@@ -63,8 +63,9 @@ function addClass(){
     scheduleList.push(course);
 
     temp.push(course);
-    alert(makeSchedule());
+    makeSchedule();
     temp=[];
+	  
     addtoList(course);
   }
   else {
@@ -115,7 +116,7 @@ function makeSchedule() {
 			{
 				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 				var jsonObject = JSON.parse( xhr.responseText );
-				return jsonObject.classID;
+				alert(jsonObject.classID);
 			}
 		};
 		xhr.send(jsonPayload);
