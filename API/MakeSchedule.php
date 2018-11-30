@@ -14,6 +14,7 @@
 	$inData = getRequestInfo();
     	$userID = $inData["userID"];
     	$class  = $inData["schedule"];
+	$classID = -1;
 	
 	$info = json_decode(file_get_contents('info.json'), true);
 	
