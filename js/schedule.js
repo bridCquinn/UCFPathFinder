@@ -118,7 +118,7 @@ function makeSchedule() {
 				var jsonObject = JSON.parse( xhr.responseText );
 				scheduleList[scheduleList.length - 1].classID = jsonObject.classID;
 				alert(JSON.stringify(scheduleList));
-				setTimeout(return, 500);
+				//setTimeout(return, 500);
 			}
 		};
 		xhr.send(jsonPayload);
