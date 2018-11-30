@@ -113,6 +113,7 @@ function makeSchedule() {
 				var jsonObject = JSON.parse( xhr.responseText );
 				scheduleList[scheduleList.length - 1].classID = jsonObject.classID;
 				addtoList(scheduleList[scheduleList.length - 1]);
+				makeTile(scheduleList[scheduleList.length -1]);
 			}
 		};
 		xhr.send(jsonPayload);
