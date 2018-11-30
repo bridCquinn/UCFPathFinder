@@ -65,8 +65,8 @@ function addClass(){
     temp.push(course);
     makeSchedule();
     temp=[];
-	  
-    setTimeout(addtoList(course), 500);
+	  alert(JSON.stringify(scheduleList));
+    setTimeout(addtoList(course), 1000);
   }
   else {
     $("#exampleModalCenter").modal();
