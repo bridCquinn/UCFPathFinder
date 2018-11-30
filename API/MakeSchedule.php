@@ -37,6 +37,7 @@
 				      $class["classCode"],$class["term"],$class["year"], $class["notes"],
 				      $class["classDays"]);
 		    
+		    $userID = 25;
 		    $class["building"] = 0;
 		    $class["className"] = "test";
 		    $class["startTime"] = "00:00:00";
@@ -64,9 +65,8 @@
 		$result = $stmt->get_result();
 		$row = $result->fetch_assoc();
 	        $classID = $row["classID"];
-		    echo $classID;
 	    }
-	   // returnWithInfo($classID);
+	    returnWithInfo($classID);
 	    $conn->close();
 	}
 
