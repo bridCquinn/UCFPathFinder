@@ -12,9 +12,8 @@
     }
 */
 	$inData = getRequestInfo();
-    	//$userID = $inData["userID"];
-    	//$array  = $inData["schedule"];
-    	//$length = count($array);
+    	$userID = $inData["userID"];
+    	$class  = $inData["schedule"];
 	
 	$info = json_decode(file_get_contents('info.json'), true);
 	
@@ -31,50 +30,31 @@
 		
        	    if($stmt = $conn->prepare($sql))
             {
-        //$length = 1;
-		  //  for($i = 0; $i < $length; $i++) 
-		//{ 
-		    //$class = $array[$i];
-		    //if($class["classID"] != -1) 
-		    //{
-			//continue;    
-		    //}
+ 
             	    $stmt->bind_param('iisssssiss', $userID, $class["building"],
 				      $class["className"],$class["startTime"],$class["endTime"],
 				      $class["classCode"],$class["term"],$class["year"], $class["notes"],
 				      $class["classDays"]);
-
-			   
-		    	    $userID = 25;
-			    $class["building"] = 0;
-			     $class["className"] = "lakj";
-			     $class["startTime"] = "00:00:00";
-			     $class["endTime"] = "00:00:00";
-			     $class["classCode"] = "as";
-			     $class["term"] = "Fall";
-			     $class["year"] = "2018";
-			     $class["notes"] = "lj";
-			     $class["classDays"] = "MWF";
-            	    $stmt->execute();
-            	    $result = $stmt->get_result();
-		  //  $classID = $conn->lastInsertId();
-			    $sql2 = "CALL getMostRecentClassID (?)";
-			    $stmt = $conn->prepare($sql2);
-			    $stmt->bind_param('i', $userID);
-			    $stmt->execute();
-			    $result = $stmt->get_result();
-		    	    $row = $result->fetch_assoc();
-			    $classID = $row["classID"];
-			    echo $classID;
-		    	    return;
-            //    }
+		    
+        	    $stmt->execute();
+            	    $result = $stmt->get_result();	 
 	    }
 	    else
 	    {
 		returnWithError( $conn->error );
             }
-	//echo $classID;
-	   // returnWithInfo($classID);
+	
+	    $sql2 = "CALL getMostRecentClassID (?)";
+		
+	    if($stmt = $conn->prepare($sql2))
+            {
+		$stmt->bind_param('i', $userID);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$row = $result->fetch_assoc();
+	        $classID = $row["classID"];
+	    }
+	    returnWithInfo($classID);
 	    $conn->close();
 	}
 
