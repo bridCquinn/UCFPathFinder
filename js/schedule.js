@@ -112,18 +112,15 @@ function makeSchedule() {
 			{
 				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 				var jsonObject = JSON.parse( xhr.responseText );
-				alert(jsonObject.classID);
+				scheduleList[scheduleList.length - 1].classID = jsonObject.classID;
 			}
 		};
 		xhr.send(jsonPayload);
-    //var jsonObject = JSON.parse( xhr.responseText );
 	}
 	catch(err)
 	{
 		document.getElementById("makeSchResult").innerHTML = err.message;
 	}
-	//alert(jsonObject);
-
 }
 
 function makeSchHelp() {
