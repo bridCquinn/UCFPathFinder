@@ -66,7 +66,7 @@ function addClass(){
     makeSchedule();
     temp=[];
 	  
-    addtoList(course);
+    addtoList(scheduleList[scheduleList.length - 1]);
   }
   else {
     $("#exampleModalCenter").modal();
