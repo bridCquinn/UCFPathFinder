@@ -64,8 +64,9 @@
 			    $stmt->execute();
 			    $result = $stmt->get_result();
 		    	    $row = $result->fetch_assoc()
-			    //$classID = $row["classID"];
-			    echo $row;
+			    $classID = $row["classID"];
+			    echo $classID;
+		    	    return;
             //    }
 	    }
 	    else
