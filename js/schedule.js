@@ -112,6 +112,7 @@ function makeSchedule() {
 			{
 				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 				var jsonObject = JSON.parse( xhr.responseText );
+				alert(jsonObject);
 			}
 		};
 		xhr.send(jsonPayload);
@@ -121,7 +122,7 @@ function makeSchedule() {
 	{
 		document.getElementById("makeSchResult").innerHTML = err.message;
 	}
-	alert(jsonObject);
+	//alert(jsonObject);
 
 }
 
