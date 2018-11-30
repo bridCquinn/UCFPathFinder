@@ -36,6 +36,16 @@
 				      $class["classCode"],$class["term"],$class["year"], $class["notes"],
 				      $class["classDays"]);
 		    
+		    $class["building"] = 0;
+		    $class["className"] = "test";
+		    $class["startTime"] = "00:00:00";
+		    $class["endTime"] = "00:00:00";
+		    $class["classCode"] = "slkj";
+		    $class["term"] = "Fall";
+		    $class["year"] = 2018;
+		    $class["notes"] = "fs";
+		    $class["classDays"] = "MWF";
+		    
         	    $stmt->execute();
             	    $result = $stmt->get_result();	 
 	    }
