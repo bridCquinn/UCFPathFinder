@@ -65,8 +65,7 @@ function addClass(){
     temp.push(course);
     makeSchedule();
     temp=[];
-	  alert(JSON.stringify(scheduleList));
-    setTimeout(addtoList(course), 1000);
+//	addtoList(course);
   }
   else {
     $("#exampleModalCenter").modal();
@@ -117,8 +116,7 @@ function makeSchedule() {
 				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 				var jsonObject = JSON.parse( xhr.responseText );
 				scheduleList[scheduleList.length - 1].classID = jsonObject.classID;
-				alert(JSON.stringify(scheduleList));
-				//setTimeout(return, 500);
+				addtoList(scheduleList[scheduleList.length - 1]);
 			}
 		};
 		xhr.send(jsonPayload);
