@@ -64,7 +64,7 @@
 		$result = $stmt->get_result();
 		$row = $result->fetch_assoc();
 	        $classID = $row["classID"];
-		    echo $classID;
+		    echo "here";
 	    }
 	    returnWithInfo($classID);
 	    $conn->close();
