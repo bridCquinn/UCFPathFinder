@@ -19,7 +19,6 @@ var lastPressed = -1;
 // this is used to add to the physical list
 // creates the list node with all of the information
 function addtoList(course){
-	alert(course.classID);
   var li = document.createElement("li");
   var bold = document.createElement("b");
   var t = document.createTextNode(course.classCode + " - " + course.className);
@@ -66,7 +65,7 @@ function addClass(){
     temp.push(course);
     makeSchedule();
     temp=[];
-	  
+	  alert(JSON.stringify(scheduleList[scheduleList.length - 1]);
     addtoList(scheduleList[scheduleList.length - 1]);
   }
   else {
