@@ -63,10 +63,9 @@ function addClass(){
     scheduleList.push(course);
 
     temp.push(course);
-    makeSchedule();
+    course.classID = makeSchedule();
     temp=[];
-	  alert(JSON.stringify(scheduleList[scheduleList.length - 1]));
-    addtoList(scheduleList[scheduleList.length - 1]);
+    addtoList(course);
   }
   else {
     $("#exampleModalCenter").modal();
@@ -116,7 +115,7 @@ function makeSchedule() {
 			{
 				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 				var jsonObject = JSON.parse( xhr.responseText );
-				scheduleList[scheduleList.length - 1].classID = jsonObject.classID;
+				return jsonObject.classID;
 			}
 		};
 		xhr.send(jsonPayload);
