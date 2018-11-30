@@ -19,6 +19,7 @@ var lastPressed = -1;
 // this is used to add to the physical list
 // creates the list node with all of the information
 function addtoList(course){
+	alert(course.classID);
   var li = document.createElement("li");
   var bold = document.createElement("b");
   var t = document.createTextNode(course.classCode + " - " + course.className);
@@ -117,7 +118,6 @@ function makeSchedule() {
 				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 				var jsonObject = JSON.parse( xhr.responseText );
 				scheduleList[scheduleList.length - 1].classID = jsonObject.classID;
-				alert(JSON.stringify(scheduleList));
 			}
 		};
 		xhr.send(jsonPayload);
