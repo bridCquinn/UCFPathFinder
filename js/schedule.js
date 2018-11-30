@@ -63,7 +63,7 @@ function addClass(){
     scheduleList.push(course);
 
     temp.push(course);
-    course.classID = makeSchedule();
+    alert(makeSchedule());
     temp=[];
     addtoList(course);
   }
