@@ -63,7 +63,8 @@ function addClass(){
     scheduleList.push(course);
 
     temp.push(course);
-    makeSchedule();
+	  setTimeout(makeSchedule, 500);
+   // makeSchedule();
     temp=[];
 	  
     addtoList(course);
@@ -116,7 +117,7 @@ function makeSchedule() {
 			{
 				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 				var jsonObject = JSON.parse( xhr.responseText );
-				alert(jsonObject.classID);
+				scheduleList[scheduleList.length - 1].classID = jsonObject.classID;
 			}
 		};
 		xhr.send(jsonPayload);
