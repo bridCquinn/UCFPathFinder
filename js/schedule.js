@@ -59,18 +59,22 @@ function addClass(){
   gYear = course.year;
 
   if(course.className != "" && course.classCode != "" && course.term != "" && course.year != "" && course.term != "Term" && course.year != "Year")
-  {
+  {	  
     scheduleList.push(course);
 
-    addtoList(course);
+    temp.push(course);
+    makeSchedule();
+    temp=[];
+	  
+    addtoList(scheduleList[scheduleList.length - 1]);
   }
   else {
     $("#exampleModalCenter").modal();
   }
 
-  temp.push(course);
-  makeSchedule();
-  temp=[];
+//  temp.push(course);
+ // makeSchedule();
+ // temp=[];
 }
 
 // is activated when newSchedule is pressed
