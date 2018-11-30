@@ -3,11 +3,12 @@
     JSON package expected
     { 
       "userID"   :  <<userID>>
-      "schedule" :  <<Array of Class Objects in JSON Format>>
+      "schedule" :  <<Array of Class Objects in JSON Format>> 
     }
     
     JSON package returned if error
     {
+     "classID"   :  <<classID of the last class added>>
      "error"     :  <<error message if one exisits>>
     }
 */
@@ -27,6 +28,7 @@
 	} 
 	else
 	{ 
+	    // Add class to the database
 	    $sql = "CALL addClass (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	    $stmt = 0;
 		
@@ -46,6 +48,7 @@
 		returnWithError( $conn->error );
             }
 	
+	    // Get the classID of the last class added to the database
 	    $sql2 = "CALL getMostRecentClassID (?)";
 		
 	    if($stmt = $conn->prepare($sql2))
@@ -56,6 +59,7 @@
 		$row = $result->fetch_assoc();
 	        $classID = $row["classID"];
 	    }
+		
 	    returnWithInfo($classID);
 	    $conn->close();
 	}
