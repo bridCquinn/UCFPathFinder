@@ -111,11 +111,11 @@ function makeSchedule() {
 			if (this.readyState == 4 && this.status == 200)
 			{
 				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
-				;
+				var jsonObject = JSON.parse( xhr.responseText );
 			}
 		};
 		xhr.send(jsonPayload);
-    var jsonObject = JSON.parse( xhr.responseText );
+    //var jsonObject = JSON.parse( xhr.responseText );
 	}
 	catch(err)
 	{
