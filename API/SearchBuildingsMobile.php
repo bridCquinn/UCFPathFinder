@@ -22,13 +22,14 @@
 	} 
 	else
 	{	
-		$sql = "CALL searchBuildingsBoth(?,?);";
+		$sql = "CALL searchBuildingsMobile(?,?);";
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
 		{
 			$stmt->bind_param('ss', $search, $search);
 			
 			$search = $inData["search"];
+			$search = "a";
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
