@@ -1,6 +1,7 @@
 package com.ucfpathfinder.ucfpathfinder;
 
 import android.annotation.SuppressLint;
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +10,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,7 +43,7 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor spEditior;
 
-
+    // Constructor for login.
     BackgroundWorker(String username, String password, String actionType, Context context)
     {
         // Construction for Login.
@@ -52,6 +54,7 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
         setRequestResult(false);
     }
 
+    // Constructor for registration.
     BackgroundWorker(String username, String password, String firstName, String lastName, String email,String actionType, Context context)
     {
         // Constructor for Registration.
@@ -64,6 +67,14 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
         setEmail(email);
         setRequestResult(false);
         setRecordsFound(false);
+    }
+
+    // Constructor for update the buildings database.
+    BackgroundWorker(String actionType, Context context)
+    {
+        setActionType(actionType);
+        setContext(context);
+        setRequestResult(false);
     }
 
     @Override
@@ -87,6 +98,7 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
                 spEditior.putString("password", passwordHashMD5(getPreHashPassword()));
                 spEditior.commit();
 
+
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 intent.putExtra("loginResultJson", result);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -104,7 +116,6 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
             else
                 Toast.makeText(getContext(),"Registration Unsuccessful", Toast.LENGTH_LONG).show();
         }
-
     }
 
     @Override
@@ -119,7 +130,6 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
             try
             {
                 //TODO Need to sanitize the login information.
-
 
                 // Target URL.
                 URL url = getURL();
@@ -232,7 +242,70 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
                 e.printStackTrace();
             }
         }
+        else if(getActionType().equals("buildings update"))
+        {
+            try
+            {
+                // Target URL.
+                URL url = getURL();
+                if(url == null)
+                    return null;
+
+                // JSON to be sent.
+                JSONObject jsonOutput = constructJsonForBuildingsUpdate();
+                if(jsonOutput == null)
+                    return null;
+
+                // Connection to the URL.
+                HttpURLConnection httpURLConnection = getHTTPURLConnection(url);
+                if(httpURLConnection == null)
+                    return null;
+
+                // Send JSON to server.
+                outputJson(httpURLConnection,jsonOutput);
+
+                // JSON received from server.
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+
+                String lineTemp;
+                StringBuilder resultOfBuildingsUpdate = new StringBuilder();
+                while((lineTemp = bufferedReader.readLine())!=null)
+                    resultOfBuildingsUpdate.append(lineTemp);
+
+                updateBuildingsDatabase(resultOfBuildingsUpdate.toString());
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
         // Only if error.
+        return null;
+    }
+
+    private void updateBuildingsDatabase(String jsonString)
+    {
+
+    }
+
+    private JSONObject constructJsonForBuildingsUpdate()
+    {
+        try
+        {
+            JSONObject json = new JSONObject();
+            json.put("search", "");
+            return json;
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -295,6 +368,8 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
                 return new URL("http://ucfpathfinder.com/API/Login.php");
             if (getActionType().equals("register"))
                 return new URL("http://ucfpathfinder.com/API/Register.php");
+            if(getActionType().equals("buildings update"))
+                return new URL("http://ucfpathfinder.com/API/SearchBuildings.php");
         }
         catch(MalformedURLException e)
         {

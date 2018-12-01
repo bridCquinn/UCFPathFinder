@@ -15,6 +15,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Update the buildings database.
+        BackgroundWorker backgroundWorker = new BackgroundWorker("buildings update", this);
+        backgroundWorker.execute();
+
         final Button loginButton = findViewById(R.id.button_login_loginActivity);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

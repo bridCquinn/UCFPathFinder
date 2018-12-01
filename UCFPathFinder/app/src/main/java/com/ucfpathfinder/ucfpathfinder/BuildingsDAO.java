@@ -6,17 +6,19 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+import java.util.List;
+
 @Dao
 public interface BuildingsDAO {
     @Insert
-    public void insert(BuildingsDB... building);
+    public void insert(Building... building);
 
     @Update
-    public void update(BuildingsDB... building);
+    public void update(Building... building);
 
     @Delete
-    public void delete(BuildingsDB building);
+    public void delete(Building building);
 
-    @Query("SELECT * FROM building")
-    public list<BuildingsDB> getBuildings();
+    @Query("SELECT * FROM Building")
+    public List<Building> getBuildings();
 }
