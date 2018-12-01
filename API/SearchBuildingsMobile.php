@@ -11,7 +11,7 @@
     }
     Each building array : [buildingID, buildingAbbreviation, buildingName, plusCode]
 */
-	$inData = getRequestInfo();
+	//$inData = getRequestInfo();
 	$info = json_decode(file_get_contents('info.json'), true);
 	
 	$conn = new mysqli("localhost", $info["name"], $info["pass"], $info["data"]);	
@@ -28,7 +28,7 @@
 		{
 			$stmt->bind_param('ss', $search, $search);
 			
-			$search = $inData["search"];
+			//$search = $inData["search"];
 			$search = "a";
 			$stmt->execute();
 			
