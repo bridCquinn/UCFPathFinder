@@ -29,7 +29,7 @@
 			$stmt->bind_param('ss', $search, $search);
 			
 			//$search = $inData["search"];
-			$search = "a";
+			$search = 'a';
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
@@ -50,7 +50,7 @@
 					$buildingID = $row["buildingID"];
 					$buildingAbb = $row["buildingAbbreviation"];
 					$buildingName = $row["buildingName"];
-                    $buildingPlus = $row["plusCode"];
+                   			$buildingPlus = $row["plusCode"];
 					// Create building array and added to searchResults
 					$searchResults .= '["' . $buildingID . '","' . $buildingAbb 
                             			. '","' . $buildingName . '","' . $buildingPlus . '"]';
