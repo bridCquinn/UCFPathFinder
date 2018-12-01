@@ -22,7 +22,7 @@
 	} 
 	else
 	{	
-		$sql = "CALL searchBuildingsMobile(?,?);";
+		$sql = "CALL searchBuildingsMobile (?,?);";
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
 		{
