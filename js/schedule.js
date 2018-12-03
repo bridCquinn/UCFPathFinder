@@ -406,7 +406,7 @@ function saveEdit(){
 
   var li = document.createElement("li");
   var bold = document.createElement("b");
-  var t = document.createTextNode(course.classCode + " - " + course.className);
+  var t = document.createTextNode(scheduleList[i].classCode + " - " + scheduleList[i].className);
   li.appendChild(bold);
   bold.appendChild(t);
   document.getElementById("myUL").appendChild(li);
