@@ -418,7 +418,7 @@ function saveEdit(){
   for(i = 0; i < scheduleList.length; i++)
     if(scheduleList[i].classID == lastPressed)
       break;
-alert(i);
+
   gTerm = document.getElementById("term").value;
   gYear = document.getElementById("year").value;
 
@@ -490,8 +490,7 @@ alert(i);
   }
 
 
-  lastIdClicked = -1;
-	alert(lastIdClicked);
+  lastPressed = -1;
 }
 
 function finishEdit(){
