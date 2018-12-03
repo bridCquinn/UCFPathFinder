@@ -446,7 +446,7 @@ function saveEdit(){
 	alert(JSON.stringify(temp));
 
 
-  var jsonPayload = '{"userID" : "'+ userId +'", "schedule" : '+JSON.stringify(temp)+'}';
+  var jsonPayload = '{"userID" : "'+ userId +'", "schedule" : ['+JSON.stringify(scheduleList[i])+']}';
 
   var url = urlBase + '/EditClass.' + extension;
 
@@ -473,7 +473,7 @@ function saveEdit(){
   // scheduleList[i].building = scheduleList[i].buildingID;
   // scheduleList[i].buidlingID = swap;
 
-
+  lastIdClicked = -1;
 }
 
 function finishEdit(){
