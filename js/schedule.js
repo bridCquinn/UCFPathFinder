@@ -245,7 +245,7 @@ function makeTile(course)
   {
     var jsonPayload = '{"buildingID" : "'+ course.building +'"}';
     var url = urlBase + '/GetBuildingName.' + extension;
-
+var jsonObject;
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, false);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -254,7 +254,7 @@ function makeTile(course)
     	
       xhr.send(jsonPayload);
 
-      var jsonObject = JSON.parse( xhr.responseText );
+      jsonObject = JSON.parse( xhr.responseText );
 
 //      alert(jsonObject.results);
 //      course.building = jsonObject.results;
