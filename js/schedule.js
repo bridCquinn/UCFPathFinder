@@ -396,7 +396,6 @@ function saveEdit(){
   gTerm = document.getElementById("term").value;
   gYear = document.getElementById("year").value;
 
-  alert(scheduleList[i].className + "," + scheduleList[i].building + "," + scheduleList[i].buildingID);
   // changes values in schedule
   scheduleList[i].className = document.getElementById("name").value;
   scheduleList[i].classCode = document.getElementById("code").value;
@@ -415,7 +414,6 @@ function saveEdit(){
    swap = scheduleList[i].building;
    scheduleList[i].building = scheduleList[i].buildingID;
    scheduleList[i].buidlingID = swap;
-  alert("sch" + scheduleList[i].building +","+ scheduleList[i].buildingID);
 
   // places default values in the text boxes
   document.getElementById("name").value = "";
@@ -440,8 +438,6 @@ function saveEdit(){
   span.appendChild(txt);
   li.setAttribute('onclick', "choose(this.id)");
 
-  alert("again" + scheduleList[i].building +","+ scheduleList[i].buildingID);
-
   var jsonPayload = '{"userID" : "'+ userId +'", "schedule" : ['+JSON.stringify(scheduleList[i])+']}';
 
   var url = urlBase + '/EditClass.' + extension;
@@ -465,9 +461,9 @@ function saveEdit(){
   {
     document.getElementById("makeSchResult").innerHTML = err.message;
   }
-  // swap = scheduleList[i].building;
-  // scheduleList[i].building = scheduleList[i].buildingID;
-  // scheduleList[i].buidlingID = swap;
+  swap = scheduleList[i].building;
+  scheduleList[i].building = scheduleList[i].buildingID;
+  scheduleList[i].buidlingID = swap;
 
   lastIdClicked = -1;
 }
