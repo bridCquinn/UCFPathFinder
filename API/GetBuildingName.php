@@ -42,7 +42,6 @@
 				{					
 					$buildingName = $row["buildingName"];
 					echo( $buildingName );
-					return;
 				}
 			}
 			else
