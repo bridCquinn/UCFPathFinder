@@ -16,6 +16,7 @@ function Course(){
 var scheduleList = [];
 var temp = [];
 var lastPressed = -1;
+var swap;
 
 // this is used to add to the physical list
 // creates the list node with all of the information
@@ -53,7 +54,7 @@ function addClass(){
   course.startTime = document.getElementById("start").value;
   course.endTime = document.getElementById("end").value;
   course.building = document.getElementById("address").value;
-  course.buildingID = document.getElementById("buildingID").value;
+  course.buildingID = document.getElementById("buildingID").value
   course.notes = document.getElementById("note").value;
   course.term = document.getElementById("term").value;
   course.year = document.getElementById("year").value;
@@ -64,9 +65,17 @@ function addClass(){
   {
     scheduleList.push(course);
 
+    swap = course.building;
+    course.building = course.buildingID;
+    course.buidlingID = swap;
+
     temp.push(course);
     makeSchedule();
     temp=[];
+
+    swap = course.building;
+    course.building = course.buildingID;
+    course.buidlingID = swap;
   }
   else {
     $("#exampleModalCenter").modal();
