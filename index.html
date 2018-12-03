@@ -39,7 +39,7 @@
       <!-- these tabs are hidden until successful login -->
       <div class ="toolbar" style="display:none; visibility:hidden;" id="tabs">
         <a class="tablink" href="#schedule" onclick="openPage('schedule', this, '#757369')">Schedule</a>
-        <a class="tablink" href="#profile" onclick="openPage('Profile', this, '#757369')">Settings</a>
+        <a class="tablink" href="#profile" onclick="openPage('Profile', this, '#757369')">Profile</a>
 
         <a href="#" id="logout" onclick="doLogout()">LogOut</a>
       </div>
@@ -350,6 +350,29 @@
         </div>
 
     </div> <!-- end of term modal -->
+	    
+	    <!-- Delete Class Modal -->
+        <div class="modal fade" id="delClassCheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="delClassCheckTitle">Are you sure you want to delete this class?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                This will delete a single class.
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="deleteClass()">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              </div>
+            </div>
+          </div>
+        </div> <!-- end of Delete All modal -->
+
+
 
 	</div> <!--end of schedule tab -->
 
@@ -416,27 +439,6 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="deleteSchedule()">Yes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-              </div>
-            </div>
-          </div>
-        </div> <!-- end of Delete All modal -->
-
-<!-- Delete Class Modal -->
-        <div class="modal fade" id="delClassCheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="delCheckTitle">Are you sure you want to delete this class?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                This will delete a single class.
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="deleteClass()">Yes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
               </div>
             </div>
