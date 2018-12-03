@@ -2,7 +2,7 @@
 function Course(){
   this.classID = -1;
   this.building = "";
-  this.buildingID = "";
+  this.buildingID = 255;
   this.className = "";
   this.classDays = "";
   this.startTime = "";
@@ -179,7 +179,7 @@ function makeSchHelp() {
     course.notes = jsonObject.schedule[i][8];
     course.classDays = jsonObject.schedule[i][9];
     course.building = jsonObject.schedule[i][10];
-    alert(course.building);
+
     scheduleList.push(course);
 
     addtoList(course);
