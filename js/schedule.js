@@ -395,6 +395,8 @@ function saveEdit(){
 
   gTerm = document.getElementById("term").value;
   gYear = document.getElementById("year").value;
+
+  alert(scheduleList[i].className + "," + scheduleList[i].building + "," + scheduleList[i].buildingID);
   // changes values in schedule
   scheduleList[i].className = document.getElementById("name").value;
   scheduleList[i].classCode = document.getElementById("code").value;
