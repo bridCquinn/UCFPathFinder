@@ -254,8 +254,11 @@
                 <div class="col-6">Start:<input class="form-control mr-sm-2" type="time" id="start" name="start"></div>
                 <div class="col-6">End:<input class="form-control mr-sm-2" type="time" id="end" name="end"></div>
               </div><br>
-              <input class="form-control-mr-sm-2" id="address" type="text" name ="address" onclick="document.getElementById('scroll').style.display='block'" onkeyup="searchLocation()" placeholder="Search location.."/>
+              <div class="col-6">
+                <input class="form-control-mr-sm-2" id="address" type="text" name ="address" onclick="document.getElementById('scroll').style.display='block'" onkeyup="searchLocation()" placeholder="Search location.."/>
+              </div>
               <span id="buildingID" style=" display: none; visibility: hidden;"></span>
+
               <div class="col-12">
                 <div id ="scroll" class="scrollbar scrollbar-primary" style="display:none;">
                   <div class="force-overflow">
