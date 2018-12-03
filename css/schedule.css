@@ -78,6 +78,10 @@ ul li:hover {
     padding-right: 0px;
 }
 
+.liClass {
+    color: #eeeeee;
+}
+
 img {
   width: 75%;
 }

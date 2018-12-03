@@ -453,6 +453,7 @@ function saveEdit(){
   deleteListElement(scheduleList[i]);
 
   var li = document.createElement("li");
+  li.setAttribute("class", "liClass");
   var bold = document.createElement("b");
   var t = document.createTextNode(scheduleList[i].classCode + " - " + scheduleList[i].className);
   li.appendChild(bold);
