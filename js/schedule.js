@@ -411,10 +411,10 @@ function saveEdit(){
 
   scheduleList[i].building = document.getElementById("address").value;
   scheduleList[i].notes = document.getElementById("note").value;
-   //
-   // swap = scheduleList[i].building;
-   // scheduleList[i].building = scheduleList[i].buildingID;
-   // scheduleList[i].buidlingID = swap;
+   
+   swap = scheduleList[i].building;
+   scheduleList[i].building = scheduleList[i].buildingID;
+   scheduleList[i].buidlingID = swap;
   alert("sch" + scheduleList[i].building +","+ scheduleList[i].buildingID);
 
   // places default values in the text boxes
