@@ -2,7 +2,7 @@
 function Course(){
   this.classID = -1;
   this.building = "";
-  this.buildingID = "";
+  this.buildingID = 255;
   this.className = "";
   this.classDays = "";
   this.startTime = "";
