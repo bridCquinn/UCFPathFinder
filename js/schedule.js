@@ -403,8 +403,8 @@ function saveEdit(){
   scheduleList[i].classDays = document.getElementById("ddlPattern").value;
   scheduleList[i].startTime = document.getElementById("start").value;
   scheduleList[i].endTime = document.getElementById("end").value;
-  scheduleList[i].buildingID = document.getElementById("address").value;
-  scheduleList[i].building = document.getElementById("buildingID").value;
+  scheduleList[i].building = document.getElementById("address").value;
+  scheduleList[i].buildingID = document.getElementById("buildingID").value;
   scheduleList[i].notes = document.getElementById("note").value;
    //
    // swap = scheduleList[i].building;
