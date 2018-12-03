@@ -54,17 +54,14 @@ function addClass(){
   course.startTime = document.getElementById("start").value;
   course.endTime = document.getElementById("end").value;
   course.building = document.getElementById("address").value;
-  if( document.getElementById("buildingID").value == 0)
-    course.buildingID = 255;
-  else
-    course.buildingID = document.getElementById("buildingID").value;
+  course.buildingID = document.getElementById("buildingID").value;
   course.notes = document.getElementById("note").value;
   course.term = document.getElementById("term").value;
   course.year = document.getElementById("year").value;
   gTerm = course.term;
   gYear = course.year;
 
-  if(course.className != "" && course.classCode != "" && course.term != "" && course.year != "" && course.term != "Term" && course.year != "Year")
+  if(course.className != "" && course.classCode != "" && course.term != "" && course.year != "" && course.term != "Term" && course.year != "Year" && course.building != "")
   {
     scheduleList.push(course);
 
