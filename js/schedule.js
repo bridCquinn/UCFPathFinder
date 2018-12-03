@@ -265,8 +265,9 @@ function makeTile(course)
       // make new error message
       // document.getElementById("loginResult").innerHTML = err.message;
     }
+	  alert(jsonObject.results);
   }
-alert("here");
+
   var card = document.createElement("div");
   var span = document.createElement("span");
   var body = document.createElement("div");
