@@ -414,7 +414,8 @@ function saveEdit(){
   temp = [];
   temp = scheduleList.slice(i, i+1);
 //  temp.push(scheduleList[i]);
-
+  temp.buildingID = document.getElementById("buildingID").value;
+  temp.building = document.getElementById("address").value;
   alert("temp" + JSON.stringify(temp));
 
   // places default values in the text boxes
