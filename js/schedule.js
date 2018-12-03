@@ -428,8 +428,10 @@ function saveEdit(){
   document.getElementById("address").value = address.defaultValue;
   document.getElementById("note").value = note.defaultValue;
 
+	alert(JSON.stringify(temp));
   deleteListElement(scheduleList[i]);
-
+alert(JSON.stringify(temp));
+	
   var li = document.createElement("li");
   var bold = document.createElement("b");
   var t = document.createTextNode(scheduleList[i].classCode + " - " + scheduleList[i].className);
