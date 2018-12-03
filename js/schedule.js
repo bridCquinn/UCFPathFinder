@@ -256,7 +256,6 @@ function makeTile(course)
 
       var jsonObject = JSON.parse( xhr.responseText );
 
-      alert(jsonObject.results);
       course.building = jsonObject.results;
 
     }
@@ -265,7 +264,6 @@ function makeTile(course)
       // make new error message
       // document.getElementById("loginResult").innerHTML = err.message;
     }
-	  alert(jsonObject.results);
   }
 
   var card = document.createElement("div");
