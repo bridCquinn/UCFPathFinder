@@ -162,7 +162,6 @@ function makeSchHelp() {
   	// document.getElementById("loginResult").innerHTML = err.message;
   }
 
-  alert(jsonObject.schedule.length);
   //document.getElementById("userName").innerHTML = firstName + " " + lastName;
   for(i = 0; i < jsonObject.schedule.length; i++)
   {
@@ -373,6 +372,7 @@ function choose(code)
   document.getElementById("start").value = course.startTime;
   document.getElementById("end").value = course.endTime;
   document.getElementById("address").value = course.building;
+  document.getElementById("buildingID").value = course.buidlingID;
   document.getElementById("note").value = course.notes;
   document.getElementById("term").value = course.term;
   document.getElementById("year").value = course.year;
@@ -402,6 +402,7 @@ function saveEdit(){
   scheduleList[i].startTime = document.getElementById("start").value;
   scheduleList[i].endTime = document.getElementById("end").value;
   scheduleList[i].building = document.getElementById("address").value;
+  scheduleList[i].buildingID = document.getElementById("buildingID").value;
   scheduleList[i].notes = document.getElementById("note").value;
 
 
