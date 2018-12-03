@@ -90,6 +90,8 @@ function doLogin()
         document.getElementById("delSch").style.display = 'block';
         document.getElementById("term").value = "Fall";
         document.getElementById("year").value = "2018";
+	document.getElementById("profileTerm").value = "Fall";
+        document.getElementById("profileYear").value = "2018";
       }
     }
 
