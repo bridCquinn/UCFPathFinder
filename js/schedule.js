@@ -169,7 +169,7 @@ function makeSchHelp() {
     var course = new Course();
 
     course.classID = jsonObject.schedule[i][0];
-    course.building = jsonObject.schedule[i][1];
+    course.buildingID = jsonObject.schedule[i][1];
     course.className = jsonObject.schedule[i][2];
     course.startTime = jsonObject.schedule[i][3];
     course.endTime = jsonObject.schedule[i][4];
@@ -178,7 +178,8 @@ function makeSchHelp() {
     course.year = jsonObject.schedule[i][7];
     course.notes = jsonObject.schedule[i][8];
     course.classDays = jsonObject.schedule[i][9];
-
+    course.building = jsonObject.schedule[i][10];
+    alert(course.building);
     scheduleList.push(course);
 
     addtoList(course);
