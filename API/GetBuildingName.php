@@ -46,7 +46,14 @@
 				while($row = $result->fetch_assoc())
 				{					
 					$buildingName = $row["buildingName"];
-					echo( $buildingName );
+					if ($argc > 1) 
+					{
+						echo( $buildingName );
+					}
+					else
+					{
+						returnWithInfo($buildingName);
+					}
 				}
 			}
 			else
