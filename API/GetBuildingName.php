@@ -24,17 +24,19 @@
 	} 
 	else
 	{	
-		$search = $inData["search"];
-		if($argc > 1) 
-		{
-			$search = $argv[1];
-		}
 		$sql = "CALL getBuildingName(?);";
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
 		{
-			$stmt->bind_param('i', $argv[1]);
+			$stmt->bind_param('i', $search);
 
+			$search = $inData["buildingID"];
+			
+			if($argc > 1) 
+			{
+				$search = $argv[1];
+			}
+			
 			$stmt->execute();
 			
             		$result = $stmt->get_result();
