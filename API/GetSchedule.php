@@ -13,7 +13,7 @@
       "error"     :  <<error if one exists>>
     }
     Each class array : [classID, buildingID, className, startTime, endTime, 
-                        classCode, term, year, notes, classDays]
+                        classCode, term, year, notes, classDays, buildingName]
 */
 	$inData = getRequestInfo();
 
@@ -61,9 +61,11 @@
                 			$year = $row["year"];				
                 			$notes = $row["notes"];
                 			$classDays = $row["days"];
-				 
 					
-					$class = array($classID, $buildingID, $className, $startTime, $endTime, $classCode, $term, $year, $notes, $classDays);
+					$call = "php GetBuildingName.php ".$buildingID;
+					$buildingName = shell_exec($call);				 
+					
+					$class = array($classID, $buildingID, $className, $startTime, $endTime, $classCode, $term, $year, $notes, $classDays, $buildingName);
 					
 					array_push($searchResults, $class);
             
