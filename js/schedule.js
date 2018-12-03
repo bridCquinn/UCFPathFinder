@@ -282,7 +282,7 @@ function makeTile(course)
   var time = document.createTextNode(course.startTime + " - " + course.endTime);
   var place = document.createTextNode(course.building);
   var notes = document.createTextNode(course.notes);
-
+alert("here");
   card.appendChild(body);
   body.appendChild(h5);
   h5.appendChild(span);
