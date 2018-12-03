@@ -206,6 +206,10 @@ function delModal() {
     $("#delCheck").modal();
 }
 
+function delClassModal() {
+    $("#delClassCheck").modal();
+}
+
 // delete the entire schedule
 function deleteSchedule()
 {
@@ -302,7 +306,8 @@ function makeTile(course)
   body.classList.add("card-body");
   span.classList.add("close");
   span.id = "del" + course.classID;
-  span.setAttribute("onclick", "deleteClass(this.id)");
+  span.setAttribute("onclick", "delClassModal()");
+  //span.setAttribute("onclick", "deleteClass(this.id)");
   span.style.top = 0;
   span.style.right = 0;
   h5.classList.add("card-title");
