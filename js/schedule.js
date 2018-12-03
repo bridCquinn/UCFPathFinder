@@ -59,7 +59,7 @@ function addClass(){
   gYear = course.year;
 
   if(course.className != "" && course.classCode != "" && course.term != "" && course.year != "" && course.term != "Term" && course.year != "Year")
-  {	  
+  {
     scheduleList.push(course);
 
     temp.push(course);
@@ -405,8 +405,10 @@ function saveEdit(){
   deleteListElement(scheduleList[i]);
 
   var li = document.createElement("li");
-  var t = document.createTextNode(scheduleList[i].classCode + " - " + scheduleList[i].className);
-  li.appendChild(t);
+  var bold = document.createElement("b");
+  var t = document.createTextNode(course.classCode + " - " + course.className);
+  li.appendChild(bold);
+  bold.appendChild(t);
   document.getElementById("myUL").appendChild(li);
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
