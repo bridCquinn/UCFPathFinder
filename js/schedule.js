@@ -412,7 +412,7 @@ function saveEdit(){
   scheduleList[i].buidlingID = swap;
 
   temp = [];
-  temp = scheduleList.slice(i, i+i);
+  temp = scheduleList.slice(i, i+1);
 //  temp.push(scheduleList[i]);
 
   alert("temp" + JSON.stringify(temp));
