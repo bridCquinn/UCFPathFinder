@@ -43,7 +43,9 @@ function searchLocation()
 						var span = document.createElement("SPAN");
 						var txt = document.createTextNode("\u00D7");
 						li.id = jsonObject['results'][i][0];
-						li.setAttribute('onclick', "setBuildingTo(this.id)"); // does nothing right now
+						li.name = document.getElementById("buidlingID").value;
+						li.setAttribute('onclick', "setBuildingTo(this.id); setBuildingID(this.name)"); // does nothing right now
+
 						span.appendChild(txt);
 
 					//	if(document.getElementById("div" + li.id) != null)
@@ -66,6 +68,10 @@ function searchLocation()
 
 }
 
+function setBuildingID(id)
+{
+	alert(document.getElementById(id).value);
+}
 
 function setBuildingTo(location)
 {
