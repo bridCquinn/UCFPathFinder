@@ -44,7 +44,7 @@ function searchLocation()
 						var txt = document.createTextNode("\u00D7");
 						li.id = jsonObject['results'][i][0];
 						li.name = jsonObject['results'][i][2];
-						li.setAttribute('onclick', "setBuildingTo(this.id); setBuildingID(this.name)"); // does nothing right now
+						li.setAttribute('onclick', "setBuildingTo(this.name); setBuildingID(this.id)"); // does nothing right now
 
 						span.appendChild(txt);
 
@@ -70,13 +70,12 @@ function searchLocation()
 
 function setBuildingID(id)
 {
-	alert(id);
+	document.getElementById("buildingID").value = id;
 }
 
 function setBuildingTo(location)
 {
 
  	document.getElementById("address").value = location;
-	alert(location);
 
 }
