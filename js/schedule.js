@@ -255,6 +255,7 @@ function makeTile(course)
 
       var jsonObject = JSON.parse( xhr.responseText );
 
+      alert(jsonObject['results']);
       course.building = jsonObject['results'];
 
     }
