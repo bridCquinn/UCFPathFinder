@@ -491,6 +491,7 @@ function saveEdit(){
 
 
   lastIdClicked = -1;
+	alert(lastIdClicked);
 }
 
 function finishEdit(){
