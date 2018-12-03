@@ -418,7 +418,7 @@ function saveEdit(){
   swap = scheduleList[i].building;
   scheduleList[i].building = scheduleList[i].buildingID;
   scheduleList[i].buidlingID = swap;
-
+alert(JSON.stringify(temp));
   // places default values in the text boxes
   document.getElementById("name").value = "";
   document.getElementById("code").value = code.defaultValue;
@@ -428,9 +428,7 @@ function saveEdit(){
   document.getElementById("address").value = address.defaultValue;
   document.getElementById("note").value = note.defaultValue;
 
-	alert(JSON.stringify(temp));
   deleteListElement(scheduleList[i]);
-alert(JSON.stringify(temp));
 	
   var li = document.createElement("li");
   var bold = document.createElement("b");
