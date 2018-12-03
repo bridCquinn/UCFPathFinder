@@ -62,8 +62,8 @@
                 			$notes = $row["notes"];
                 			$classDays = $row["days"];
 					
-					//$call = "php GetBuildingName.php ".$buildingID;
-					$call = "php GetBuildingName.php 76";
+					$call = "php GetBuildingName.php ".$buildingID;
+				
 					$buildingName = shell_exec($call);				 
 					
 					$class = array($classID, $buildingID, $className, $startTime, $endTime, $classCode, $term, $year, $notes, $classDays, $buildingName);
