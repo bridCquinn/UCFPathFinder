@@ -245,7 +245,7 @@ function makeTile(course)
   {
     var jsonPayload = '{"buildingID" : "'+ course.building +'"}';
     var url = urlBase + '/GetBuildingName.' + extension;
-var jsonObject;
+
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, false);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -254,10 +254,10 @@ var jsonObject;
     	
       xhr.send(jsonPayload);
 
-      jsonObject = JSON.parse( xhr.responseText );
+      var jsonObject = JSON.parse( xhr.responseText );
 
-//      alert(jsonObject.results);
-//      course.building = jsonObject.results;
+      alert(jsonObject.results);
+      course.building = jsonObject.results;
 
     }
     catch(err)
@@ -265,8 +265,6 @@ var jsonObject;
       // make new error message
       // document.getElementById("loginResult").innerHTML = err.message;
     }
-	        alert(jsonObject.results);
-      course.building = jsonObject.results;
   }
 
   var card = document.createElement("div");
