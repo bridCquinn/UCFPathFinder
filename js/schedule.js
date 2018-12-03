@@ -251,13 +251,22 @@ function makeTile(course)
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     try
     {
-	    alert("here");
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				//document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				var jsonObject = JSON.parse( xhr.responseText );
+				alert(jsonObject.results);
+    		  		course.building = jsonObject.results;
+			}
+		};
       xhr.send(jsonPayload);
 
-      var jsonObject = JSON.parse( xhr.responseText );
+//      var jsonObject = JSON.parse( xhr.responseText );
 
-      alert(jsonObject.results);
-      course.building = jsonObject.results;
+  //    alert(jsonObject.results);
+    //  course.building = jsonObject.results;
 
     }
     catch(err)
