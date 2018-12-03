@@ -405,6 +405,16 @@ function saveEdit(){
   scheduleList[i].buildingID = document.getElementById("buildingID").value;
   scheduleList[i].notes = document.getElementById("note").value;
 
+  swap = scheduleList[i].building;
+  scheduleList[i].building = scheduleList[i].buildingID;
+  scheduleList[i].buidlingID = swap;
+
+  temp = [];
+  temp.push(scheduleList[i]);
+
+  swap = scheduleList[i].building;
+  scheduleList[i].building = scheduleList[i].buildingID;
+  scheduleList[i].buidlingID = swap;
 
   // places default values in the text boxes
   document.getElementById("name").value = "";
@@ -429,20 +439,7 @@ function saveEdit(){
   span.appendChild(txt);
   li.setAttribute('onclick', "choose(this.id)");
 
-}
-
-function finishEdit(){
-
-  for(i = 0; i < scheduleList.length; i++)
-  {
-    deleteTile(scheduleList[i]);
-    makeTile(scheduleList[i]);
-  }
-    document.getElementById('newSch').style.display = 'none';
-
-    back();
-
-  var jsonPayload = '{"userID" : "'+ userId +'", "schedule" : '+JSON.stringify(scheduleList)+'}';
+  var jsonPayload = '{"userID" : "'+ userId +'", "schedule" : '+JSON.stringify(temp)+'}';
 
   var url = urlBase + '/EditClass.' + extension;
 
@@ -465,6 +462,20 @@ function finishEdit(){
   {
     document.getElementById("makeSchResult").innerHTML = err.message;
   }
+
+}
+
+function finishEdit(){
+
+  for(i = 0; i < scheduleList.length; i++)
+  {
+    deleteTile(scheduleList[i]);
+    makeTile(scheduleList[i]);
+  }
+    document.getElementById('newSch').style.display = 'none';
+
+    back();
+
 
 }
 
