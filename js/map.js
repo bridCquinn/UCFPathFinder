@@ -71,5 +71,6 @@ function setBuildingTo(location)
 {
 
  	document.getElementById("address").value = location;
+	alert(location);
 
 }
