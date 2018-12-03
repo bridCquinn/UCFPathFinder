@@ -53,12 +53,23 @@ function changeTerm() {
       makeTile(scheduleList[j]);
     }
 
+    document.getElementById("term").value = document.getElementById("profileTerm").value;
+    document.getElementById("year").value = document.getElementById("profileYear").value;
+    document.getElementById("term").selectedIndex = findSemesterIndex(term);
+    document.getElementById("year").selectedIndex = findSemesterIndex(year);
+
   }
   catch(err)
   {
     // make new error message
     // document.getElementById("loginResult").innerHTML = err.message;
   }
+}
+
+function findSemesterIndex(value, type) {
+  for(i = 0; i < document.getElementById(type).options.length; i++)
+    if(document.getElementById(type).options[i].value == value)
+      return i;
 }
 
 function popUp(elementId) {
