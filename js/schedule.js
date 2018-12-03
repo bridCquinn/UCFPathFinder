@@ -412,8 +412,7 @@ function saveEdit(){
   scheduleList[i].buidlingID = swap;
 
   temp = [];
-  temp = scheduleList.slice(i, i+1);
-//  temp.push(scheduleList[i]);
+  temp.push(scheduleList[i]);
   temp[0].buildingID = document.getElementById("buildingID").value;
   temp[0].building = document.getElementById("address").value;
   alert("temp" + JSON.stringify(temp));
