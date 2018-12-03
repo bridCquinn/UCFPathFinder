@@ -240,6 +240,31 @@ function deleteSchedule()
 // makes the GUI tile of each class
 function makeTile(course)
 {
+  // will return true is number
+  if(!isNaN(course.building))
+  {
+    var jsonPayload = '{"buildingID" : "'+ course.building +'"}';
+    var url = urlBase + '/GetBuildingName.' + extension;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, false);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    try
+    {
+      xhr.send(jsonPayload);
+
+      var jsonObject = JSON.parse( xhr.responseText );
+
+      course.building = jsonObject['results'];
+
+    }
+    catch(err)
+    {
+      // make new error message
+      // document.getElementById("loginResult").innerHTML = err.message;
+    }
+  }
+
   var card = document.createElement("div");
   var span = document.createElement("span");
   var body = document.createElement("div");
@@ -461,9 +486,7 @@ function saveEdit(){
   {
     document.getElementById("makeSchResult").innerHTML = err.message;
   }
-  swap = scheduleList[i].building;
-  scheduleList[i].building = scheduleList[i].buildingID;
-  scheduleList[i].buidlingID = swap;
+
 
   lastIdClicked = -1;
 }
