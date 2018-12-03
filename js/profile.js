@@ -55,8 +55,8 @@ function changeTerm() {
 
     document.getElementById("term").value = document.getElementById("profileTerm").value;
     document.getElementById("year").value = document.getElementById("profileYear").value;
-    document.getElementById("term").selectedIndex = findSemesterIndex(term, 'term');
-    document.getElementById("year").selectedIndex = findSemesterIndex(year, 'year');
+    //document.getElementById("term").selectedIndex = findSemesterIndex(term, 'term');
+    //document.getElementById("year").selectedIndex = findSemesterIndex(year, 'year');
 
   }
   catch(err)
