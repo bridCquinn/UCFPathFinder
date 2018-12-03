@@ -251,20 +251,10 @@ function makeTile(course)
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     try
     {
-    	xhr.onreadystatechange = function()
-	 	{
-	 		if (this.readyState == 4 && this.status == 200)
-			{
-			      var jsonObject = JSON.parse( xhr.responseText );
-
-      				alert(jsonObject.results);
-	      			course.building = jsonObject.results;
-				//document.getElementById("deleteContactResult").innerHTML = "Contact has been deleted!";
-			}
-	 	};
+    	
       xhr.send(jsonPayload);
 
-//      var jsonObject = JSON.parse( xhr.responseText );
+      var jsonObject = JSON.parse( xhr.responseText );
 
 //      alert(jsonObject.results);
 //      course.building = jsonObject.results;
@@ -275,6 +265,8 @@ function makeTile(course)
       // make new error message
       // document.getElementById("loginResult").innerHTML = err.message;
     }
+	        alert(jsonObject.results);
+      course.building = jsonObject.results;
   }
 
   var card = document.createElement("div");
