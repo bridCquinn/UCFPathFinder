@@ -24,13 +24,11 @@
 	} 
 	else
 	{	
-		$sql = "CALL searchBuildingsBoth(?,?);";
+		$sql = "CALL getBuildingName(?);";
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
 		{
-			$stmt->bind_param('ss', $search, $search);
-			
-			$search = $inData["search"];
+			$stmt->bind_param('i', $argv[1]);
 
 			$stmt->execute();
 			
@@ -41,23 +39,10 @@
             		if ($result->num_rows > 0)
 			{
 				while($row = $result->fetch_assoc())
-				{
-					if( $searchCount > 0 )
-					{
-						$searchResults .= ",";
-					}
-			
-					$searchCount++;
-                			// Initialize variables to be added to searchResults
-					$buildingID = $row["buildingID"];
-					$buildingAbb = $row["buildingAbbreviation"];
+				{					
 					$buildingName = $row["buildingName"];
-
-					// Create building array and added to searchResults
-					$searchResults .= '["' . $buildingID . '","' . $buildingAbb 
-                            			. '","' . $buildingName . '"]';
+					returnWithInfo( $buildingName );
 				}
-					returnWithInfo( $searchResults );
 			}
 			else
 			{
@@ -91,7 +76,7 @@
 
     function returnWithInfo( $searchResults )
 	{
-		$retValue = '{"results": [' . $searchResults . '] ,"error":""}';
+		$retValue = '{"results": ' . $searchResults . ' ,"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>
