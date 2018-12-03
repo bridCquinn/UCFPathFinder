@@ -412,7 +412,8 @@ function saveEdit(){
   scheduleList[i].buidlingID = swap;
 
   temp = [];
-  temp.push(scheduleList[i]);
+  temp = [...scheduleList[i]];
+//  temp.push(scheduleList[i]);
 
   alert("temp" + JSON.stringify(temp));
   swap = scheduleList[i].building;
