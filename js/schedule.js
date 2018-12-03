@@ -438,7 +438,7 @@ function saveEdit(){
   li.id = "list" + scheduleList[i].classID;
   span.appendChild(txt);
   li.setAttribute('onclick', "choose(this.id)");
-
+	alert(JSON.stringify(temp));
   var jsonPayload = '{"userID" : "'+ userId +'", "schedule" : '+JSON.stringify(temp)+'}';
 
   var url = urlBase + '/EditClass.' + extension;
