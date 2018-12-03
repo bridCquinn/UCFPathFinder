@@ -2,6 +2,7 @@
 function Course(){
   this.classID = -1;
   this.building = "";
+  this.buildingID = "";
   this.className = "";
   this.classDays = "";
   this.startTime = "";
@@ -52,6 +53,7 @@ function addClass(){
   course.startTime = document.getElementById("start").value;
   course.endTime = document.getElementById("end").value;
   course.building = document.getElementById("address").value;
+  course.buildingID = document.getElementById("buildingID").value;
   course.notes = document.getElementById("note").value;
   course.term = document.getElementById("term").value;
   course.year = document.getElementById("year").value;
