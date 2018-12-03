@@ -255,18 +255,24 @@
                 <div class="col-6">End:<input class="form-control mr-sm-2" type="time" id="end" name="end"></div>
               </div><br>
               <input class="form-control-mr-sm-2" id="address" type="text" name ="address" onclick="document.getElementById('scroll').style.display='block'" onkeyup="searchLocation()" placeholder="Search location.."/>
+              <div class="col-12">
                 <div id ="scroll" class="scrollbar scrollbar-primary" style="display:none;">
                   <div class="force-overflow">
                     <ul class="list-group" id="mapUL" style="list-style-type:none" onclick="document.getElementById('scroll').style.display='none'">
 
                     </ul>
                   </div>
-                </div> </div> <br>
-              <div class="col-12"><input class="form-control mr-sm-2" type="text" id="note" name="notes" placeholder="Notes"></div><br>
+                </div>
+              </div>
+                <br><br>
+                <div class="col-12"><input class="form-control mr-sm-2" type="text" id="note" name="notes" placeholder="Notes"></div><br>
+              </form>
+              <button class="buttons" id="add" onclick="addClass()">Add Class</button>
+              <button class="buttons" id="save" style="visibility: hidden; display:none" onclick="saveEdit()">Save Edit</button>
+              </div> <br>
 
-            </form>
-            <button class="buttons" id="add" onclick="addClass()">Add Class</button>
-            <button class="buttons" id="save" style="visibility: hidden; display:none" onclick="saveEdit()">Save Edit</button>
+
+
 
           </div>
             <a href="#" class="round" id="back" style="visibility: hidden; display:none" onclick="back()">&#8249;</a>
