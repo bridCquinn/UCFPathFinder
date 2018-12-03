@@ -41,7 +41,8 @@
 				while($row = $result->fetch_assoc())
 				{					
 					$buildingName = $row["buildingName"];
-					returnWithInfo( $buildingName );
+					echo( $buildingName );
+					return;
 				}
 			}
 			else
