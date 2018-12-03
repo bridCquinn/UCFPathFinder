@@ -404,7 +404,7 @@ function saveEdit(){
   scheduleList[i].startTime = document.getElementById("start").value;
   scheduleList[i].endTime = document.getElementById("end").value;
 
-  if(scheduleList[i].building != document.getElementById("address").value;)
+  if(scheduleList[i].building != document.getElementById("address").value)
   {
     scheduleList[i].buildingID = document.getElementById("buildingID").value;
   }
