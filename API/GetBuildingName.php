@@ -24,6 +24,11 @@
 	} 
 	else
 	{	
+		$search = $inData["search"];
+		if($argc > 1) 
+		{
+			$search = $argv[1];
+		}
 		$sql = "CALL getBuildingName(?);";
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
