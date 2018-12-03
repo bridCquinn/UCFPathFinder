@@ -412,14 +412,14 @@ function saveEdit(){
   scheduleList[i].buidlingID = swap;
 
   temp = [];
-  temp = [...scheduleList[i]];
+  temp = scheduleList.slice(i, i+i);
 //  temp.push(scheduleList[i]);
 
   alert("temp" + JSON.stringify(temp));
   swap = scheduleList[i].building;
   scheduleList[i].building = scheduleList[i].buildingID;
   scheduleList[i].buidlingID = swap;
-alert(JSON.stringify(temp));
+
   // places default values in the text boxes
   document.getElementById("name").value = "";
   document.getElementById("code").value = code.defaultValue;
@@ -430,7 +430,7 @@ alert(JSON.stringify(temp));
   document.getElementById("note").value = note.defaultValue;
 
   deleteListElement(scheduleList[i]);
-	
+
   var li = document.createElement("li");
   var bold = document.createElement("b");
   var t = document.createTextNode(scheduleList[i].classCode + " - " + scheduleList[i].className);
