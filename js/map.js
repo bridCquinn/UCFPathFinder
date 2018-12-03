@@ -43,7 +43,7 @@ function searchLocation()
 						var span = document.createElement("SPAN");
 						var txt = document.createTextNode("\u00D7");
 						li.id = jsonObject['results'][i][0];
-						li.name = document.getElementById("buidlingID").value;
+						li.name = jsonObject['results'][i][2];
 						li.setAttribute('onclick', "setBuildingTo(this.id); setBuildingID(this.name)"); // does nothing right now
 
 						span.appendChild(txt);
@@ -70,7 +70,7 @@ function searchLocation()
 
 function setBuildingID(id)
 {
-	alert(document.getElementById(id).value);
+	alert(id);
 }
 
 function setBuildingTo(location)
