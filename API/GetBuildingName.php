@@ -24,7 +24,7 @@
 	} 
 	else
 	{	
-		$search = $inData["search"];
+		$search = $inData["buildingID"];
 		if($argc > 1) 
 		{
 			$search = $argv[1];
