@@ -42,7 +42,7 @@ function searchLocation()
 
 						var span = document.createElement("SPAN");
 						var txt = document.createTextNode("\u00D7");
-						li.id = jsonObject['results'][i][2];
+						li.id = jsonObject['results'][i][0];
 						li.setAttribute('onclick', "setBuildingTo(this.id)"); // does nothing right now
 						span.appendChild(txt);
 
