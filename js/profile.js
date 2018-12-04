@@ -4,8 +4,16 @@
 // Also holds the functions that deal with switching Term or Year on Schedule Page
 
 function changeTerm() {
+
   var term = document.getElementById("profileTerm").value;
   var year = document.getElementById("profileYear").value;
+
+  if(term == "term" || year == "year")
+  {
+    $("#changeCheck").modal();
+    return;
+  }
+
   document.getElementById("termYear").innerHTML= term + " " + year;
 
   document.getElementById("classes").innerHTML = "";
