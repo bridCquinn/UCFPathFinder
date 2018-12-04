@@ -18,6 +18,7 @@ var temp = [];
 var lastPressed = -1;
 var swap;
 // this is only used for deleting of one class
+// this holds the id transfered by the GUI tile
 var delClass;
 
 // this is used to add to the physical list
