@@ -192,10 +192,10 @@
               Schedule Builder
              <hr>
         <div class="row">
-          <div class="col-6">
+          <div class="col-sm-6">
 
             <div class="row">
-              <div class="col-6">
+              <div class="col-sm-6">
               <div class="row">
               <select class="form-control mr-sm-2" id="term" cssclass="term" name="term" onchange="popUp(this.id);"><option id="thisTerm" value="Term">Term</option>
                 <option value="Spring">Spring</option>
@@ -208,7 +208,7 @@
               </div>
             </div>
 
-              <div class="col-6">
+              <div class="col-sm-6">
                 <div class="row">
                 <select class="form-control mr-sm-2" id="year" name="year" onchange="popUp(this.id);"><option id="thisYear" value="Year">Year</option>
                   <option value="2018">2018</option>
@@ -242,14 +242,14 @@
 
           </div> <!--end of col-6 for class list-->
 
-          <div class="col-6">
+          <div class="col-sm-6">
             <form id="builder">
               Class Details
               <br>
               <br>
               <div class="row">
-                <div class="col-4"><input class="form-control mr-sm-2" type="text" id="code" name="classCode" placeholder="Class Code"></div>
-                <div class="col-8"><input class="form-control mr-sm-2" type="text" id="name" name="className" placeholder="Class Name"></div>
+                <div class="col-sm-4"><input class="form-control mr-sm-2" type="text" id="code" name="classCode" placeholder="Class Code"></div>
+                <div class="col-sm-8"><input class="form-control mr-sm-2" type="text" id="name" name="className" placeholder="Class Name"></div>
               </div><br>
               <div class="row">
               <select class="form-control mr-sm-2" id="ddlPattern" name="ddlPattern"><option id="pattern" value="Select A Pattern">Select A Pattern</option>
@@ -276,12 +276,12 @@
                 <div class="col-6">Start:<input class="form-control mr-sm-2" type="time" id="start" name="start"></div>
                 <div class="col-6">End:<input class="form-control mr-sm-2" type="time" id="end" name="end"></div>
               </div><br>
-              <div class="col-12">
+              <div class="col-sm-12">
                 <input class="form-control mr-sm-2" id="address" type="text" name ="address" onclick="document.getElementById('scroll').style.display='block'" onkeyup="searchLocation()" placeholder="Search location.."/>
               </div>
               <span id="buildingID" style=" display: none; visibility: hidden;"></span>
 
-              <div class="col-12">
+              <div class="col-sm-12">
                 <div id ="scroll" class="scrollbar scrollbar-primary" style="display:none;">
                   <div class="force-overflow">
                     <ul class="list-group" id="mapUL" style="list-style-type:none" onclick="document.getElementById('scroll').style.display='none'">
@@ -291,7 +291,7 @@
                 </div>
               </div>
                 <br>
-                <div class="col-12"><input class="form-control mr-sm-2" type="text" id="note" name="notes" placeholder="Notes"></div><br>
+                <div class="col-sm-12"><input class="form-control mr-sm-2" type="text" id="note" name="notes" placeholder="Notes"></div><br>
               </form>
               <button class="buttons" id="add" onclick="addClass()">Add Class</button>
               <button class="buttons" id="save" style="visibility: hidden; display:none" onclick="saveEdit()">Save Edit</button>
