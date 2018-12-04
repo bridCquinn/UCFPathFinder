@@ -534,6 +534,12 @@ function back()
   document.getElementById("note").value = note.defaultValue;
 }
 
+// brings up the warning for deleting the semester
+function modaldelSem()
+{
+  $("#delSemCheck").modal();
+}
+
 // used to delete a specific semester
 function deleteSemester()
 {

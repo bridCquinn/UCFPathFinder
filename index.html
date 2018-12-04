@@ -275,7 +275,7 @@
               <button class="buttons" id="save" style="visibility: hidden; display:none" onclick="saveEdit()">Save Edit</button>
               </div> <br>
               <br><br>
-              <button class="buttons" id="delSemester" style="margin-left: 45%; margin-right: 45%;" onclick="deleteSemester()">Delete Semester</button>
+              <button class="buttons" id="delSemester" style="margin-left: 45%; margin-right: 45%;" onclick="modaldelSem()">Delete Semester</button>
 
           </div>
             <a href="#" class="round" id="back" style="visibility: hidden; display:none" onclick="back()">&#8249;</a>
@@ -372,6 +372,27 @@
 
         </div> <!-- end of Delete All modal -->
 
+        <!-- delete semester Modal -->
+        <div class="modal fade" id="delSemCheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="delSemCheckTitle">Are you sure you want to delete this semester?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                This will delete your entire semester permanently.
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="deleteSemester()">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              </div>
+            </div>
+          </div>
+        </div> <!-- end of delete semester modal -->
+
 
 	</div> <!--end of schedule tab -->
 
@@ -444,7 +465,7 @@
           </div>
         </div> <!-- end of Delete All modal -->
 
-        <!-- Delete All Modal -->
+        <!-- change Modal -->
         <div class="modal fade" id="changeCheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -462,7 +483,7 @@
               </div>
             </div>
           </div>
-        </div> <!-- end of Delete All modal -->
+        </div> <!-- end of change modal -->
 
 
       <!--
