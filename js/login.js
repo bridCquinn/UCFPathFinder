@@ -87,7 +87,7 @@ function doLogin()
         document.getElementById("delSch").style.display = 'none';
       else
       {
-        document.getElementById("termYear").innerHTML= course.term + " " + course.year;
+        document.getElementById("termYear").innerHTML= "Fall 2018";
         document.getElementById("delSch").style.display = 'block';
         document.getElementById("term").value = "Fall";
         document.getElementById("year").value = "2018";
