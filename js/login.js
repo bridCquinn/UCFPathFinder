@@ -83,7 +83,7 @@ function doLogin()
 
       addtoList(course);
 
-      document.getElementById("termYear").innerHTML= "Fall 2018";
+      document.getElementById("termYear").innerHTML= "Fall";
       document.getElementById("delSch").style.display = 'block';
       document.getElementById("term").value = "Fall";
       document.getElementById("year").value = "2018";
