@@ -17,6 +17,8 @@ var scheduleList = [];
 var temp = [];
 var lastPressed = -1;
 var swap;
+// this is only used for deleting of one class
+var delClass;
 
 // this is used to add to the physical list
 // creates the list node with all of the information
@@ -207,7 +209,7 @@ function delModal() {
 }
 
 function delClassModal(elementId) {
-    var course = findCourse("del", elementId);
+    delClass = findCourse("del", elementId);
     $("#delClassCheck").modal();
 }
 
@@ -324,11 +326,9 @@ function makeTile(course)
 
 // deletes class, updates array
 // also removes delete button on empty list
-function deleteClass(code){
+function deleteClass(){
 
-  var course = findCourse("del",code);
-
-  var jsonPayload = '{"userId": "'+ userId +'","classCode": "'+ course.classCode +'", "term": "'+ course.term +'", "year": "' + course.year + '"}';
+  var jsonPayload = '{"userId": "'+ userId +'","classCode": "'+ delClass.classID +'", "term": "'+ delClass.term +'", "year": "' + delClass.year + '"}';
   var url = urlBase + '/DeleteClass.' + extension;
 
   var xhr = new XMLHttpRequest();
@@ -352,12 +352,12 @@ function deleteClass(code){
 	}
 
   // makes sure the scheduleList is updated
-  scheduleList.splice( scheduleList.indexOf(course), 1 );
+  scheduleList.splice( scheduleList.indexOf(delClass), 1 );
 
   // takes the tile off of the GUI
-  deleteTile(course);
+  deleteTile(delClass);
   // delete list element
-  deleteListElement(course);
+  deleteListElement(delClass);
 
 }
 
