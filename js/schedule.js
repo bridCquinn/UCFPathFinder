@@ -541,7 +541,7 @@ function deleteSemester()
   var year = document.getElementById("year").value;
 
   var jsonPayload = '{"userId": "'+ userId +'", "term": "'+ term +'", "year": "'+ year +'"}';
-  var url = urlBase + '/deleteSemester.' + extension;
+  var url = urlBase + '/DeleteSemester.' + extension;
 
   var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
