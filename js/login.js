@@ -38,6 +38,7 @@ function doLogin()
 	}
 
 	document.getElementById("loginResult").innerHTML = "";
+  document.getElementById("termYear").innerHTML = "Fall 2018";
 
 	var jsonPayload = '{"username" : "' + login + '", "password" : "' + password + '"}';
 	var url = urlBase + '/Login.' + extension;
@@ -83,7 +84,7 @@ function doLogin()
 
       addtoList(course);
 
-      document.getElementById("termYear").innerHTML= "Fall";
+
       document.getElementById("delSch").style.display = 'block';
       document.getElementById("term").value = "Fall";
       document.getElementById("year").value = "2018";
