@@ -45,5 +45,15 @@ public class Building {
     public void setBuildingID(@NonNull int buildingID) {
         this.buildingID = buildingID;
     }
+
+    @Override
+    public String toString() {
+        return "Building{" +
+                "buildingAbbreviation='" + buildingAbbreviation + '\'' +
+                ", buildingName='" + buildingName + '\'' +
+                ", plusCode='" + plusCode + '\'' +
+                ", buildingID=" + buildingID +
+                '}';
+    }
 }
 

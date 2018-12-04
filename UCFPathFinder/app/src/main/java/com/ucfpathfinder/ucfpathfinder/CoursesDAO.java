@@ -9,19 +9,19 @@ import android.arch.persistence.room.Update;
 import java.util.List;
 
 @Dao
-public interface BuildingsDAO {
+public interface CoursesDAO {
     @Insert
-    public void insert(Building... building);
+    public void insert(Course... course);
 
     @Update
-    public void update(Building... building);
+    public void update(Course... course);
 
     @Delete
-    public void delete(Building building);
+    public void delete(Course course);
 
-    @Query("DELETE FROM Building")
+    @Query("DELETE FROM Course")
     public void nukeTable();
 
-    @Query("SELECT * FROM Building")
-    public List<Building> getBuildings();
+    @Query("SELECT * FROM Course")
+    public List<Course> getCourses();
 }

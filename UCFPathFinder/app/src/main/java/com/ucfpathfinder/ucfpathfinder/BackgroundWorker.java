@@ -26,6 +26,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 class BackgroundWorker extends AsyncTask<Void, Void, String> {
     @SuppressLint("StaticFieldLeak")
@@ -38,6 +39,7 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
     private String lastName;
     private boolean requestResult;
     private boolean recordsFound;
+
 
     // User information to be stored.
     private SharedPreferences sharedPreferences;
@@ -97,7 +99,6 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
                 // Password stored is hashed.
                 spEditior.putString("password", passwordHashMD5(getPreHashPassword()));
                 spEditior.commit();
-
 
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 intent.putExtra("loginResultJson", result);
@@ -170,7 +171,7 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
                 // Check if error occurred on server side.
                 String errorCheckFromServer = returnJSON.getString("error");
                 // No error == "".
-                if((errorCheckFromServer.equals(""))) {
+                if(errorCheckFromServer.equals("")) {
                     setRequestResult(true);
                     setRecordsFound(true);
                     // Return the ID for storing in shared preferences.
@@ -291,7 +292,35 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
 
     private void updateBuildingsDatabase(String jsonString)
     {
+        // jsonString holds the complete list of buildings from the server.
+        // Cross reference with local ROOM.
+        // Update if necessary.
+        try {
+            BuildingsDAO database = Room.databaseBuilder(getContext(), AppDatabase.class, "Building").build().getBuildingsDAO();
+            Building building = new Building();
+            JSONObject jsonObject = new JSONObject(jsonString);
+            JSONArray results = jsonObject.getJSONArray("results");
+            // TODO: deletes the database then information is added back on every startup.
+            // Need to check to see if value is in database before adding.
 
+            database.nukeTable();
+            for(int i = 0; i < results.length(); i++)
+            {
+                JSONArray jsonArrayTemp = results.getJSONArray(i);
+                building.setBuildingID(Integer.parseInt(jsonArrayTemp.getString(0)));
+                building.setBuildingAbbreviation(jsonArrayTemp.getString(1));
+                building.setBuildingName(jsonArrayTemp.getString(2));
+                building.setPlusCode(jsonArrayTemp.getString(3));
+                database.insert(building);
+            }
+            //List<Building> temp = database.getBuildings();
+            //Log.d("Buildings Database", temp.get(0).toString());
+            //database.nukeTable();
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private JSONObject constructJsonForBuildingsUpdate()
@@ -369,7 +398,7 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
             if (getActionType().equals("register"))
                 return new URL("http://ucfpathfinder.com/API/Register.php");
             if(getActionType().equals("buildings update"))
-                return new URL("http://ucfpathfinder.com/API/SearchBuildings.php");
+                return new URL("http://ucfpathfinder.com/API/SearchBuildingsMobile.php");
         }
         catch(MalformedURLException e)
         {
