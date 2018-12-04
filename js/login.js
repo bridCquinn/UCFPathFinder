@@ -83,7 +83,7 @@ function doLogin()
 
       addtoList(course);
 
-      if(scheduleList < 1)
+      if(scheduleList.length < 1)
         document.getElementById("delSch").style.display = 'none';
       else
       {
