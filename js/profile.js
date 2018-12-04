@@ -11,7 +11,7 @@ function changeTerm() {
   document.getElementById("classes").innerHTML = "";
   document.getElementById("myUL").innerHTML = "";
   scheduleList = [];
-  
+
   document.getElementById("term").value = document.getElementById("profileTerm").value;
     document.getElementById("year").value = document.getElementById("profileYear").value;
     document.getElementById("term").selectedIndex = findSemesterIndex(term, 'term');
@@ -79,6 +79,7 @@ function popUp(elementId) {
 }
 
 function change() {
+
   document.getElementById("profileTerm").value = document.getElementById("term").value;
   document.getElementById("profileYear").value = document.getElementById("year").value;
   changeTerm();
