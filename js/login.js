@@ -83,17 +83,12 @@ function doLogin()
 
       addtoList(course);
 
-      if(scheduleList.length < 1)
-        document.getElementById("delSch").style.display = 'none';
-      else
-      {
-        document.getElementById("termYear").innerHTML= "Fall 2018";
-        document.getElementById("delSch").style.display = 'block';
-        document.getElementById("term").value = "Fall";
-        document.getElementById("year").value = "2018";
-	      document.getElementById("profileTerm").value = "Fall";
-        document.getElementById("profileYear").value = "2018";
-      }
+      document.getElementById("termYear").innerHTML= "Fall 2018";
+      document.getElementById("delSch").style.display = 'block';
+      document.getElementById("term").value = "Fall";
+      document.getElementById("year").value = "2018";
+      document.getElementById("profileTerm").value = "Fall";
+      document.getElementById("profileYear").value = "2018";
     }
 
     for(j = 0; j < scheduleList.length; j++)
