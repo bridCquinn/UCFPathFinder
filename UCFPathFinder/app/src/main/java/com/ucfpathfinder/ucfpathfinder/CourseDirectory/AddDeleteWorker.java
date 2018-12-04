@@ -1,4 +1,4 @@
-package com.ucfpathfinder.ucfpathfinder;
+package com.ucfpathfinder.ucfpathfinder.CourseDirectory;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
@@ -6,13 +6,16 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.AppDatabase;
+import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.Building;
+import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.BuildingsDAO;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;

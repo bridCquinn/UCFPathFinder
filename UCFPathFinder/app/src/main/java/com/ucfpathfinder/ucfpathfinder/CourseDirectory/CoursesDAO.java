@@ -1,4 +1,4 @@
-package com.ucfpathfinder.ucfpathfinder;
+package com.ucfpathfinder.ucfpathfinder.CourseDirectory;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;

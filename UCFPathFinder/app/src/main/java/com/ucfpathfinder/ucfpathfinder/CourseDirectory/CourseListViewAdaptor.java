@@ -1,4 +1,4 @@
-package com.ucfpathfinder.ucfpathfinder;
+package com.ucfpathfinder.ucfpathfinder.CourseDirectory;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,13 +8,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.ucfpathfinder.ucfpathfinder.R;
+
 import java.util.List;
 
-public class CustomListViewAdaptor extends BaseAdapter {
-    private Context context;
-    private List<Building> list;
+public class CourseListViewAdaptor extends BaseAdapter {
 
-    public CustomListViewAdaptor(Context context, List<Building> list)
+    private Context context;
+    private List<Course> list;
+
+    public CourseListViewAdaptor(Context context, List<Course> list)
     {
         setContext(context);
         setList(list);
@@ -32,8 +35,9 @@ public class CustomListViewAdaptor extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return list.get(position).getBuildingID();
+        return list.get(position).getCourseID();
     }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -43,9 +47,9 @@ public class CustomListViewAdaptor extends BaseAdapter {
                     R.layout.listview_layout, parent, false);
 
         }
-        TextView textViewItemName = (TextView) convertView.findViewById(R.id.text_view_building_name);
-        textViewItemName.setText(list.get(position).getBuildingName());
-        Log.d("building name", list.get(position).getBuildingName());
+        TextView textViewItemName = (TextView) convertView.findViewById(R.id.text_view_course_name);
+        textViewItemName.setText(list.get(position).getClassName());
+        Log.d("building name", list.get(position).getClassName());
 
 
         return convertView;
@@ -59,11 +63,13 @@ public class CustomListViewAdaptor extends BaseAdapter {
         this.context = context;
     }
 
-    public List<Building> getList() {
+    public List<Course> getList() {
         return list;
     }
 
-    public void setList(List<Building> list) {
+    public void setList(List<Course> list) {
         this.list = list;
     }
+
+
 }

@@ -1,4 +1,4 @@
-package com.ucfpathfinder.ucfpathfinder;
+package com.ucfpathfinder.ucfpathfinder.BuildingDirectory;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;

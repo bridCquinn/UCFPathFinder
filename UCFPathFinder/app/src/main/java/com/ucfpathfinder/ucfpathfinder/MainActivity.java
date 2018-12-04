@@ -6,8 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,10 +15,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ucfpathfinder.ucfpathfinder.CourseDirectory.Course;
+import com.ucfpathfinder.ucfpathfinder.CourseDirectory.CourseDatabase;
+import com.ucfpathfinder.ucfpathfinder.CourseDirectory.CourseListViewAdaptor;
+import com.ucfpathfinder.ucfpathfinder.CourseDirectory.CoursesDAO;
 
 import java.util.List;
 
@@ -39,12 +40,17 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void run() {
-                BuildingsDAO database = Room.databaseBuilder(MainActivity.this, AppDatabase.class, "Building").build().getBuildingsDAO();
-                List<Building> buildingList = database.getBuildings();
-                CustomListViewAdaptor customListViewAdaptor = new CustomListViewAdaptor(MainActivity.this, buildingList);
+                // This thread should populate a list that shows the schedule.
+                //TODO replaced buildings with schedule.
 
+                // Get the information from local db and set it to a List.
+                CoursesDAO database = Room.databaseBuilder(MainActivity.this, CourseDatabase.class, "Course").build().getCourseDAO();
+                List<Course> courseList = database.getCourses();
+                CourseListViewAdaptor courseListViewAdaptor = new CourseListViewAdaptor(MainActivity.this, courseList);
+
+                // Add the list to the activity.
                 ListView listView = findViewById(R.id.listView_mainActivity);
-                listView.setAdapter(customListViewAdaptor);
+                listView.setAdapter(courseListViewAdaptor);
             }
         }).start();
 
@@ -109,7 +115,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_agenda) {
-            // Handle the camera action
+            // TODO show a list of buildings, clicking should give directions.
+
+
         } else if (id == R.id.nav_map) {
             Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
@@ -128,8 +136,8 @@ public class MainActivity extends AppCompatActivity
     private void removeUserInfo()
     {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        sharedPreferences.edit().remove("userID").commit();
-        sharedPreferences.edit().remove("username").commit();
-        sharedPreferences.edit().remove("password").commit();
+        sharedPreferences.edit().remove("userID").apply();
+        sharedPreferences.edit().remove("username").apply();
+        sharedPreferences.edit().remove("password").apply();
     }
 }

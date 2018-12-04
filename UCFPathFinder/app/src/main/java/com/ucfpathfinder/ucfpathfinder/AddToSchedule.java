@@ -1,20 +1,22 @@
 package com.ucfpathfinder.ucfpathfinder;
 
 import android.arch.persistence.room.Room;
-import android.os.Build;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
+import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.AppDatabase;
+import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.Building;
+import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.BuildingsDAO;
+import com.ucfpathfinder.ucfpathfinder.CourseDirectory.AddDeleteWorker;
+import com.ucfpathfinder.ucfpathfinder.CourseDirectory.Course;
 
 import java.util.ArrayList;
 import java.util.Collections;

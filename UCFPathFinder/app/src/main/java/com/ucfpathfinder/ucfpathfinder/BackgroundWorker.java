@@ -10,6 +10,13 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.AppDatabase;
+import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.Building;
+import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.BuildingsDAO;
+import com.ucfpathfinder.ucfpathfinder.CourseDirectory.Course;
+import com.ucfpathfinder.ucfpathfinder.CourseDirectory.CourseDatabase;
+import com.ucfpathfinder.ucfpathfinder.CourseDirectory.CoursesDAO;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +33,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 class BackgroundWorker extends AsyncTask<Void, Void, String> {
     @SuppressLint("StaticFieldLeak")
@@ -90,7 +96,6 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
         if(getActionType().equals("login")) {
             if (getRequestResult() && isRecordsFound()) {
                 Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_LONG).show();
-
                 // Store the user information.
                 sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                 spEditior = sharedPreferences.edit();
@@ -128,6 +133,10 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
     protected String doInBackground(Void... params) {
         if(getActionType().equals("login"))
         {
+            // Login will have the following:
+            // 1) User login to the server.
+            // 2) Store the user info in shared preferences.
+            // 3) Store the returned courses to the ROOM db.
             try
             {
                 //TODO Need to sanitize the login information.
@@ -159,7 +168,6 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
                 StringBuilder resultOfLogin = new StringBuilder();
                 while((lineTemp = bufferedReader.readLine())!=null)
                     resultOfLogin.append(lineTemp);
-                Log.d("RESULT OF LOGIN", resultOfLogin.toString());
 
                 bufferedReader.close();
                 inputStream.close();
@@ -174,8 +182,9 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
                 if(errorCheckFromServer.equals("")) {
                     setRequestResult(true);
                     setRecordsFound(true);
-                    // Return the ID for storing in shared preferences.
-                    return returnJSON.getString("userID");
+                    // Return the json from server as string.
+                    storeTheSchedule(resultOfLogin.toString());
+                    return resultOfLogin.toString();
                 }
                 else if(errorCheckFromServer.equals("No Records Found"))
                     setRequestResult(true);
@@ -290,6 +299,30 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
         return null;
     }
 
+    private void storeTheSchedule(String jsonInput) throws JSONException
+    {
+        JSONObject userInfo = new JSONObject(jsonInput);
+        CoursesDAO database = Room.databaseBuilder(getContext(), CourseDatabase.class, "Course").build().getCourseDAO();
+        JSONArray courseArray = userInfo.getJSONArray("schedule");
+        database.nukeTable();
+        for(int i = 0; i < courseArray.length(); i++)
+        {
+            Course course = new Course("","","","","","","","");
+            JSONArray jsonArrayTemp = courseArray.getJSONArray(i);
+            // 0 is for remote server class id.
+            course.setBuilding(jsonArrayTemp.getString(1));
+            course.setClassName(jsonArrayTemp.getString(2));
+            course.setStartTime(jsonArrayTemp.getString(3));
+            course.setEndTime(jsonArrayTemp.getString(4));
+            course.setClassCode(jsonArrayTemp.getString(5));
+            course.setTerm(jsonArrayTemp.getString(6));
+            course.setYear(jsonArrayTemp.getString(7));
+            // 8 is for notes.
+            course.setDay(jsonArrayTemp.getString(9));
+            database.insert(course);
+        }
+    }
+
     private void updateBuildingsDatabase(String jsonString)
     {
         // jsonString holds the complete list of buildings from the server.
@@ -313,9 +346,6 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
                 building.setPlusCode(jsonArrayTemp.getString(3));
                 database.insert(building);
             }
-            //List<Building> temp = database.getBuildings();
-            //Log.d("Buildings Database", temp.get(0).toString());
-            //database.nukeTable();
         }
         catch (JSONException e)
         {
