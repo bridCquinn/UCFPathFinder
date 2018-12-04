@@ -209,7 +209,7 @@ function delModal() {
 }
 
 function delClassModal(elementId) {
-    delClass = findCourse("del", elementId);
+    delClass = elementId;
     $("#delClassCheck").modal();
 }
 
@@ -328,7 +328,9 @@ function makeTile(course)
 // also removes delete button on empty list
 function deleteClass(){
 
-  var jsonPayload = '{"userId": "'+ userId +'","classCode": "'+ delClass.classID +'", "term": "'+ delClass.term +'", "year": "' + delClass.year + '"}';
+  var course = findCourse("del",delClass);
+
+  var jsonPayload = '{"userId": "'+ userId +'","classCode": "'+ course.classCode +'", "term": "'+ course.term +'", "year": "' + course.year + '"}';
   var url = urlBase + '/DeleteClass.' + extension;
 
   var xhr = new XMLHttpRequest();
@@ -352,12 +354,12 @@ function deleteClass(){
 	}
 
   // makes sure the scheduleList is updated
-  scheduleList.splice( scheduleList.indexOf(delClass), 1 );
+  scheduleList.splice( scheduleList.indexOf(course), 1 );
 
   // takes the tile off of the GUI
-  deleteTile(delClass);
+  deleteTile(course);
   // delete list element
-  deleteListElement(delClass);
+  deleteListElement(course);
 
 }
 
