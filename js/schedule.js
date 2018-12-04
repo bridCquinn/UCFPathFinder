@@ -533,3 +533,42 @@ function back()
   document.getElementById("address").value = address.defaultValue;
   document.getElementById("note").value = note.defaultValue;
 }
+
+// used to delete a specific semester
+function deleteSemester()
+{
+  var term = document.getElementById("term").value;
+  var year = document.getElementById("year").value;
+
+  var jsonPayload = '{"userId": "'+ userId +'", "term": "'+ term +'", "year": "'+ year +'"}';
+  var url = urlBase + '/deleteSemester.' + extension;
+
+  var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+	 	{
+	 		if (this.readyState == 4 && this.status == 200)
+			{
+				;
+				//document.getElementById("deleteContactResult").innerHTML = "Contact has been deleted!";
+			}
+	 	};
+	 	xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("DeleteSchedule").innerHTML = err.message;
+	}
+
+  document.getElementById("classes").innerHTML = "";
+  document.getElementById("myUL").innerHTML = "";
+
+  for(i = 0; i < scheduleList.length; i++)
+  {
+    if(scheduleList[i].term == term && scheduleList[i].year == year)
+      scheduleList.splice(i,1);
+  }
+}
