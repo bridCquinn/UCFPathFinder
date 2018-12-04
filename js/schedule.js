@@ -206,7 +206,8 @@ function delModal() {
     $("#delCheck").modal();
 }
 
-function delClassModal() {
+function delClassModal(elementId) {
+    var course = findCourse("del", elementId);
     $("#delClassCheck").modal();
 }
 
@@ -255,7 +256,7 @@ function makeTile(course)
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     try
     {
-    	
+
       xhr.send(jsonPayload);
 
       var jsonObject = JSON.parse( xhr.responseText );
@@ -306,7 +307,7 @@ function makeTile(course)
   body.classList.add("card-body");
   span.classList.add("close");
   span.id = "del" + course.classID;
-  span.setAttribute("onclick", "delClassModal()");
+  span.setAttribute("onclick", "delClassModal(this.id)");
   //span.setAttribute("onclick", "deleteClass(this.id)");
   span.style.top = 0;
   span.style.right = 0;
