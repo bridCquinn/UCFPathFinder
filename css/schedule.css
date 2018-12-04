@@ -5,6 +5,10 @@ hr{
   border-color:#f4c542;
 }
 
+body {
+  background-color: #DEDCC2;
+}
+
  /* .tabcontent{
   background-color: black;
   position: absolute;
