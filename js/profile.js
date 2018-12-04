@@ -8,7 +8,7 @@ function changeTerm() {
   var term = document.getElementById("profileTerm").value;
   var year = document.getElementById("profileYear").value;
 
-  if(term == "term" || year == "year")
+  if(term == "Term" || year == "Year")
   {
     $("#changeCheck").modal();
     return;
