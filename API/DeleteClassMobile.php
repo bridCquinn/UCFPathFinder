@@ -3,7 +3,7 @@
    		JSON package expected
     		{ 
       			"userID"  :  <<userID>>
-			      "classID" :  <<classID>>
+			"classID" :  <<classID>>
     		}
 		
         	Deletes class associated with that userID classCode term and year
@@ -25,10 +25,8 @@
 		{
 			$stmt->bind_param('ii', $userID, $classID);
 			$userID = $inData["userID"];
-      $classID = $inData["classID"];
-      $userID = 25;
-      $classID = 465;
-                
+      			$classID = $inData["classID"];
+ 
 			$stmt->execute();
 		}
 		else
