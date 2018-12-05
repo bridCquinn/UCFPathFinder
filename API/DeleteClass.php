@@ -26,7 +26,7 @@
 		if($stmt != false) 
 		{
 			$stmt->bind_param('issi', $userID, $classCode, $term, $year);
-			$userID = $inData["userId"];
+			$userID = $inData["userID"];
             		$classCode = $inData["classCode"];
             		$term = $inData["term"];
             		$year = $inData["year"];
