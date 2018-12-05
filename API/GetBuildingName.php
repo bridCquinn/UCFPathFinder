@@ -2,12 +2,12 @@
 /*
     JSON package expected
     { 
-      "search"   :  <<Full or Partial Building String>>
+      "buildingID"   :  <<buildingID>>
     }
 
     JSON package returned
     {
-      "results"  :  <<Array of building arrays>> 
+      "results"  :  <<buildingName>> 
       "error"    :  <<error if one exists>>
     }
     Each building array : [buildingID, buildingAbbreviation, buildingName]
