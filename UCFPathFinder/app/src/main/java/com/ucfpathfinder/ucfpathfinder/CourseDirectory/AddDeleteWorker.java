@@ -28,6 +28,11 @@ public class AddDeleteWorker implements AddDeleteRunnable {
 
     private Course course;
     private Context context;
+    private String action;
+
+    public AddDeleteWorker(String action){
+        setAction(action);
+    }
 
     @Override
     public void setCourse(Course course, Context context) {
@@ -43,17 +48,31 @@ public class AddDeleteWorker implements AddDeleteRunnable {
     public void run() {
         // 1) Add course to the database.
         // 2) Update the ROOM Course database.
-        try
-        {
-            // 1. submit the new course.
-            addCourse();
 
-            // 2. delete local database and update with new.
-            updateCourseDatabase();
-        }
-        catch (Exception e)
+        if(getAction().equals("add"))
         {
-            e.printStackTrace();
+            try
+            {
+                // 1. submit the new course.
+                addCourse();
+
+                // 2. delete local database and update with new.
+                updateCourseDatabase();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        if(getAction().equals("edit"))
+        {
+
+        }
+
+        if(getAction().equals("delete"))
+        {
+
         }
 
     }
@@ -255,5 +274,13 @@ public class AddDeleteWorker implements AddDeleteRunnable {
 
     public void setContext(Context context) {
         this.context = context;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
     }
 }

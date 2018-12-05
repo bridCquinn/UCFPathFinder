@@ -3,6 +3,8 @@ package com.ucfpathfinder.ucfpathfinder;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
@@ -15,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -57,11 +60,25 @@ public class MainActivity extends AppCompatActivity
         //SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         //String id = sharedPreferences.getString("userID","No ID Found");
 
+        // Adding a course
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MainActivity.this.startActivity(new Intent(MainActivity.this,AddToSchedule.class));
+            }
+        });
+
+        // Viewing course details.
+        ListView listView = findViewById(R.id.listView_mainActivity);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Course courseSelected = (Course) parent.getItemAtPosition(position);
+                Intent intent = new Intent(MainActivity.this, EditDeleteCourse.class);
+                intent.putExtra("CourseID", String.valueOf(courseSelected.getCourseID()));
+
+                MainActivity.this.startActivity(intent);
             }
         });
 
@@ -126,6 +143,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_map) {
             Intent intent = new Intent(this, MapsActivity.class);
+            // TODO delete.
+            intent.putExtra("plusCode", "");
             startActivity(intent);
         } else if (id == R.id.nav_logout) {
             Toast.makeText(this, "Logging Out", Toast.LENGTH_SHORT).show();
