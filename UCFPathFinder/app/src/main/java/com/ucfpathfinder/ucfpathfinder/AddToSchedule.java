@@ -96,6 +96,11 @@ public class AddToSchedule extends AppCompatActivity {
                 Thread thread = new Thread(addDeleteWorker);
                 thread.start();
 
+                try {
+                    thread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 classNameEditText.getText().clear();
                 classIDEditText.getText().clear();
                 yearSpinner.setSelection(0);
