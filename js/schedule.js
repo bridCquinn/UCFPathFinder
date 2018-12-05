@@ -331,9 +331,10 @@ function deleteClass(){
 
   var course = findCourse("del",delClass);
 
-  var jsonPayload = '{"userID": "'+ userId +'","classCode": "'+ course.classCode +'", "term": "'+ course.term +'", "year": "' + course.year + '"}';
-  var url = urlBase + '/DeleteClass.' + extension;
-
+  //var jsonPayload = '{"userID": "'+ userId +'","classCode": "'+ course.classCode +'", "term": "'+ course.term +'", "year": "' + course.year + '"}';
+  //var url = urlBase + '/DeleteClass.' + extension;
+  var jsonPayload = '{"userID": "'+ userId +'","classID": "'+ course.classID +'"}';
+  var url = urlBase + '/DeleteClassMobile.' + extension;
   var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
