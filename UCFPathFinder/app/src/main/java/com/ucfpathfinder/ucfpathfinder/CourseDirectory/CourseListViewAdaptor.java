@@ -38,7 +38,6 @@ public class CourseListViewAdaptor extends BaseAdapter {
         return list.get(position).getCourseID();
     }
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null)

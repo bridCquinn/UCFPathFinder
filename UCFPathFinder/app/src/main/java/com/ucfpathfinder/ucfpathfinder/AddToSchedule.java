@@ -91,7 +91,7 @@ public class AddToSchedule extends AppCompatActivity {
 
                 Course course = new Course(0, className, classID, year, term, startTime, endTime, day, building);
 
-                AddDeleteWorker addDeleteWorker = new AddDeleteWorker();
+                AddDeleteWorker addDeleteWorker = new AddDeleteWorker("add");
                 addDeleteWorker.setCourse(course, AddToSchedule.this);
                 Thread thread = new Thread(addDeleteWorker);
                 thread.start();
