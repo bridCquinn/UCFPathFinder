@@ -23,7 +23,7 @@
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
 		{
-			$stmt->bind_param('issi', $userID, $classID);
+			$stmt->bind_param('ii', $userID, $classID);
 			$userID = $inData["userID"];
       $classID = $inData["classID"];
       $userID = 25;
