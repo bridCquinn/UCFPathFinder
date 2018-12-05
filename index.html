@@ -186,11 +186,10 @@
 
 
       <div class ="container">
-        <div class="card-1">
-          <h1>
+        <div class="card-1" style="background:black">
+         <h1>
             <span onclick="document.getElementById('newSch').style.display='none'" class="close" title="Close Modal">&times;</span>
               Schedule Builder
-             <hr>
         <div class="row">
           <div class="col-sm-6">
 
@@ -299,12 +298,13 @@
               <br><br>
               <button class="buttons" id="delSemester" style="margin-left: 45%; margin-right: 45%;" onclick="modaldelSem()">Delete Semester</button>
 
-          </div>
+        
             <a href="#" class="round" id="back" style="visibility: hidden; display:none" onclick="back()">&#8249;</a>
         </div> <!-- end of row-->
         </h1>
         </div>
-      </div>
+	  </div> <!-- end of container -->
+      
 
     </div> <!--end of modal-->
 
@@ -368,10 +368,10 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resume()">Resume</button>
           </div>
         </div>
-
+		</div>
     </div> <!-- end of term modal -->
 
-	    </div>
+	    
 
 	    <!-- Delete Class Modal -->
         <div class="modal fade" id="delClassCheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -391,7 +391,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
               </div>
             </div>
-
+			</div>
         </div> <!-- end of Delete All modal -->
 
 	</div> <!--end of schedule tab -->
@@ -486,15 +486,13 @@
         </div> <!-- end of change modal -->
 
 
-      <!--
-      <div class="col-12"><input class="form-control mr-sm-2" type="text" id="address" name="address" placeholder="Building"></div><br>
-    -->
+      
 
 
 
-    </div>
+    
 
 	</div>
-
+	</div>
 </body>
 </html>
