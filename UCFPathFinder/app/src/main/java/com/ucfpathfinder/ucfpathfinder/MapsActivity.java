@@ -110,15 +110,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         getLocationPermission();
-        //updateLocationUI();
         getDeviceLocation();
-
-        //TODO change to show current location.
-
-        // Add a marker in Sydney and move the camera
-        /*LatLng sydney = new LatLng(28.6019, -81.2005);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
     }
 
 
@@ -193,7 +185,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         }
-        //updateLocationUI();
         getDeviceLocation();
     }
 
@@ -210,7 +201,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.setMyLocationEnabled(false);
                 mMap.getUiSettings().setMyLocationButtonEnabled(false);
                 mLastKnownLocation = null;
-                //getLocationPermission();
             }
         } catch (SecurityException e)  {
             Log.e("Exception: %s", e.getMessage());
