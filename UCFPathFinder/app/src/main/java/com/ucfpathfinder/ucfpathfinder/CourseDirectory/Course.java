@@ -18,8 +18,9 @@ public class Course {
     private String day;
     private String building;
 
-    public Course(String className, String classCode, String year, String term, String startTime, String endTime, String day, String building)
+    public Course(int courseID, String className, String classCode, String year, String term, String startTime, String endTime, String day, String building)
     {
+        setCourseID(courseID);
         setClassName(className);
         setClassCode(classCode);
         setYear(year);

@@ -184,7 +184,8 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
                     setRecordsFound(true);
                     // Return the json from server as string.
                     storeTheSchedule(resultOfLogin.toString());
-                    return resultOfLogin.toString();
+                    Log.d("result of login", resultOfLogin.toString());
+                    return returnJSON.getString("userID");
                 }
                 else if(errorCheckFromServer.equals("No Records Found"))
                     setRequestResult(true);
@@ -307,9 +308,9 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
         database.nukeTable();
         for(int i = 0; i < courseArray.length(); i++)
         {
-            Course course = new Course("","","","","","","","");
+            Course course = new Course(0,"","","","","","","","");
             JSONArray jsonArrayTemp = courseArray.getJSONArray(i);
-            // 0 is for remote server class id.
+            course.setCourseID(jsonArrayTemp.getInt(0));
             course.setBuilding(jsonArrayTemp.getString(1));
             course.setClassName(jsonArrayTemp.getString(2));
             course.setStartTime(jsonArrayTemp.getString(3));

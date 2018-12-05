@@ -1,6 +1,7 @@
 package com.ucfpathfinder.ucfpathfinder;
 
 import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -88,7 +89,7 @@ public class AddToSchedule extends AppCompatActivity {
                 String day = daySpinner.getSelectedItem().toString();
                 String building = buildingSpinner.getSelectedItem().toString();
 
-                Course course = new Course(className, classID, year, term, startTime, endTime, day, building);
+                Course course = new Course(0, className, classID, year, term, startTime, endTime, day, building);
 
                 AddDeleteWorker addDeleteWorker = new AddDeleteWorker();
                 addDeleteWorker.setCourse(course, AddToSchedule.this);
@@ -102,7 +103,10 @@ public class AddToSchedule extends AppCompatActivity {
                 startTimeSpinner.setSelection(0);
                 endTimeSpinner.setSelection(0);
                 daySpinner.setSelection(0);
+                //Intent intent = getIntent();
+
                 finish();
+                //startActivity(intent);
 
             }
         });

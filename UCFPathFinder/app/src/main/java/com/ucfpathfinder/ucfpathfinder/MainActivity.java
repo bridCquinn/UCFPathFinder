@@ -76,6 +76,12 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    // This will update the schedule list.
+    public void onRestart() {
+        super.onRestart();
+        MainActivity.this.recreate();
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
