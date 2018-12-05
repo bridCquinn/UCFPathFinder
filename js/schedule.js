@@ -331,7 +331,7 @@ function deleteClass(){
 
   var course = findCourse("del",delClass);
 
-  var jsonPayload = '{"userId": "'+ userId +'","classCode": "'+ course.classCode +'", "term": "'+ course.term +'", "year": "' + course.year + '"}';
+  var jsonPayload = '{"userID": "'+ userId +'","classCode": "'+ course.classCode +'", "term": "'+ course.term +'", "year": "' + course.year + '"}';
   var url = urlBase + '/DeleteClass.' + extension;
 
   var xhr = new XMLHttpRequest();
