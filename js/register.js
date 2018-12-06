@@ -97,7 +97,7 @@ function register()
 	}
 
 
-
+	document.getElementById("reg_email").value = reg_email.defaultValue;
 	document.getElementById("reg_firstname").value = reg_firstname.defaultValue;
 	document.getElementById("reg_lastname").value =reg_lastname.defaultValue;
 	document.getElementById("reg_username").value =reg_username.defaultValue;
