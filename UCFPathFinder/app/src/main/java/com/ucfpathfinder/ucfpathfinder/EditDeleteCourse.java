@@ -5,19 +5,16 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.AppDatabase;
 import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.Building;
 import com.ucfpathfinder.ucfpathfinder.BuildingDirectory.BuildingsDAO;
+import com.ucfpathfinder.ucfpathfinder.CourseDirectory.AddDeleteWorker;
 import com.ucfpathfinder.ucfpathfinder.CourseDirectory.Course;
 import com.ucfpathfinder.ucfpathfinder.CourseDirectory.CourseDatabase;
 import com.ucfpathfinder.ucfpathfinder.CourseDirectory.CoursesDAO;
@@ -63,10 +60,21 @@ public class EditDeleteCourse extends AppCompatActivity {
                 Intent intent = new Intent(EditDeleteCourse.this, MapsActivity.class);
                 intent.putExtra("plusCode", buildingPlusCode);
                 startActivity(intent);
+                finish();
             }
         });
 
-
+        Button deleteButton = findViewById(R.id.button_delete_editDeleteActivity);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddDeleteWorker addDeleteWorker = new AddDeleteWorker("delete");
+                addDeleteWorker.setCourse(courseToEdit, EditDeleteCourse.this);
+                Thread thread = new Thread(addDeleteWorker);
+                thread.start();
+                finish();
+            }
+        });
     }
 
     public void onResume()
