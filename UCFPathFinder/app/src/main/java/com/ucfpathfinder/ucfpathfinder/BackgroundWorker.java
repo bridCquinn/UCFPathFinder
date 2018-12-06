@@ -178,8 +178,15 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
 
                 // Check if error occurred on server side.
                 String errorCheckFromServer = returnJSON.getString("error");
+                String noRecordsFound = "", checkRecords = returnJSON.toString().replace("\"","");
+                if(checkRecords.contains("schedule:{error:No Records Found}"))
+                    noRecordsFound = "No Records Found";
+                //JSONObject jsonScheduleError = returnJSON.getJSONObject("schedule");
+                //String noRecordsFound = jsonScheduleError.getString("error");
+
                 // No error == "".
-                if(errorCheckFromServer.equals("")) {
+                if(errorCheckFromServer.equals("") && !(noRecordsFound.equals("No Records Found")))
+                {
                     setRequestResult(true);
                     setRecordsFound(true);
                     // Return the json from server as string.
@@ -187,9 +194,19 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
                     Log.d("result of login", resultOfLogin.toString());
                     return returnJSON.getString("userID");
                 }
-                else if(errorCheckFromServer.equals("No Records Found"))
+                else if(noRecordsFound.equals("No Records Found"))
+                {
                     setRequestResult(true);
-                else
+                    setRecordsFound(true);
+                    storeTheSchedule(noRecordsFound);
+                    Log.d("result of login", resultOfLogin.toString());
+                    return returnJSON.getString("userID");
+                }
+                else if(errorCheckFromServer.equals("No Records Found"))
+                {
+                    setRequestResult(true);
+                    return null;
+                }else
                     return null;
             }
             catch (MalformedURLException e)
@@ -300,10 +317,20 @@ class BackgroundWorker extends AsyncTask<Void, Void, String> {
         return null;
     }
 
+    private void nukeScheduleTable(){
+
+    }
+
     private void storeTheSchedule(String jsonInput) throws JSONException
     {
-        JSONObject userInfo = new JSONObject(jsonInput);
+
         CoursesDAO database = Room.databaseBuilder(getContext(), CourseDatabase.class, "Course").build().getCourseDAO();
+        if(jsonInput.equals("No Records Found"))
+        {
+            database.nukeTable();
+            return;
+        }
+        JSONObject userInfo = new JSONObject(jsonInput);
         JSONArray courseArray = userInfo.getJSONArray("schedule");
         database.nukeTable();
         for(int i = 0; i < courseArray.length(); i++)
