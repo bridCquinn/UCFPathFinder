@@ -66,7 +66,6 @@ public class AddDeleteWorker implements AddDeleteRunnable {
                 e.printStackTrace();
             }
         }
-
         if(getAction().equals("edit"))
         {
 

@@ -145,13 +145,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_agenda) {
-            // TODO show a list of buildings, clicking should give directions.
-
-
+            startActivity(new Intent(this,BuildingList.class));
         } else if (id == R.id.nav_map) {
             Intent intent = new Intent(this, MapsActivity.class);
-            // TODO delete.
-            intent.putExtra("plusCode", "");
             startActivity(intent);
         } else if (id == R.id.nav_logout) {
             Toast.makeText(this, "Logging Out", Toast.LENGTH_SHORT).show();

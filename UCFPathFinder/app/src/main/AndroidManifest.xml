@@ -54,7 +54,9 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".AddToSchedule" />
-        <activity android:name=".EditDeleteCourse"></activity>
+        <activity android:name=".EditDeleteCourse" />
+        <activity android:name=".BuildingList" />
+        <activity android:name=".BuildingDetails"></activity>
     </application>
 
 </manifest>
