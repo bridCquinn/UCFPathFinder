@@ -66,7 +66,6 @@ public class AddDeleteWorker implements AddDeleteRunnable {
                 e.printStackTrace();
             }
         }
-
         if(getAction().equals("edit"))
         {
 
@@ -153,8 +152,19 @@ public class AddDeleteWorker implements AddDeleteRunnable {
         //resultOfRegister = resultOfRegister + lineTemp;
         Log.d("Get schedule result",resultOfGetSchedule.toString());
 
-        JSONObject userInfo = new JSONObject(resultOfGetSchedule.toString());
+        bufferedReader.close();
+        inputStream.close();
+        httpURLConnection.disconnect();
+
         CoursesDAO database = Room.databaseBuilder(getContext(), CourseDatabase.class, "Course").build().getCourseDAO();
+        String noRecordsFound = "", checkRecords = resultOfGetSchedule.toString().replace("\"","");
+        if(checkRecords.contains("{error:No Records Found}"))
+        {
+            database.nukeTable();
+            return;
+        }
+
+        JSONObject userInfo = new JSONObject(resultOfGetSchedule.toString());
         JSONArray courseArray = userInfo.getJSONArray("schedule");
         database.nukeTable();
         for(int i = 0; i < courseArray.length(); i++)
@@ -174,9 +184,7 @@ public class AddDeleteWorker implements AddDeleteRunnable {
             database.insert(course);
         }
 
-        bufferedReader.close();
-        inputStream.close();
-        httpURLConnection.disconnect();
+
     }
 
     private void deleteCourse()
@@ -269,7 +277,7 @@ public class AddDeleteWorker implements AddDeleteRunnable {
         {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("userID", Integer.parseInt(getUserID()));
-            jsonObject.put("classCode", course.getCourseID());
+            jsonObject.put("classID", course.getCourseID());
             return jsonObject;
         }
         return null;
