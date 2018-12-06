@@ -31,6 +31,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -75,25 +76,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private String plusCode;
+    private boolean mLocationPermissionGranted;
     private boolean getDirectionsEnabled;
-
     private GeoDataClient mGeoDataClient;
     private PlaceDetectionClient mPlaceDetectionClient;
     private FusedLocationProviderClient mFusedLocationProviderClient;
-
     private CameraPosition mCameraPosition;
     private Location mLastKnownLocation;
 
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
-
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-    private boolean mLocationPermissionGranted;
-
-    private final LatLng mDefaultLocation = new LatLng(28.6019, -81.2005);
     private static final int DEFAULT_ZOOM = 15;
     private static final int YOUR_LOCATION_ZOOM = 18;
     private static final int overview = 0;
+    private final LatLng mDefaultLocation = new LatLng(28.6019, -81.2005);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +102,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
 
-        // Get Activity details if there are any
         setContentView(R.layout.activity_maps2);
         Intent intent = getIntent();
         if(intent.hasExtra("plusCode")) {
@@ -121,7 +118,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -131,38 +127,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        getLocationPermission();
         getDeviceLocation();
-
-        // TODO Revert back - currently shows (static) directions is getDirections is disabled
-        if(!getDirectionsEnabled) {
-            //setupGoogleMapScreenSettings(mMap);
-            //DirectionsResult results = getDirectionsDetails("483 George St, Sydney NSW 2000, Australia","182 Church St, Parramatta NSW 2150, Australia",TravelMode.WALKING);
-            DirectionsResult results = getDirectionsDetails("HRX2+43 Regency Park, Florida","JR23+8C Regency Park, Florida",TravelMode.WALKING);
-            if (results != null) {
-                addPolyline(results, mMap);
-                positionCamera(results.routes[overview], mMap);
-                addMarkersToMap(results, mMap);
-            }
-        }
-        else {
-            getLocationPermission();
-            getDeviceLocation();
-        }
-
-    }
-
-    private void setupGoogleMapScreenSettings(GoogleMap mMap) {
-        mMap.setBuildingsEnabled(true);
-        mMap.setIndoorEnabled(true);
-        mMap.setTrafficEnabled(true);
-        UiSettings mUiSettings = mMap.getUiSettings();
-        mUiSettings.setZoomControlsEnabled(true);
-        mUiSettings.setCompassEnabled(true);
-        mUiSettings.setMyLocationButtonEnabled(true);
-        mUiSettings.setScrollGesturesEnabled(true);
-        mUiSettings.setZoomGesturesEnabled(true);
-        mUiSettings.setTiltGesturesEnabled(true);
-        mUiSettings.setRotateGesturesEnabled(true);
     }
 
     @TargetApi(Build.VERSION_CODES.O)
@@ -194,22 +160,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void addMarkersToMap(DirectionsResult results, GoogleMap mMap) {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(results.routes[overview].legs[overview].startLocation.lat,results.routes[overview].legs[overview].startLocation.lng)).title(results.routes[overview].legs[overview].startAddress));
         mMap.addMarker(new MarkerOptions().position(new LatLng(results.routes[overview].legs[overview].endLocation.lat,results.routes[overview].legs[overview].endLocation.lng)).title(results.routes[overview].legs[overview].startAddress).snippet(getEndLocationTitle(results)));
-    }
-
-    private void positionCamera(DirectionsRoute route, GoogleMap mMap) {
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(route.legs[overview].startLocation.lat, route.legs[overview].startLocation.lng), 12));
     }
 
     private String getEndLocationTitle(DirectionsResult results){
         return  "Time :"+ results.routes[overview].legs[overview].duration.humanReadable + " Distance :" + results.routes[overview].legs[overview].distance.humanReadable;
     }
 
-    // Gets the current location of the device, and positions the map's camera.
     private void getDeviceLocation() {
-         // Get the best and most recent location of the device, which may be null in rare
-         // cases when a location is not available.
         try {
             if (mLocationPermissionGranted) {
                 Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
@@ -217,12 +175,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     @Override
                     public void onComplete(@NonNull Task<Location> task) {
                         if (task.isSuccessful()) {
-                            // Set the map's camera position to the current location of the device.
-                            updateLocationUI();
                             mLastKnownLocation = task.getResult();
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(mLastKnownLocation.getLatitude(),
-                                            mLastKnownLocation.getLongitude()), YOUR_LOCATION_ZOOM));
+                            String origin = Double.toString(mLastKnownLocation.getLatitude()) + "," + Double.toString(mLastKnownLocation.getLongitude());
+                            String destination = plusCode;
+
+                            updateLocationUI();
+                            if(getDirectionsEnabled) {
+                                DirectionsResult results = getDirectionsDetails(origin,destination,TravelMode.WALKING);
+                                if (results != null) {
+                                    addPolyline(results, mMap);
+                                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                            new LatLng(mLastKnownLocation.getLatitude(),
+                                                    mLastKnownLocation.getLongitude()), YOUR_LOCATION_ZOOM));
+                                    addMarkersToMap(results, mMap);
+                                }
+                            }
+                            else {
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                        new LatLng(mLastKnownLocation.getLatitude(),
+                                                mLastKnownLocation.getLongitude()), YOUR_LOCATION_ZOOM));
+                            }
                         }
                         else {
                             updateLocationUI();
@@ -244,11 +216,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    // Prompts the user for permission to use the device location.
     private void getLocationPermission() {
-        // Request location permission, so that we can get the location of the
-        // device. The result of the permission request is handled by a callback,
-        // onRequestPermissionsResult.
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -262,7 +230,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    // Handles the result of the request for location permissions.
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[],
@@ -270,23 +237,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mLocationPermissionGranted = false;
         switch (requestCode) {
             case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     mLocationPermissionGranted = true;
+                }
+                else {
+                    Toast.makeText(this,"Loction permission required for routing.", Toast.LENGTH_LONG).show();
+                    finish();
                 }
             }
         }
         getDeviceLocation();
     }
 
-    // Updates the map's UI settings based on whether the user has granted location permission.
     private void updateLocationUI() {
         if (mMap == null) {
             return;
         }
         try {
             if (mLocationPermissionGranted) {
+                mMap.setIndoorEnabled(true);
                 mMap.setMyLocationEnabled(true);
                 mMap.getUiSettings().setMyLocationButtonEnabled(true);
             } else {
@@ -299,11 +269,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    /*private GeoApiContext getGeoContext() {
-        GeoApiContext geoApiContext = new GeoApiContext.Builder().apiKey("AIzaSyBBQm7MI-H--hbDp8FXbZlJqQZWfCoXrK0").build();
-        return geoApiContext;
-    }*/
-
     private GeoApiContext getGeoContext() {
         GeoApiContext geoApiContext = new GeoApiContext.Builder()
                 .queryRateLimit(3)
@@ -314,14 +279,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .build();
         return geoApiContext;
     }
-
-    /*private GeoApiContext getGeoContext() {
-        GeoApiContext geoApiContext = new GeoApiContext();
-        return geoApiContext
-                .setQueryRateLimit(3)
-                .setApiKey(getString(R.string.directionsApiKey))
-                .setConnectTimeout(1, TimeUnit.SECONDS)
-                .setReadTimeout(1, TimeUnit.SECONDS)
-                .setWriteTimeout(1, TimeUnit.SECONDS);
-    }*/
 }
