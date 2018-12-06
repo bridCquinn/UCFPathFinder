@@ -1,6 +1,8 @@
 package com.ucfpathfinder.ucfpathfinder;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -47,6 +49,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+//import java.time.Instant;
 import java.util.concurrent.TimeUnit;
 
 import com.google.maps.DirectionsApi;
@@ -58,6 +62,7 @@ import com.google.maps.model.DirectionsRoute;
 import com.google.maps.model.TravelMode;
 
 import org.joda.time.DateTime;
+import org.joda.time.Instant;
 
 import java.io.IOException;
 import java.util.List;
@@ -86,6 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private final LatLng mDefaultLocation = new LatLng(28.6019, -81.2005);
     private static final int DEFAULT_ZOOM = 15;
     private static final int YOUR_LOCATION_ZOOM = 18;
+    private static final int overview = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,13 +105,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Get Activity details if there are any
         setContentView(R.layout.activity_maps2);
         Intent intent = getIntent();
-        if(intent != null) {
+        if(intent.hasExtra("plusCode")) {
             plusCode = intent.getStringExtra("plusCode");
-            getDirectionsEnabled = true;
+            if (!plusCode.equals(""))
+                getDirectionsEnabled = true;
+            else
+                getDirectionsEnabled = false;
         }
-        else {
+        else
             getDirectionsEnabled = false;
-        }
 
         mGeoDataClient = Places.getGeoDataClient(this, null);
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
@@ -122,9 +130,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        if(getDirectionsEnabled) {
-            DirectionsResult results = getDirectionsDetails("<Add Current Location>","<Add Plus Code",TravelMode.WALKING);
+        // TODO Revert back
+        if(!getDirectionsEnabled) {
+            DirectionsResult results = getDirectionsDetails("Orlando","Miami",TravelMode.WALKING);
             if (results != null) {
+                //getDeviceLocation();
                 addPolyline(results, mMap);
                 positionCamera(results.routes[overview], mMap);
                 addMarkersToMap(results, mMap);
@@ -137,8 +147,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    private DirectionsResult getDirectionsDetails(String origin,String destination,TravelMode mode) {
-        DateTime now = new DateTime();
+    @TargetApi(Build.VERSION_CODES.O)
+    private DirectionsResult getDirectionsDetails(String origin, String destination, TravelMode mode) {
+        DateTime jodaNow = new DateTime();
+        java.time.Instant now = java.time.Instant.ofEpochMilli(jodaNow.getMillis());
+        //Instant now = Instant.now();
+        //Instant now = Instant.now();
         try {
             return DirectionsApi.newRequest(getGeoContext())
                     .mode(mode)
@@ -170,6 +184,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void positionCamera(DirectionsRoute route, GoogleMap mMap) {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(route.legs[overview].startLocation.lat, route.legs[overview].startLocation.lng), 12));
+    }
+
+    private String getEndLocationTitle(DirectionsResult results){
+        return  "Time :"+ results.routes[overview].legs[overview].duration.humanReadable + " Distance :" + results.routes[overview].legs[overview].distance.humanReadable;
     }
 
     // Gets the current location of the device, and positions the map's camera.
@@ -266,7 +284,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    public GeoApiContext getGeoContext() {
+    /*private GeoApiContext getGeoContext() {
+        GeoApiContext geoApiContext = new GeoApiContext.Builder().apiKey("AIzaSyBBQm7MI-H--hbDp8FXbZlJqQZWfCoXrK0").build();
+        return geoApiContext;
+    }*/
+
+    private GeoApiContext getGeoContext() {
+        GeoApiContext geoApiContext = new GeoApiContext.Builder()
+                .queryRateLimit(3)
+                .apiKey("AIzaSyAuR4RtUXOeMmuVXRCTXVvb1h-2maQWRsE")
+                .connectTimeout(1, TimeUnit.SECONDS)
+                .readTimeout(1, TimeUnit.SECONDS)
+                .writeTimeout(1, TimeUnit.SECONDS)
+                .build();
+        return geoApiContext;
+    }
+
+    /*private GeoApiContext getGeoContext() {
         GeoApiContext geoApiContext = new GeoApiContext();
         return geoApiContext
                 .setQueryRateLimit(3)
@@ -274,5 +308,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .setConnectTimeout(1, TimeUnit.SECONDS)
                 .setReadTimeout(1, TimeUnit.SECONDS)
                 .setWriteTimeout(1, TimeUnit.SECONDS);
-    }
+    }*/
 }
