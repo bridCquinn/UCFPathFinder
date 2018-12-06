@@ -107,7 +107,7 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="reg_username" class="sr-only">Register Username</label>
+                        <label for="reg_username" class="sr-only">Email address</label>
                         <input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
                       </div>
 
@@ -146,11 +146,11 @@
       <div id="schedule" class="tabcontent">
         <h3 style="margin-top:2%;"><b><span id="termYear" style="margin-left:4%;border-style:solid;padding: 0.37em;border-color: #343a40;"></span></b></h3>
 
-          <div id="classes" class ="row">
+          <div id="classes" class = row>
           </div>
 
           <!-- this is the add button/card -->
-        <div class ="row" style="float:right;position: fixed;bottom: 0;right: 0;;">
+        <div class = row style="float:right;position: fixed;bottom: 0;right: 0;;">
           <a onclick="newSchedule()">
           <div class="card-1" id="open" style="width: 6rem;">
             <div class="card-body" style="width: 6rem;height: 6rem;">
@@ -400,14 +400,7 @@
 
 
       <div id="Profile" class="tabcontent">
-	  <div class="row">
-	  <div class="col-sm-3"> </div>
-	  
-	  <div class="col-sm-6">
-	  <div class="card-1">
-		<h1> Settings </h1>
-		<h3 style="margin-left:4%;margin-top:2%" > Change Term </h3>
-        <h4 style="margin-left:4%;margin-top:2%">Select Term :</h4>
+        <h3 style="margin-left:4%;margin-top:2%">Select Term :</h3>
 
         <div class="row">
           <div class="col-6">
@@ -447,11 +440,10 @@
 
         <button class="buttons" margin="auto" id="changeTerm" onclick="changeTerm()">Change</button>
 
-        <br>
-		<h3 style="margin-left:4%;margin-top:2%"> Delete Everything </h3>
+        <br><br>
         <button class="buttons" id="delSch" style="padding-right: 14%; padding-left:14%;" onclick="delModal()">Delete All</button>
         <span id="delSchResult"></span>
-		<br>
+
         <!-- Delete All Modal -->
         <div class="modal fade" id="delCheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -492,12 +484,8 @@
             </div>
           </div>
         </div> <!-- end of change modal -->
-		</br>
-		</br>
-		</div> <!-- end of card -->
-		</div> <!-- end of col-->
-		<div class="col-sm-3"> </div>
-		</div> <!-- end of row -->
+
+
       
 
 
