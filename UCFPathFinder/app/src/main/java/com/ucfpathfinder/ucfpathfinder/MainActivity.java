@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void run() {
                 // This thread should populate a list that shows the schedule.
-                //TODO replaced buildings with schedule.
 
                 CoursesDAO database = Room.databaseBuilder(MainActivity.this, CourseDatabase.class, "Course").build().getCourseDAO();
                 List<Course> courseList = database.getCourses();
@@ -54,6 +53,7 @@ public class MainActivity extends AppCompatActivity
                     CourseListViewAdaptor courseListViewAdaptor = new CourseListViewAdaptor(MainActivity.this, courseList);
                     // Add the list to the activity.
                     listView.setAdapter(courseListViewAdaptor);
+
                 }else
                 {
                     if(listView.getAdapter() != null)

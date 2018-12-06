@@ -26,11 +26,8 @@ public class LoginActivity extends AppCompatActivity {
                 EditText editTextUsername = findViewById(R.id.editText_username_loginActivity);
                 EditText editTextPassword = findViewById(R.id.editText_password_loginActivity);
 
-                // TODO uncomment below when done testing.
-                //String username = editTextUsername.getText().toString();
-                //String password = editTextPassword.getText().toString();
-                String username = "johndoe";
-                String password = "password";
+                String username = editTextUsername.getText().toString();
+                String password = editTextPassword.getText().toString();
                 // Clear the text entered.
                 editTextUsername.getText().clear();
                 editTextPassword.getText().clear();
