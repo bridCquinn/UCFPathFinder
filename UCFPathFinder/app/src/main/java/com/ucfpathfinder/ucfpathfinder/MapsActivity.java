@@ -12,6 +12,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -38,6 +39,7 @@ import com.google.android.gms.location.places.PlaceDetectionClient;
 import com.google.android.gms.location.places.PlaceLikelihood;
 import com.google.android.gms.location.places.PlaceLikelihoodBufferResponse;
 import com.google.android.gms.location.places.Places;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -129,12 +131,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        getDeviceLocation();
 
-        // TODO Revert back
+        // TODO Revert back - currently shows (static) directions is getDirections is disabled
         if(!getDirectionsEnabled) {
-            DirectionsResult results = getDirectionsDetails("Orlando","Miami",TravelMode.WALKING);
+            //setupGoogleMapScreenSettings(mMap);
+            //DirectionsResult results = getDirectionsDetails("483 George St, Sydney NSW 2000, Australia","182 Church St, Parramatta NSW 2150, Australia",TravelMode.WALKING);
+            DirectionsResult results = getDirectionsDetails("HRX2+43 Regency Park, Florida","JR23+8C Regency Park, Florida",TravelMode.WALKING);
             if (results != null) {
-                //getDeviceLocation();
                 addPolyline(results, mMap);
                 positionCamera(results.routes[overview], mMap);
                 addMarkersToMap(results, mMap);
@@ -147,12 +151,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    private void setupGoogleMapScreenSettings(GoogleMap mMap) {
+        mMap.setBuildingsEnabled(true);
+        mMap.setIndoorEnabled(true);
+        mMap.setTrafficEnabled(true);
+        UiSettings mUiSettings = mMap.getUiSettings();
+        mUiSettings.setZoomControlsEnabled(true);
+        mUiSettings.setCompassEnabled(true);
+        mUiSettings.setMyLocationButtonEnabled(true);
+        mUiSettings.setScrollGesturesEnabled(true);
+        mUiSettings.setZoomGesturesEnabled(true);
+        mUiSettings.setTiltGesturesEnabled(true);
+        mUiSettings.setRotateGesturesEnabled(true);
+    }
+
     @TargetApi(Build.VERSION_CODES.O)
     private DirectionsResult getDirectionsDetails(String origin, String destination, TravelMode mode) {
         DateTime jodaNow = new DateTime();
         java.time.Instant now = java.time.Instant.ofEpochMilli(jodaNow.getMillis());
-        //Instant now = Instant.now();
-        //Instant now = Instant.now();
         try {
             return DirectionsApi.newRequest(getGeoContext())
                     .mode(mode)
@@ -270,7 +286,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         }
         try {
-            //mMap.getUiSettings().setCompassEnabled(true);
             if (mLocationPermissionGranted) {
                 mMap.setMyLocationEnabled(true);
                 mMap.getUiSettings().setMyLocationButtonEnabled(true);
