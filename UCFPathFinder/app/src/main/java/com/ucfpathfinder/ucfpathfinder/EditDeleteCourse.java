@@ -72,6 +72,11 @@ public class EditDeleteCourse extends AppCompatActivity {
                 addDeleteWorker.setCourse(courseToEdit, EditDeleteCourse.this);
                 Thread thread = new Thread(addDeleteWorker);
                 thread.start();
+                try {
+                    thread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 finish();
             }
         });

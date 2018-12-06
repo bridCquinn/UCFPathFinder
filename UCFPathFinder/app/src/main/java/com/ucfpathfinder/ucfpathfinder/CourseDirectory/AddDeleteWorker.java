@@ -300,7 +300,8 @@ public class AddDeleteWorker implements AddDeleteRunnable {
         {
             char[] array = time.toCharArray();
             int hour = Integer.parseInt(time.substring(0,2));
-            hour = hour + 12;
+            if(hour != 12)
+                hour = hour + 12;
             char[] temp = Integer.toString(hour).toCharArray();
             array[0] = temp[0];
             array[1] = temp[1];
