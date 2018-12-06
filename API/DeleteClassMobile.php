@@ -2,10 +2,8 @@
 /*
    		JSON package expected
     		{ 
-      			"userID"    :  <<userID>>
-			"classCode" :  <<ClassCode>>
-			"term" 	    :  <<term>>
-			"year"      :  <<year>>
+      			"userID"  :  <<userID>>
+			"classID" :  <<classID>>
     		}
 		
         	Deletes class associated with that userID classCode term and year
@@ -21,15 +19,14 @@
 	} 
 	else
 	{	
-		$sql = "CALL deleteClass (?,?,?,?);";
+		$sql = "CALL deleteClassByID (?,?);";
 		$stmt = $conn->prepare($sql);
 		if($stmt != false) 
 		{
-			$stmt->bind_param('issi', $userID, $classCode, $term, $year);
+			$stmt->bind_param('ii', $userID, $classID);
 			$userID = $inData["userID"];
-            		$classCode = $inData["classCode"];
-            		$term = $inData["term"];
-            		$year = $inData["year"];
+      			$classID = $inData["classID"];
+ 
 			$stmt->execute();
 		}
 		else

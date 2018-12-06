@@ -16,11 +16,15 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.HttpRetryException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.List;
 
@@ -28,6 +32,11 @@ public class AddDeleteWorker implements AddDeleteRunnable {
 
     private Course course;
     private Context context;
+    private String action;
+
+    public AddDeleteWorker(String action){
+        setAction(action);
+    }
 
     @Override
     public void setCourse(Course course, Context context) {
@@ -43,17 +52,33 @@ public class AddDeleteWorker implements AddDeleteRunnable {
     public void run() {
         // 1) Add course to the database.
         // 2) Update the ROOM Course database.
-        try
+        if(getAction().equals("add"))
         {
-            // 1. submit the new course.
-            addCourse();
-
-            // 2. delete local database and update with new.
-            updateCourseDatabase();
+            try
+            {
+                // 1. submit the new course.
+                addCourse();
+                // 2. delete local database and update with new.
+                updateCourseDatabase();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
-        catch (Exception e)
+        if(getAction().equals("edit"))
         {
-            e.printStackTrace();
+
+        }
+
+        if(getAction().equals("delete"))
+        {
+            deleteCourse();
+            try {
+                updateCourseDatabase();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -127,8 +152,19 @@ public class AddDeleteWorker implements AddDeleteRunnable {
         //resultOfRegister = resultOfRegister + lineTemp;
         Log.d("Get schedule result",resultOfGetSchedule.toString());
 
-        JSONObject userInfo = new JSONObject(resultOfGetSchedule.toString());
+        bufferedReader.close();
+        inputStream.close();
+        httpURLConnection.disconnect();
+
         CoursesDAO database = Room.databaseBuilder(getContext(), CourseDatabase.class, "Course").build().getCourseDAO();
+        String noRecordsFound = "", checkRecords = resultOfGetSchedule.toString().replace("\"","");
+        if(checkRecords.contains("{error:No Records Found}"))
+        {
+            database.nukeTable();
+            return;
+        }
+
+        JSONObject userInfo = new JSONObject(resultOfGetSchedule.toString());
         JSONArray courseArray = userInfo.getJSONArray("schedule");
         database.nukeTable();
         for(int i = 0; i < courseArray.length(); i++)
@@ -148,9 +184,61 @@ public class AddDeleteWorker implements AddDeleteRunnable {
             database.insert(course);
         }
 
-        bufferedReader.close();
-        inputStream.close();
-        httpURLConnection.disconnect();
+
+    }
+
+    private void deleteCourse()
+    {
+        try {
+            // URL.
+            URL url = new URL("http://ucfpathfinder.com/API/DeleteClassMobile.php");
+
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+            httpURLConnection.setDoOutput(true);
+            httpURLConnection.setDoInput(true);
+            httpURLConnection.connect();
+
+            JSONObject jsonOutput = createAddJsonOutput("delete");
+
+            // Output to the server.
+            OutputStream outputStream = httpURLConnection.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+            writer.write(jsonOutput.toString());
+            writer.flush();
+            writer.close();
+            outputStream.close();
+
+            // JSON received from server.
+            InputStream inputStream = httpURLConnection.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+
+            String lineTemp;
+            StringBuilder resultOfRegister = new StringBuilder();
+            while((lineTemp = bufferedReader.readLine())!=null)
+                resultOfRegister.append(lineTemp);
+            //resultOfRegister = resultOfRegister + lineTemp;
+            Log.d("Delete Result",resultOfRegister.toString());
+
+            bufferedReader.close();
+            inputStream.close();
+            httpURLConnection.disconnect();
+
+        }
+        catch(HttpRetryException e)
+        {
+            e.printStackTrace();
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private JSONObject createAddJsonOutput(String action) throws JSONException
@@ -184,6 +272,13 @@ public class AddDeleteWorker implements AddDeleteRunnable {
             jsonOutput.put("term",course.getTerm());
             jsonOutput.put("year",course.getYear());
             return jsonOutput;
+        }
+        if(action.equals("delete"))
+        {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("userID", Integer.parseInt(getUserID()));
+            jsonObject.put("classID", course.getCourseID());
+            return jsonObject;
         }
         return null;
     }
@@ -255,5 +350,13 @@ public class AddDeleteWorker implements AddDeleteRunnable {
 
     public void setContext(Context context) {
         this.context = context;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
     }
 }
